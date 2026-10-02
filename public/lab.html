@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Palette lab · sampdv</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#03050a;--fg:#f4f5f8;--muted:rgba(244,245,248,.68);--faint:rgba(244,245,248,.5);--line:rgba(244,245,248,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 'IBM Plex Sans','Helvetica Neue',Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:40px 16px 80px}
+@media (min-width:900px){.wrap{padding:56px 32px 96px}}
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px;margin-bottom:28px}
+.eyebrow{margin:0 0 10px;font:500 11px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+h1,h2{margin:0;font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.02}
+h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.note{margin:0;max-width:46ch;color:var(--muted);font-size:15px}
+.back{display:inline-flex;margin-bottom:28px;color:var(--muted);font:500 13px/1 'IBM Plex Mono',monospace}
+.back:hover{color:var(--fg)}
+.u{background-image:var(--ul);background-repeat:no-repeat;background-position:0 100%;background-size:100% .32em;padding-bottom:.06em;color:var(--warm);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+/* palettes */
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.pl{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#05080f;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .3s}
+.pl:hover,.pl:focus-visible{transform:translateY(-4px);border-color:rgba(var(--warm-rgb),.5);box-shadow:0 24px 56px -24px rgba(var(--hot),.6)}
+.pl-hero{position:relative;height:170px;display:grid;place-items:start center;padding:22px 16px 16px;background:radial-gradient(70% 60% at 50% 70%,rgba(var(--hot),.22),rgba(var(--hot),0) 70%),var(--bg)}
+.waves{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%}
+.pl-t{position:relative;margin:0;text-align:center;font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;font-size:25px;line-height:1.08;letter-spacing:-.02em}
+.pl-body{display:grid;gap:12px;padding:16px}
+.pl-card{display:grid;gap:6px;padding:14px;border:1px solid rgba(var(--warm-rgb),.3);border-radius:14px;background:radial-gradient(90% 80% at 90% 120%,rgba(var(--hot),.28),rgba(var(--hot),0) 70%),var(--bg2)}
+.pl-k{font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.pl-card b{font-family:'IBM Plex Sans Condensed',sans-serif;font-size:22px;line-height:1}
+.pl-flow{display:flex;align-items:center;gap:0;margin-top:6px}
+.pl-flow i{width:16px;height:12px;border:1.5px solid var(--warm);border-radius:4px}
+.pl-flow i+i{margin-left:22px;position:relative}
+.pl-flow i+i::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:22px;height:2px;margin-top:-1px;background:var(--line-c);box-shadow:0 0 6px rgba(var(--hot),.9)}
+.pl-note{display:flex;align-items:flex-end;gap:8px;margin:0;font:600 1.45rem/1 'Caveat',cursive;color:var(--warm);transform:rotate(-2deg);transform-origin:left center}
+.pl-note svg{flex:none;width:28px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px}
+.pl-foot{display:flex;align-items:center;gap:12px;margin-top:auto;padding:12px 16px 16px;border-top:1px solid var(--line)}
+.pl-sw{display:flex}
+.pl-sw i{width:16px;height:16px;border-radius:50%;border:2px solid #05080f}
+.pl-sw i+i{margin-left:-6px}
+.pl-name{display:grid;flex:1;min-width:0}
+.pl-name b{font-size:15px}
+.pl-name small{font-size:12.5px;color:var(--faint)}
+.pl-go,.tt-go{font:500 11px/1.2 'IBM Plex Mono',monospace;color:var(--warm);white-space:nowrap}
+/* titles */
+.sec2{margin-top:72px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.chip{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--muted);font:500 12.5px/1 'IBM Plex Sans',sans-serif;cursor:pointer}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{background:rgba(255,255,255,.1);color:var(--fg);border-color:rgba(255,255,255,.3)}
+.titles{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+.tt{display:grid;gap:12px;padding:22px;border:1px solid var(--line);border-radius:20px;background:#05080f;transition:border-color .3s,background .3s}
+.tt:hover,.tt:focus-visible{border-color:rgba(255,255,255,.3);background:#070b14}
+.tt-k{font:500 10.5px/1 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.tt-t{font-family:'IBM Plex Sans Condensed',sans-serif;font-weight:600;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.04;letter-spacing:-.02em}
+.tt-go{justify-self:end}
+.pl-ember{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e2602f' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e2602f' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-terracotta{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4572a' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4572a' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-amber{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23f0a030' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23f0a030' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-gold{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4af37' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-coral{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23ff5a4e' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23ff5a4e' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-swiss{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e0301e' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e0301e' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-sunset{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23ec4899' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23ec4899' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-lavender{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23a78bfa' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23a78bfa' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-wimbledon{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%239b7be0' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%239b7be0' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-mint{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%232dd4bf' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-volt{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4f53c' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4f53c' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-blueprint{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%233b82f6' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+.pl-mono{--ul:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e6e8ee' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e6e8ee' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="/">← sampdv.com</a>
+  <header class="top">
+    <div>
+      <p class="eyebrow">Palette lab · not part of the site</p>
+      <h1>13 palettes, 12 titles.</h1>
+    </div>
+    <p class="note">Each card is a small sample of the site in that palette: the hero underline, the ember waves, a project card with its glow, a handwritten note. Click one to open the real site with it applied.</p>
+  </header>
+  <div class="grid">
+    <a class="pl pl-ember" href="/?palette=ember" style="--warm:#f3d6c1;--warm-rgb:243,214,193;--hot:226,96,58;--line-c:#e2602f;--bg2:#0b0807">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-ember" x1="0" x2="1"><stop offset="0" stop-color="#e2482f"/><stop offset=".55" stop-color="#ff7a45"/><stop offset="1" stop-color="#ffb547"/></linearGradient><filter id="b-ember" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-ember)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-ember)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#e2482f"></i><i style="background:#ff7a45"></i><i style="background:#ffb547"></i><i style="background:#f3d6c1"></i></span><span class="pl-name"><b>Ember</b><small>current: peach and burnt orange</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-terracotta" href="/?palette=terracotta" style="--warm:#f2c7ad;--warm-rgb:242,199,173;--hot:200,85,43;--line-c:#d4572a;--bg2:#0b0806">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-terracotta" x1="0" x2="1"><stop offset="0" stop-color="#7a2a10"/><stop offset=".55" stop-color="#c8552b"/><stop offset="1" stop-color="#e89a6a"/></linearGradient><filter id="b-terracotta" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-terracotta)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-terracotta)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#7a2a10"></i><i style="background:#c8552b"></i><i style="background:#e89a6a"></i><i style="background:#f2c7ad"></i></span><span class="pl-name"><b>Terracotta</b><small>clay court, earthier</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-amber" href="/?palette=amber" style="--warm:#ffdca8;--warm-rgb:255,220,168;--hot:243,154,30;--line-c:#f0a030;--bg2:#0c0a06">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-amber" x1="0" x2="1"><stop offset="0" stop-color="#c96a12"/><stop offset=".55" stop-color="#f39a1e"/><stop offset="1" stop-color="#ffd36b"/></linearGradient><filter id="b-amber" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-amber)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-amber)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#c96a12"></i><i style="background:#f39a1e"></i><i style="background:#ffd36b"></i><i style="background:#ffdca8"></i></span><span class="pl-name"><b>Amber</b><small>golden, sunnier</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-gold" href="/?palette=gold" style="--warm:#f1e2b8;--warm-rgb:241,226,184;--hot:201,162,74;--line-c:#d4af37;--bg2:#0a0906">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-gold" x1="0" x2="1"><stop offset="0" stop-color="#6b4f1d"/><stop offset=".55" stop-color="#c9a24a"/><stop offset="1" stop-color="#f3dc9a"/></linearGradient><filter id="b-gold" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-gold)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-gold)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#6b4f1d"></i><i style="background:#c9a24a"></i><i style="background:#f3dc9a"></i><i style="background:#f1e2b8"></i></span><span class="pl-name"><b>Gold</b><small>champagne, more premium</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-coral" href="/?palette=coral" style="--warm:#ffcabd;--warm-rgb:255,202,189;--hot:255,90,78;--line-c:#ff5a4e;--bg2:#0c0708">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-coral" x1="0" x2="1"><stop offset="0" stop-color="#d92b4b"/><stop offset=".55" stop-color="#ff5a4e"/><stop offset="1" stop-color="#ff9d7a"/></linearGradient><filter id="b-coral" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-coral)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-coral)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#d92b4b"></i><i style="background:#ff5a4e"></i><i style="background:#ff9d7a"></i><i style="background:#ffcabd"></i></span><span class="pl-name"><b>Coral</b><small>salmon and bright red</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-swiss" href="/?palette=swiss" style="--warm:#ffd0cc;--warm-rgb:255,208,204;--hot:218,41,28;--line-c:#e0301e;--bg2:#0c0606">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-swiss" x1="0" x2="1"><stop offset="0" stop-color="#7f1d1d"/><stop offset=".55" stop-color="#da291c"/><stop offset="1" stop-color="#ff6b5e"/></linearGradient><filter id="b-swiss" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-swiss)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-swiss)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#7f1d1d"></i><i style="background:#da291c"></i><i style="background:#ff6b5e"></i><i style="background:#ffd0cc"></i></span><span class="pl-name"><b>Swiss red</b><small>red and white, for Roger</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-sunset" href="/?palette=sunset" style="--warm:#ffc6dc;--warm-rgb:255,198,220;--hot:236,72,153;--line-c:#ec4899;--bg2:#0b0709">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-sunset" x1="0" x2="1"><stop offset="0" stop-color="#6d28d9"/><stop offset=".55" stop-color="#ec4899"/><stop offset="1" stop-color="#fb923c"/></linearGradient><filter id="b-sunset" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-sunset)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-sunset)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#6d28d9"></i><i style="background:#ec4899"></i><i style="background:#fb923c"></i><i style="background:#ffc6dc"></i></span><span class="pl-name"><b>Sunset</b><small>violet to pink to orange</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-lavender" href="/?palette=lavender" style="--warm:#ddd2ff;--warm-rgb:221,210,255;--hot:139,92,246;--line-c:#a78bfa;--bg2:#08070c">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-lavender" x1="0" x2="1"><stop offset="0" stop-color="#4c1d95"/><stop offset=".55" stop-color="#8b5cf6"/><stop offset="1" stop-color="#c4b5fd"/></linearGradient><filter id="b-lavender" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-lavender)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-lavender)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#4c1d95"></i><i style="background:#8b5cf6"></i><i style="background:#c4b5fd"></i><i style="background:#ddd2ff"></i></span><span class="pl-name"><b>Lavender</b><small>soft violet, calm</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-wimbledon" href="/?palette=wimbledon" style="--warm:#c8eab4;--warm-rgb:200,234,180;--hot:142,107,209;--line-c:#9b7be0;--bg2:#07090a">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-wimbledon" x1="0" x2="1"><stop offset="0" stop-color="#2f7d32"/><stop offset=".55" stop-color="#5aa846"/><stop offset="1" stop-color="#8e6bd1"/></linearGradient><filter id="b-wimbledon" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-wimbledon)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-wimbledon)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#2f7d32"></i><i style="background:#5aa846"></i><i style="background:#8e6bd1"></i><i style="background:#c8eab4"></i></span><span class="pl-name"><b>Wimbledon</b><small>grass green and purple</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-mint" href="/?palette=mint" style="--warm:#bff3df;--warm-rgb:191,243,223;--hot:20,184,166;--line-c:#2dd4bf;--bg2:#05090a">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-mint" x1="0" x2="1"><stop offset="0" stop-color="#0f766e"/><stop offset=".55" stop-color="#14b8a6"/><stop offset="1" stop-color="#a3e635"/></linearGradient><filter id="b-mint" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-mint)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-mint)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#0f766e"></i><i style="background:#14b8a6"></i><i style="background:#a3e635"></i><i style="background:#bff3df"></i></span><span class="pl-name"><b>Mint</b><small>teal to lime, fresh</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-volt" href="/?palette=volt" style="--warm:#ecff9e;--warm-rgb:236,255,158;--hot:190,230,40;--line-c:#d4f53c;--bg2:#080a05">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-volt" x1="0" x2="1"><stop offset="0" stop-color="#3f6212"/><stop offset=".55" stop-color="#a3e635"/><stop offset="1" stop-color="#e8ff5a"/></linearGradient><filter id="b-volt" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-volt)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-volt)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#3f6212"></i><i style="background:#a3e635"></i><i style="background:#e8ff5a"></i><i style="background:#ecff9e"></i></span><span class="pl-name"><b>Volt</b><small>tennis-ball yellow, geeky</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-blueprint" href="/?palette=blueprint" style="--warm:#c3e2ff;--warm-rgb:195,226,255;--hot:59,130,246;--line-c:#3b82f6;--bg2:#05080f">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-blueprint" x1="0" x2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset=".55" stop-color="#3b82f6"/><stop offset="1" stop-color="#67d5ff"/></linearGradient><filter id="b-blueprint" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-blueprint)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-blueprint)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#1d4ed8"></i><i style="background:#3b82f6"></i><i style="background:#67d5ff"></i><i style="background:#c3e2ff"></i></span><span class="pl-name"><b>Blueprint</b><small>engineering-drawing blue</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+    <a class="pl pl-mono" href="/?palette=mono" style="--warm:#f4f5f8;--warm-rgb:244,245,248;--hot:170,176,190;--line-c:#e6e8ee;--bg2:#07080b">
+      <div class="pl-hero"><svg class="waves" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="g-mono" x1="0" x2="1"><stop offset="0" stop-color="#30343e"/><stop offset=".55" stop-color="#7d8392"/><stop offset="1" stop-color="#cfd3db"/></linearGradient><filter id="b-mono" x="-10%" y="-80%" width="120%" height="260%"><feGaussianBlur stdDeviation="9"/></filter></defs><g fill="none" stroke="url(#g-mono)"><path d="M0 64 C 60 44, 120 84, 190 62 S 320 40, 400 60" stroke-width="40" filter="url(#b-mono)" opacity=".7"/><path d="M0 58 C 60 38, 120 78, 190 56 S 320 34, 400 54" stroke-width="1.6"/><path d="M0 66 C 64 46, 124 86, 194 64 S 324 42, 400 62" stroke-width="1.2" opacity=".75"/><path d="M0 74 C 68 54, 128 94, 198 72 S 328 50, 400 70" stroke-width="1" opacity=".5"/></g></svg><p class="pl-t">Turning data into <span class="u">reliable</span> AI systems.</p></div>
+      <div class="pl-body">
+        <div class="pl-card"><span class="pl-k">LLM &amp; Retrieval</span><b>Syro</b><span class="pl-flow"><i></i><i></i><i></i><i></i></span></div>
+        <p class="pl-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Federer fan? Big points.</span></p>
+      </div>
+      <div class="pl-foot"><span class="pl-sw"><i style="background:#30343e"></i><i style="background:#7d8392"></i><i style="background:#cfd3db"></i><i style="background:#f4f5f8"></i></span><span class="pl-name"><b>Mono</b><small>no colour, just white</small></span><span class="pl-go">Open site →</span></div>
+    </a>
+  </div>
+
+  <section class="sec2" aria-labelledby="t-h">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Hero title</p>
+        <h2 id="t-h">Pick the first sentence people read.</h2>
+      </div>
+      <p class="note">Choose a palette below to see the titles in it. Click a title to open the site with that title and palette.</p>
+    </header>
+    <div class="chips" role="group" aria-label="Palette for the titles">
+      <button type="button" class="chip" data-p="ember" style="--c:#e2602f" aria-pressed="true"><i></i>Ember</button>
+      <button type="button" class="chip" data-p="terracotta" style="--c:#d4572a" aria-pressed="false"><i></i>Terracotta</button>
+      <button type="button" class="chip" data-p="amber" style="--c:#f0a030" aria-pressed="false"><i></i>Amber</button>
+      <button type="button" class="chip" data-p="gold" style="--c:#d4af37" aria-pressed="false"><i></i>Gold</button>
+      <button type="button" class="chip" data-p="coral" style="--c:#ff5a4e" aria-pressed="false"><i></i>Coral</button>
+      <button type="button" class="chip" data-p="swiss" style="--c:#e0301e" aria-pressed="false"><i></i>Swiss red</button>
+      <button type="button" class="chip" data-p="sunset" style="--c:#ec4899" aria-pressed="false"><i></i>Sunset</button>
+      <button type="button" class="chip" data-p="lavender" style="--c:#a78bfa" aria-pressed="false"><i></i>Lavender</button>
+      <button type="button" class="chip" data-p="wimbledon" style="--c:#9b7be0" aria-pressed="false"><i></i>Wimbledon</button>
+      <button type="button" class="chip" data-p="mint" style="--c:#2dd4bf" aria-pressed="false"><i></i>Mint</button>
+      <button type="button" class="chip" data-p="volt" style="--c:#d4f53c" aria-pressed="false"><i></i>Volt</button>
+      <button type="button" class="chip" data-p="blueprint" style="--c:#3b82f6" aria-pressed="false"><i></i>Blueprint</button>
+      <button type="button" class="chip" data-p="mono" style="--c:#e6e8ee" aria-pressed="false"><i></i>Mono</button>
+    </div>
+    <div class="titles" id="titles">
+    <a class="tt" data-hero="reliable" href="/?hero=reliable"><span class="tt-k">Reliable AI systems (current)</span><span class="tt-t">Turning data into<br><span class="u">reliable</span> AI systems.</span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="demo" href="/?hero=demo"><span class="tt-k">After the demo</span><span class="tt-t">AI that keeps working<br><span class="u">after the demo.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="holdup" href="/?hero=holdup"><span class="tt-k">Made to hold up</span><span class="tt-t">Models are easy to demo.<br>I make them <span class="u">hold up.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="survive" href="/?hero=survive"><span class="tt-k">Survive production</span><span class="tt-t">ML systems that<br><span class="u">survive production.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="ship" href="/?hero=ship"><span class="tt-k">Ship · watch · retrain</span><span class="tt-t">Ship it. Watch it.<br><span class="u">Retrain it.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="boring" href="/?hero=boring"><span class="tt-k">The boring parts</span><span class="tt-t">The boring parts of AI,<br><span class="u">done properly.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="hype" href="/?hero=hype"><span class="tt-k">Less hype</span><span class="tt-t">Less hype,<br>more <span class="u">pipelines.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="last" href="/?hero=last"><span class="tt-k">Built to last</span><span class="tt-t">Retrieval, agents, MLOps.<br><span class="u">Built to last.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="three" href="/?hero=three"><span class="tt-k">Cites · acts · retrains</span><span class="tt-t">Search that cites,<br>agents that act,<br>models that <span class="u">retrain.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="mech" href="/?hero=mech"><span class="tt-k">Mechanical → ML</span><span class="tt-t">From mechanical engineering<br>to ML in <span class="u">production.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="trained" href="/?hero=trained"><span class="tt-k">Trained in mechanics</span><span class="tt-t">Trained in mechanics,<br>now building <span class="u">ML systems.</span></span><span class="tt-go">Open site →</span></a>
+    <a class="tt" data-hero="datain" href="/?hero=datain"><span class="tt-k">Data in, answers out</span><span class="tt-t">Data in.<br><span class="u">Reliable answers</span> out.</span><span class="tt-go">Open site →</span></a>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  const PAL = {"ember": {"warm": "#f3d6c1", "line": "#e2602f", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e2602f' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e2602f' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "terracotta": {"warm": "#f2c7ad", "line": "#d4572a", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4572a' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4572a' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "amber": {"warm": "#ffdca8", "line": "#f0a030", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23f0a030' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23f0a030' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "gold": {"warm": "#f1e2b8", "line": "#d4af37", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4af37' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "coral": {"warm": "#ffcabd", "line": "#ff5a4e", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23ff5a4e' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23ff5a4e' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "swiss": {"warm": "#ffd0cc", "line": "#e0301e", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e0301e' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e0301e' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "sunset": {"warm": "#ffc6dc", "line": "#ec4899", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23ec4899' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23ec4899' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "lavender": {"warm": "#ddd2ff", "line": "#a78bfa", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23a78bfa' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23a78bfa' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "wimbledon": {"warm": "#c8eab4", "line": "#9b7be0", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%239b7be0' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%239b7be0' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "mint": {"warm": "#bff3df", "line": "#2dd4bf", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%232dd4bf' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "volt": {"warm": "#ecff9e", "line": "#d4f53c", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4f53c' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4f53c' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "blueprint": {"warm": "#c3e2ff", "line": "#3b82f6", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%233b82f6' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}, "mono": {"warm": "#f4f5f8", "line": "#e6e8ee", "ul": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e6e8ee' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e6e8ee' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E\")"}};
+  const box = document.getElementById('titles');
+  const set = (k) => {
+    const p = PAL[k];
+    box.style.setProperty('--warm', p.warm);
+    box.style.setProperty('--ul', p.ul);
+    document.querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.p === k)));
+    box.querySelectorAll('.tt').forEach((a) => { a.href = '/?hero=' + a.dataset.hero + '&palette=' + k; });
+  };
+  document.querySelectorAll('.chip').forEach((c) => c.addEventListener('click', () => set(c.dataset.p)));
+  set('ember');
+})();
+</script>
+</body>
+</html>

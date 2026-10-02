@@ -812,16 +812,32 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   .m-flow,.m-node rect,.g-flow,.tl-item.is-now .tl-dot::after,.nx-status i,.a-egg-ball{animation:none!important}
 }
 
-/* ---------- v4: colour palettes (prototype-panel study; ember is the default) ---------- */
+/* ---------- v5: colour palettes (prototype-panel study; ember is the default) ---------- */
 :root{--warm:#f3d6c1;--warm-rgb:243,214,193;--hot:226,96,58;--hot-glow:255,150,100;--hot-ink:#26170f;--hot-lab:#ffe2c9;--hot-bg:#0b0807;--e1:#e2482f;--e2:#ff7a45;--e3:#ffb547;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e2602f' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e2602f' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+:root[data-palette="terracotta"]{--warm:#f2c7ad;--warm-rgb:242,199,173;--hot:200,85,43;--hot-glow:230,130,90;--hot-ink:#24140c;--hot-lab:#fde3d3;--hot-bg:#0b0806;--e1:#7a2a10;--e2:#c8552b;--e3:#e89a6a;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4572a' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4572a' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="terracotta"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#a8431c}
 :root[data-palette="amber"]{--warm:#ffdca8;--warm-rgb:255,220,168;--hot:243,154,30;--hot-glow:255,190,90;--hot-ink:#2a1c08;--hot-lab:#ffefd2;--hot-bg:#0c0a06;--e1:#c96a12;--e2:#f39a1e;--e3:#ffd36b;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23f0a030' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23f0a030' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
 [data-theme="day"][data-palette="amber"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#a8640a}
+:root[data-palette="gold"]{--warm:#f1e2b8;--warm-rgb:241,226,184;--hot:201,162,74;--hot-glow:230,195,110;--hot-ink:#221b0c;--hot-lab:#fbf1d6;--hot-bg:#0a0906;--e1:#6b4f1d;--e2:#c9a24a;--e3:#f3dc9a;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4af37' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="gold"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#8a6a14}
 :root[data-palette="coral"]{--warm:#ffcabd;--warm-rgb:255,202,189;--hot:255,90,78;--hot-glow:255,130,115;--hot-ink:#2b1214;--hot-lab:#ffe3dc;--hot-bg:#0c0708;--e1:#d92b4b;--e2:#ff5a4e;--e3:#ff9d7a;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23ff5a4e' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23ff5a4e' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
 [data-theme="day"][data-palette="coral"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#cc3434}
+:root[data-palette="swiss"]{--warm:#ffd0cc;--warm-rgb:255,208,204;--hot:218,41,28;--hot-glow:255,95,85;--hot-ink:#2a0e0c;--hot-lab:#ffe4e1;--hot-bg:#0c0606;--e1:#7f1d1d;--e2:#da291c;--e3:#ff6b5e;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e0301e' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e0301e' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="swiss"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#c0201a}
+:root[data-palette="sunset"]{--warm:#ffc6dc;--warm-rgb:255,198,220;--hot:236,72,153;--hot-glow:250,120,180;--hot-ink:#2a1020;--hot-lab:#ffe2ef;--hot-bg:#0b0709;--e1:#6d28d9;--e2:#ec4899;--e3:#fb923c;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23ec4899' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23ec4899' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="sunset"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#c0267a}
+:root[data-palette="lavender"]{--warm:#ddd2ff;--warm-rgb:221,210,255;--hot:139,92,246;--hot-glow:170,140,255;--hot-ink:#1a1430;--hot-lab:#ece6ff;--hot-bg:#08070c;--e1:#4c1d95;--e2:#8b5cf6;--e3:#c4b5fd;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23a78bfa' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23a78bfa' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="lavender"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#6d3fd6}
 :root[data-palette="wimbledon"]{--warm:#c8eab4;--warm-rgb:200,234,180;--hot:142,107,209;--hot-glow:170,140,240;--hot-ink:#1b1530;--hot-lab:#e6f7da;--hot-bg:#07090a;--e1:#2f7d32;--e2:#5aa846;--e3:#8e6bd1;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%239b7be0' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%239b7be0' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
 [data-theme="day"][data-palette="wimbledon"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#5b3fa8}
+:root[data-palette="mint"]{--warm:#bff3df;--warm-rgb:191,243,223;--hot:20,184,166;--hot-glow:80,220,190;--hot-ink:#0a2420;--hot-lab:#dcfaf0;--hot-bg:#05090a;--e1:#0f766e;--e2:#14b8a6;--e3:#a3e635;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%232dd4bf' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%232dd4bf' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="mint"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#0d8a7a}
+:root[data-palette="volt"]{--warm:#ecff9e;--warm-rgb:236,255,158;--hot:190,230,40;--hot-glow:215,245,90;--hot-ink:#1c2408;--hot-lab:#f5ffd0;--hot-bg:#080a05;--e1:#3f6212;--e2:#a3e635;--e3:#e8ff5a;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23d4f53c' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23d4f53c' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="volt"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#5d7c0a}
 :root[data-palette="blueprint"]{--warm:#c3e2ff;--warm-rgb:195,226,255;--hot:59,130,246;--hot-glow:110,170,255;--hot-ink:#0d1a2e;--hot-lab:#e0f0ff;--hot-bg:#05080f;--e1:#1d4ed8;--e2:#3b82f6;--e3:#67d5ff;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%233b82f6' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
 [data-theme="day"][data-palette="blueprint"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#1f5fd1}
+:root[data-palette="mono"]{--warm:#f4f5f8;--warm-rgb:244,245,248;--hot:170,176,190;--hot-glow:210,214,222;--hot-ink:#1a1d24;--hot-lab:#ffffff;--hot-bg:#07080b;--e1:#30343e;--e2:#7d8392;--e3:#cfd3db;--ul-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'%3E%3Cpath d='M3 10 C 40 4, 80 14, 120 8 S 180 5, 197 9' fill='none' stroke='%23e6e8ee' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M24 14 C 70 10, 130 15, 186 12' fill='none' stroke='%23e6e8ee' stroke-width='2' stroke-linecap='round' opacity='.65'/%3E%3C/svg%3E")}
+[data-theme="day"][data-palette="mono"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--warm:#16120f}
 .proto-body{max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);overflow-y:auto;overscroll-behavior:contain}
 .seg.wrap{flex-wrap:wrap}.seg.wrap label{flex:1 0 30%}
 .seg.col{flex-direction:column}.seg.col label{justify-items:start;padding:0 10px;text-align:left}
@@ -1255,23 +1271,38 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </div>
     </fieldset>
     <fieldset>
-      <legend>Colour palette</legend>
+      <legend>Colour palette · <a href="/lab.html" style="color:var(--warm)">compare all</a></legend>
       <div class="seg wrap">
         <input type="radio" name="palette" id="pal-ember" value="ember"><label for="pal-ember"><span><i class="sw" style="background:#e2602f"></i>Ember</span></label>
+        <input type="radio" name="palette" id="pal-terracotta" value="terracotta"><label for="pal-terracotta"><span><i class="sw" style="background:#d4572a"></i>Terracotta</span></label>
         <input type="radio" name="palette" id="pal-amber" value="amber"><label for="pal-amber"><span><i class="sw" style="background:#f0a030"></i>Amber</span></label>
+        <input type="radio" name="palette" id="pal-gold" value="gold"><label for="pal-gold"><span><i class="sw" style="background:#d4af37"></i>Gold</span></label>
         <input type="radio" name="palette" id="pal-coral" value="coral"><label for="pal-coral"><span><i class="sw" style="background:#ff5a4e"></i>Coral</span></label>
-        <input type="radio" name="palette" id="pal-wimbledon" value="wimbledon"><label for="pal-wimbledon"><span><i class="sw" style="background:#5aa846"></i>Wimbledon</span></label>
+        <input type="radio" name="palette" id="pal-swiss" value="swiss"><label for="pal-swiss"><span><i class="sw" style="background:#e0301e"></i>Swiss red</span></label>
+        <input type="radio" name="palette" id="pal-sunset" value="sunset"><label for="pal-sunset"><span><i class="sw" style="background:#ec4899"></i>Sunset</span></label>
+        <input type="radio" name="palette" id="pal-lavender" value="lavender"><label for="pal-lavender"><span><i class="sw" style="background:#a78bfa"></i>Lavender</span></label>
+        <input type="radio" name="palette" id="pal-wimbledon" value="wimbledon"><label for="pal-wimbledon"><span><i class="sw" style="background:#9b7be0"></i>Wimbledon</span></label>
+        <input type="radio" name="palette" id="pal-mint" value="mint"><label for="pal-mint"><span><i class="sw" style="background:#2dd4bf"></i>Mint</span></label>
+        <input type="radio" name="palette" id="pal-volt" value="volt"><label for="pal-volt"><span><i class="sw" style="background:#d4f53c"></i>Volt</span></label>
         <input type="radio" name="palette" id="pal-blueprint" value="blueprint"><label for="pal-blueprint"><span><i class="sw" style="background:#3b82f6"></i>Blueprint</span></label>
+        <input type="radio" name="palette" id="pal-mono" value="mono"><label for="pal-mono"><span><i class="sw" style="background:#e6e8ee"></i>Mono</span></label>
       </div>
     </fieldset>
     <fieldset>
       <legend>Hero title</legend>
       <div class="seg col">
-        <input type="radio" name="hero" id="hero-reliable" value="reliable"><label for="hero-reliable">Reliable AI systems</label>
+        <input type="radio" name="hero" id="hero-reliable" value="reliable"><label for="hero-reliable">Reliable AI systems (current)</label>
         <input type="radio" name="hero" id="hero-demo" value="demo"><label for="hero-demo">After the demo</label>
-        <input type="radio" name="hero" id="hero-holdup" value="holdup"><label for="hero-holdup">Easy to demo, made to hold up</label>
-        <input type="radio" name="hero" id="hero-mech" value="mech"><label for="hero-mech">Mechanical engineering → ML</label>
+        <input type="radio" name="hero" id="hero-holdup" value="holdup"><label for="hero-holdup">Made to hold up</label>
+        <input type="radio" name="hero" id="hero-survive" value="survive"><label for="hero-survive">Survive production</label>
+        <input type="radio" name="hero" id="hero-ship" value="ship"><label for="hero-ship">Ship · watch · retrain</label>
+        <input type="radio" name="hero" id="hero-boring" value="boring"><label for="hero-boring">The boring parts</label>
+        <input type="radio" name="hero" id="hero-hype" value="hype"><label for="hero-hype">Less hype</label>
+        <input type="radio" name="hero" id="hero-last" value="last"><label for="hero-last">Built to last</label>
         <input type="radio" name="hero" id="hero-three" value="three"><label for="hero-three">Cites · acts · retrains</label>
+        <input type="radio" name="hero" id="hero-mech" value="mech"><label for="hero-mech">Mechanical → ML</label>
+        <input type="radio" name="hero" id="hero-trained" value="trained"><label for="hero-trained">Trained in mechanics</label>
+        <input type="radio" name="hero" id="hero-datain" value="datain"><label for="hero-datain">Data in, answers out</label>
       </div>
     </fieldset>
     <fieldset>
@@ -2218,7 +2249,8 @@ void main(){
     const root = document.documentElement;
     const box = $('#proto'), tog = $('.proto-tog', box), body = $('#proto-body');
     const onSite = /(^|\.)sampdv\.com$/.test(location.hostname);
-    const usePanel = !onSite || new URLSearchParams(location.search).has('proto');
+    const qs = new URLSearchParams(location.search);
+    const usePanel = !onSite || qs.has('proto') || qs.has('palette') || qs.has('hero');
     box.hidden = !usePanel;
     root.classList.toggle('hide-ph', new URLSearchParams(location.search).has('clean'));
     const saved = (k) => (usePanel ? store.get(k) : null);
@@ -2228,13 +2260,20 @@ void main(){
     const setFont = (v) => { root.dataset.font = v; };
     const setEmber = (v) => { root.dataset.ember = v; };
     const setPalette = (v) => { root.dataset.palette = v; };
-    // Hero title studies: lines of words, '*' marks the words that carry the accent.
+    // Hero title studies: lines of words; [brackets] mark the words that carry the accent.
     const HERO = {
-      reliable: ['Turning data into', '*reliable AI systems.'],
-      demo: ['AI that keeps working', '*after the demo.'],
-      holdup: ['Models are easy to demo.', 'I make them *hold up.'],
-      mech: ['From mechanical engineering', 'to ML in *production.'],
-      three: ['Search that cites,', 'agents that act,', 'models that *retrain.']
+      reliable: ["Turning data into", "[reliable] AI systems."],
+      demo: ["AI that keeps working", "[after the demo.]"],
+      holdup: ["Models are easy to demo.", "I make them [hold up.]"],
+      survive: ["ML systems that", "[survive production.]"],
+      ship: ["Ship it. Watch it.", "[Retrain it.]"],
+      boring: ["The boring parts of AI,", "[done properly.]"],
+      hype: ["Less hype,", "more [pipelines.]"],
+      last: ["Retrieval, agents, MLOps.", "[Built to last.]"],
+      three: ["Search that cites,", "agents that act,", "models that [retrain.]"],
+      mech: ["From mechanical engineering", "to ML in [production.]"],
+      trained: ["Trained in mechanics,", "now building [ML systems.]"],
+      datain: ["Data in.", "[Reliable answers] out."]
     };
     const h1 = $('.a-title');
     let heroNow = 'reliable';
@@ -2244,20 +2283,22 @@ void main(){
       let i = 0;
       h1.replaceChildren(...HERO[v].map((line) => {
         const l = el('span', 'a-l');
-        const [plain, accent] = line.split('*');
-        plain.trim().split(/\s+/).filter(Boolean).forEach((w) => { l.append(el('span', 'w', w), ' '); });
-        if (accent) { const a = el('em', 'w acc in', accent); l.append(a); }
+        line.split(/(\[[^\]]+\])/).forEach((part) => {
+          if (!part.trim()) return;
+          if (part[0] === '[') { l.append(el('em', 'w acc in', part.slice(1, -1)), ' '); return; }
+          part.trim().split(/\s+/).forEach((w) => { l.append(el('span', 'w', w), ' '); });
+        });
         [...l.children].forEach((w) => { w.style.setProperty('--i', i++); });
         return l;
       }));
-      h1.setAttribute('aria-label', HERO[v].join(' ').replace(/\*/g, ''));
+      h1.setAttribute('aria-label', HERO[v].join(' ').replace(/[\[\]]/g, ''));
     };
     const accent = saved('sampdv.accent') || 'underline';
     const role = saved('sampdv.role') || 'Data & AI Engineer';
     const font = saved('sampdv.font') || 'plex';
     const ember = saved('sampdv.ember') || 'medium';
-    const palette = saved('sampdv.palette') || 'ember';
-    const hero = saved('sampdv.hero') || 'reliable';
+    const palette = qs.get('palette') || saved('sampdv.palette') || 'ember';
+    const hero = qs.get('hero') || saved('sampdv.hero') || 'reliable';
     $$('input[name="accent"]').forEach((r) => { r.checked = r.value === accent; r.addEventListener('change', () => { setAccent(r.value); store.set('sampdv.accent', r.value); }); });
     $$('input[name="role"]').forEach((r) => { r.checked = r.value === role; r.addEventListener('change', () => { setRole(r.value); store.set('sampdv.role', r.value); }); });
     $$('input[name="font"]').forEach((r) => { r.checked = r.value === font; r.addEventListener('change', () => { setFont(r.value); store.set('sampdv.font', r.value); }); });
