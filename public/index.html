@@ -15,8 +15,8 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';</script>
 <style>
 /* Layout: one dark world. Full-bleed WebGL hero, a cool light About panel that overlaps it,
    then dark sections; project pages reuse the same shell, nav and footer. Single dark look by design (brief §5). */
@@ -1797,15 +1797,16 @@ void main(){
     const usePanel = !onSite || new URLSearchParams(location.search).has('proto');
     box.hidden = !usePanel;
     const saved = (k) => (usePanel ? store.get(k) : null);
-    const setAccent = (v) => { root.dataset.accent = v; store.set('sampdv.accent', v); };
-    const setRole = (v) => { $$('[data-role]').forEach((n) => { n.textContent = v; }); store.set('sampdv.role', v); };
-    const setFont = (v) => { root.dataset.font = v; store.set('sampdv.font', v); };
+    // Apply on load; remember only what the viewer picks, so a new default reaches everyone else.
+    const setAccent = (v) => { root.dataset.accent = v; };
+    const setRole = (v) => { $$('[data-role]').forEach((n) => { n.textContent = v; }); };
+    const setFont = (v) => { root.dataset.font = v; };
     const accent = saved('sampdv.accent') || 'italic';
     const role = saved('sampdv.role') || 'Data & AI Engineer';
-    const font = saved('sampdv.font') || 'serif';
-    $$('input[name="accent"]').forEach((r) => { r.checked = r.value === accent; r.addEventListener('change', () => setAccent(r.value)); });
-    $$('input[name="role"]').forEach((r) => { r.checked = r.value === role; r.addEventListener('change', () => setRole(r.value)); });
-    $$('input[name="font"]').forEach((r) => { r.checked = r.value === font; r.addEventListener('change', () => setFont(r.value)); });
+    const font = saved('sampdv.font') || 'plex';
+    $$('input[name="accent"]').forEach((r) => { r.checked = r.value === accent; r.addEventListener('change', () => { setAccent(r.value); store.set('sampdv.accent', r.value); }); });
+    $$('input[name="role"]').forEach((r) => { r.checked = r.value === role; r.addEventListener('change', () => { setRole(r.value); store.set('sampdv.role', r.value); }); });
+    $$('input[name="font"]').forEach((r) => { r.checked = r.value === font; r.addEventListener('change', () => { setFont(r.value); store.set('sampdv.font', r.value); }); });
     setAccent(accent); setRole(role); setFont(font);
     const setOpen = (v) => { tog.setAttribute('aria-expanded', String(v)); body.hidden = !v; box.classList.toggle('is-min', !v); };
     setOpen(store.get('sampdv.proto') === '1');
