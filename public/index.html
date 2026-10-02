@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';</script>
+<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/(^|\.)sampdv\.com$/.test(location.hostname)&&!/[?&]proto\b/.test(location.search))document.documentElement.classList.add('hide-ph');</script>
 <style>
 /* Layout: one dark world. Full-bleed WebGL hero, a cool light About panel that overlaps it,
    then dark sections; project pages reuse the same shell, nav and footer. Single dark look by design (brief §5). */
@@ -110,7 +110,7 @@ svg.i.sm{width:16px;height:16px}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (min-width:768px){.nav-links{display:flex}.nav-plain{display:inline}.nav-menu{display:none}.nav-panel{display:none}}
 @media (max-width:767.98px){.nav .pill{padding:0 16px}}
-@media (max-width:379.98px){.nav .pill{display:none}}
+@media (max-width:519.98px){.nav .pill{display:none}}
 
 /* ---------- hero (brief §5 Hero A, annexes A–C) ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
@@ -180,12 +180,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 @media (min-width:900px){.about-panel{border-radius:36px;padding:104px 56px 48px}}
 .about .eyebrow{color:var(--ink-faint)}
 .about-grid{display:grid;gap:12px}
-@media (min-width:900px){.about-grid{grid-template-columns:200px minmax(0,1fr);gap:40px}}
-.about-lede{margin:0;max-width:30em;font-family:var(--f-serif);font-size:calc(clamp(1.65rem,3.3vw,3rem) * var(--d-size));line-height:1.14;letter-spacing:-.015em;text-wrap:pretty}
+.about-lede{margin:0;max-width:30em;font-family:var(--f-serif);font-size:calc(clamp(1.5rem,2.5vw,2.5rem) * var(--d-size));line-height:1.14;letter-spacing:-.015em;text-wrap:pretty}
 .js .about-lede .wd{opacity:.2;transition:opacity .35s ease}
 .js .about-lede .wd.on{opacity:1}
 .pillars{list-style:none;margin:56px 0 0;padding:0;display:grid;gap:8px}
-@media (min-width:820px){.pillars{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:88px}}
+@media (min-width:1180px){.pillars{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:72px}}
 .pillars li{display:grid;align-content:start;gap:10px;padding:22px 0 8px;border-top:1px solid var(--ink-line)}
 .p-n{font:500 12px/1 var(--f-mono);letter-spacing:.08em;color:var(--ink-warm);font-variant-numeric:tabular-nums}
 .pillars h3{margin:0;font-size:20px;line-height:1.25;font-weight:600;letter-spacing:-.01em}
@@ -197,7 +196,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 /* ---------- featured work: schema cards. Each card draws the project's real architecture,
    from the same data as the scroll story on its page. ---------- */
 .pcards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
-.pc{position:relative;display:grid;grid-template-rows:auto auto auto 1fr auto;gap:12px;min-width:0;padding:22px 22px 18px;border:1px solid var(--line);border-radius:22px;color:var(--fg);text-decoration:none;
+.pc{position:relative;display:grid;grid-template-rows:auto auto auto 1fr auto auto;gap:12px;min-width:0;padding:22px 22px 18px;border:1px solid var(--line);border-radius:22px;color:var(--fg);text-decoration:none;
   background:radial-gradient(90% 55% at 50% 0%,rgba(16,41,90,.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,var(--g-stage);
   transition:border-color .3s ease}
 .pc:hover,.pc:focus-visible{border-color:rgba(243,214,193,.38)}
@@ -529,10 +528,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 #work[data-dg="detailed"] .pc-diagram .pc-svg[data-v="detailed"]{display:block}
 #work[data-dg="detailed"] .pcards{grid-template-columns:minmax(0,1fr)}
 @media (min-width:900px){
-  #work[data-dg="detailed"] .pc{grid-template-columns:minmax(0,.75fr) minmax(0,1.6fr);grid-template-rows:auto auto auto 1fr auto;column-gap:40px;padding:26px 26px 22px}
+  #work[data-dg="detailed"] .pc{grid-template-columns:minmax(0,.75fr) minmax(0,1.6fr);grid-template-rows:auto auto auto 1fr auto auto;column-gap:40px;padding:26px 26px 22px}
   #work[data-dg="detailed"] .pc > *{grid-column:1}
   #work[data-dg="detailed"] .pc-diagram{grid-column:2;grid-row:1 / -1;padding:0}
-  #work[data-dg="detailed"] .pc-foot{grid-row:5;align-self:end}
+  #work[data-dg="detailed"] .pc-note{grid-row:5;align-self:end}
+  #work[data-dg="detailed"] .pc-foot{grid-row:6;align-self:end}
   #work[data-dg="detailed"] .pc-svg{max-height:430px}
 }
 /* phones: the detailed diagram keeps a readable size and scrolls sideways inside its card */
@@ -598,6 +598,91 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 :root[data-font]:not([data-font="serif"]) .about-lede{font-weight:500;letter-spacing:calc(var(--d-track) * .6)}
 :root[data-font]:not([data-font="serif"]) .g-metric dd.g-mnote{font-weight:400;letter-spacing:0}
 
+
+/* ---------- warmth v1: greeting, About with photo, ember waves, notes, Beyond section, daylight option ---------- */
+/* hero greeting (1C) */
+.a-hello{gap:12px;padding:5px 16px 5px 5px;font-size:14.5px}
+.a-hello strong{color:var(--fg);font-weight:600}
+.avatar{position:relative;flex:none;width:40px;height:40px;border-radius:50%;overflow:hidden;background:linear-gradient(160deg,#6b3324,#d9774f)}
+.avatar i{position:absolute;left:50%;top:20%;width:40%;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);background:rgba(12,8,7,.5)}
+.avatar b{position:absolute;left:50%;bottom:-14%;width:84%;height:46%;border-radius:48% 48% 0 0;transform:translateX(-50%);background:rgba(12,8,7,.5)}
+@media (max-width:520px){.hide-sm{display:none}}
+
+/* About on two thirds + photo (1A), closing line and signature (3B) */
+.about-wrap{max-width:1392px;margin:0 auto;display:grid;gap:14px}
+@media (min-width:900px){.about-wrap{grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px}}
+.about-photo{position:relative;margin:0;min-height:440px;border-radius:28px;overflow:hidden;background:linear-gradient(165deg,#1d1411 0%,#5a2b1c 50%,#c8653f 100%)}
+@media (min-width:900px){.about-photo{min-height:0;border-radius:36px}}
+.about-photo .ph-head{position:absolute;left:50%;top:18%;width:38%;max-width:180px;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);background:rgba(12,8,7,.5)}
+.about-photo .ph-body{position:absolute;left:50%;bottom:-6%;width:82%;height:44%;border-radius:48% 48% 0 0;transform:translateX(-50%);background:rgba(12,8,7,.5)}
+.about-photo .ph-tag{position:absolute;top:18px;left:18px;right:18px;width:max-content;max-width:calc(100% - 36px);padding:6px 10px;border-radius:999px;background:rgba(3,5,10,.55);color:#f3d6c1;font:500 11px/1.3 var(--f-mono);letter-spacing:.06em}
+.about-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 20px;background:linear-gradient(rgba(3,5,10,0),rgba(3,5,10,.78));display:grid;gap:6px}
+.about-photo figcaption b{font-family:var(--f-serif);font-weight:600;font-size:24px;color:#f4f5f8}
+.about-photo figcaption span{font:500 11px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(244,245,248,.72)}
+.about-sign{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:40px;padding-top:24px;border-top:1px solid var(--ink-line)}
+.about-sign p{flex-basis:100%;margin:0;max-width:44ch;font-family:var(--f-serif);font-size:calc(1.3rem * var(--d-size));line-height:1.3}
+.sig{display:grid;place-items:center;width:180px;height:54px;border:1px dashed rgba(10,13,20,.35);border-radius:10px;font:500 11px/1 var(--f-mono);color:var(--ink-faint)}
+.sig-name{font:500 12px/1.4 var(--f-mono);color:var(--ink-muted)}
+
+/* ember waves behind the projects (2A) */
+.f{position:relative;overflow:hidden}
+.f > .wrap{position:relative}
+.ember{position:absolute;left:0;bottom:0;width:130%;height:80%;pointer-events:none;opacity:.55}
+.ember .drift{animation:ember-drift 26s linear infinite alternate}
+@keyframes ember-drift{to{transform:translateX(-18%)}}
+@media (prefers-reduced-motion:reduce){.ember .drift{animation:none}}
+
+/* a margin note in your words on each project (3B) */
+.pc-note{margin:2px 0 0;font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:calc(1.06rem * var(--d-size));line-height:1.3;color:var(--warm);transform:rotate(-1deg);transform-origin:left center}
+
+/* Beyond the projects (3C) */
+.by-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.by-card{display:flex;flex-direction:column;gap:14px;padding:26px;border:1px solid var(--line);border-radius:22px;background:#05080f}
+.by-card.warm{background:radial-gradient(90% 60% at 80% 110%,rgba(226,96,58,.35),rgba(226,96,58,0) 70%),#0b0807;border-color:rgba(255,140,90,.22)}
+.by-card h3{display:flex;align-items:center;gap:10px;margin:0;font-family:var(--f-serif);font-weight:600;font-size:calc(1.65rem * var(--d-size));line-height:1.1}
+.by-card h3 svg{width:22px;height:22px}
+.by-card p{margin:0;font-size:16px;line-height:1.5}
+.by-card .ph{color:var(--warm)}
+.by-ph{margin-top:auto;display:grid;place-items:center;min-height:120px;padding:12px;border:1px dashed var(--line);border-radius:14px;font:500 11px/1.4 var(--f-mono);color:var(--faint);text-align:center}
+.by-card.warm .by-ph{border-color:rgba(255,179,138,.4);color:rgba(255,179,138,.85)}
+
+/* daylight option (3D): the nav before it turns solid, the hero and the About band. The rest stays at night for now. */
+.theme-tog{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.06);color:var(--fg);display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.theme-tog:hover{background:rgba(255,255,255,.12)}
+.theme-tog .i-moon{display:none}
+[data-theme="day"] .theme-tog .i-sun{display:none}
+[data-theme="day"] .theme-tog .i-moon{display:block}
+[data-theme="day"] :is(.hero,.about,.nav-shell:not(.is-solid) .nav){--fg:#16120f;--muted:rgba(22,18,15,.7);--faint:rgba(22,18,15,.5);--line:rgba(22,18,15,.14);--warm:#c4461f;--ok:#2f9e6f;--panel:rgba(255,255,255,.92)}
+[data-theme="day"] .hero{color:var(--fg)}
+[data-theme="day"] .hero-bg{background:#f5f2ee}
+[data-theme="day"] .a-canvas{filter:invert(1) saturate(.85)}
+[data-theme="day"] .a-shade{background:radial-gradient(55% 40% at 50% 44%,rgba(245,242,238,.6),rgba(245,242,238,0) 72%),linear-gradient(rgba(245,242,238,0) 78%,#f5f2ee)}
+[data-theme="day"] .no-gl .hero-bg{background:radial-gradient(90% 45% at 50% 100%,#f3b48f 0%,rgba(245,242,238,0) 70%),#f5f2ee}
+[data-theme="day"] :is(.hero,.nav-shell:not(.is-solid)) .glass{background:rgba(255,255,255,.42)}
+[data-theme="day"] :is(.hero,.nav-shell:not(.is-solid)) .glass::before{background:linear-gradient(180deg,rgba(22,18,15,.22) 0%,rgba(22,18,15,.06) 20%,rgba(22,18,15,0) 40%,rgba(22,18,15,0) 60%,rgba(22,18,15,.06) 80%,rgba(22,18,15,.22) 100%)}
+[data-theme="day"] .nav-shell:not(.is-solid) :is(.nav-links a,.nav-plain){color:rgba(22,18,15,.72)}
+[data-theme="day"] .nav-shell:not(.is-solid) :is(.nav-links a,.nav-plain):hover{color:#16120f}
+[data-theme="day"] .nav-shell:not(.is-solid) .mark{border-color:rgba(22,18,15,.3)}
+[data-theme="day"] .nav-shell:not(.is-solid) :is(.nav-menu,.theme-tog){background:rgba(22,18,15,.06)}
+[data-theme="day"] .a-go{background:#16120f;color:#f5f2ee}
+[data-theme="day"] .a-chip{color:rgba(22,18,15,.8)}
+[data-theme="day"] .a-chip:hover{color:#16120f;background:rgba(22,18,15,.05)}
+[data-theme="day"] .a-ic{color:rgba(22,18,15,.75)}
+[data-theme="day"] .a-ic:hover{color:#16120f;background:rgba(22,18,15,.05)}
+[data-theme="day"] :is(.a-ritem:hover,button.a-ritem:hover){background:rgba(22,18,15,.05)}
+[data-theme="day"] .a-rbar{background:rgba(22,18,15,.12)}
+[data-theme="day"] .hero .dot{box-shadow:0 0 0 3px rgba(47,158,111,.18)}
+[data-theme="day"] .about{padding-bottom:120px;background:linear-gradient(#f5f2ee 0,#f5f2ee 70%,var(--bg) 100%)}
+[data-theme="day"] .about-panel{background:#fff;box-shadow:0 20px 50px rgba(22,18,15,.07)}
+:root.vt-theme::view-transition-old(root){animation:vt-fade-out .3s ease both}
+:root.vt-theme::view-transition-new(root){animation:vt-fade-in .45s ease both}
+@keyframes vt-fade-out{to{opacity:0}}
+@keyframes vt-fade-in{from{opacity:0}}
+
+/* unfilled placeholders: hidden for visitors on sampdv.com, shown with ?proto */
+.hide-ph :is(.is-ph,.todo){display:none!important}
+.hide-ph .pj-head{grid-template-columns:minmax(0,1fr)}
+
 /* ---------- prototype controls (not part of the site) ---------- */
 .proto{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:min(300px,calc(100vw - 32px));border:1px solid var(--line);border-radius:18px;background:rgba(7,10,18,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.5);font-size:13px}
 .proto.is-min{width:auto}
@@ -648,6 +733,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     </div>
     <div class="nav-right">
       <a class="nav-plain" href="https://github.com/Airohh" target="_blank" rel="noopener">GitHub</a>
+      <button class="theme-tog" type="button" aria-pressed="false" aria-label="Switch to the daylight theme"><svg class="i i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
       <button class="pill glass" type="button" data-todo="Placeholder: the CV PDF isn't added yet.">Download CV</button>
       <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="sr">Menu</span><i></i><i></i></button>
     </div>
@@ -667,7 +753,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="hero-bg" aria-hidden="true"><canvas class="a-canvas"></canvas><div class="a-shade"></div></div>
     <div class="hero-inner">
       <div class="hero-center">
-        <p class="a-status glass rise" style="--d:150ms"><span class="dot" aria-hidden="true"></span>Open to full-time roles · Paris</p>
+        <p class="a-status a-hello glass rise" style="--d:150ms"><span class="avatar" aria-hidden="true"><i></i><b></b></span><span>Hi, I'm <strong>Sam</strong>.<span class="hide-sm"> Open to full-time roles in Paris.</span></span><span class="dot" aria-hidden="true"></span></p>
         <h1 class="a-title">
           <span class="a-l"><span class="w" style="--i:0">Turning</span> <span class="w" style="--i:1">data</span> <span class="w" style="--i:2">into</span></span>
           <span class="a-l"><em class="w acc" style="--i:3">reliable</em> <span class="w" style="--i:4">AI</span> <span class="w" style="--i:5">systems.</span></span>
@@ -706,6 +792,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   </section>
 
   <section class="about" id="about" aria-labelledby="about-h">
+    <div class="about-wrap">
     <div class="about-panel">
       <div class="about-grid">
         <p class="eyebrow" id="about-h">About</p>
@@ -731,16 +818,41 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="p-seen">Akabi · sdwpf · airport-forecasting</p>
         </li>
       </ol>
+      <div class="about-sign">
+        <p>If that's the kind of work your team does, I'd like to hear about it.</p>
+        <span class="sig is-ph">[YOUR SIGNATURE]</span>
+        <span class="sig-name">Sam Pondevie · Paris</span>
+      </div>
       <div class="about-foot"><span class="draft">Draft copy</span></div>
+    </div>
+    <figure class="about-photo" aria-label="Photo placeholder">
+      <span class="ph-head" aria-hidden="true"></span><span class="ph-body" aria-hidden="true"></span>
+      <span class="ph-tag is-ph">[YOUR PHOTO · warm light, half body]</span>
+      <figcaption><b>Sam Pondevie</b><span>Paris · open to full-time roles</span></figcaption>
+    </figure>
     </div>
   </section>
 
   <section class="sec f" id="work" data-dg="simple" aria-labelledby="work-h">
+    <svg class="ember" viewBox="0 0 1600 720" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="ember-g" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e2482f"/><stop offset=".55" stop-color="#ff7a45"/><stop offset="1" stop-color="#ffb547"/></linearGradient>
+        <filter id="ember-soft"><feGaussianBlur stdDeviation="18"/></filter>
+      </defs>
+      <g class="drift" fill="none" stroke="url(#ember-g)">
+        <path d="M0 470 C 220 400, 420 550, 680 470 S 1140 380, 1400 460 S 1600 510, 1900 450" stroke-width="70" filter="url(#ember-soft)" opacity=".5"/>
+        <path d="M0 510 C 260 450, 460 590, 720 510 S 1180 430, 1460 510 S 1700 550, 1900 490" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+        <path d="M0 535 C 240 480, 480 610, 740 535 S 1200 455, 1480 535 S 1720 575, 1900 515" stroke-width="1.2" opacity=".8" vector-effect="non-scaling-stroke"/>
+        <path d="M0 560 C 280 510, 500 630, 760 560 S 1220 480, 1500 560 S 1740 600, 1900 540" stroke-width="1" opacity=".6" vector-effect="non-scaling-stroke"/>
+        <path d="M0 590 C 300 540, 520 650, 780 590 S 1240 510, 1520 590 S 1760 630, 1900 570" stroke-width=".8" opacity=".45" vector-effect="non-scaling-stroke"/>
+        <path d="M0 160 C 260 210, 520 100, 820 170 S 1300 230, 1600 150 S 1800 130, 1900 170" stroke-width="40" filter="url(#ember-soft)" opacity=".18"/>
+      </g>
+    </svg>
     <div class="wrap">
       <header class="sec-head">
         <div>
           <p class="eyebrow">Featured work</p>
-          <h2 class="h2" id="work-h">Three systems, built <em class="acc">end to end.</em></h2>
+          <h2 class="h2" id="work-h">Things I built, <em class="acc">and why.</em></h2>
         </div>
         <div class="sec-side"><p class="sec-note">Retrieval, agents and MLOps. Each card draws the real architecture of the system, checked against its repository.</p><div class="dg-toggle" role="group" aria-label="Diagram detail"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Detailed</button></div></div>
       </header>
@@ -751,6 +863,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <h3 class="pc-name">Syro</h3>
           <p class="pc-line">Hybrid RAG that cites its sources, or says it doesn’t know.</p>
           <div class="pc-diagram" data-mini="syro"></div>
+          <p class="pc-note is-ph">[In your words: why you built Syro]</p>
           <div class="pc-foot"><p class="pc-stack">Qdrant · BM25 · bge-reranker · Ollama</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-mcp" href="#insight-mcp">
@@ -758,6 +871,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <h3 class="pc-name">insight-mcp</h3>
           <p class="pc-line">Document search that AI agents call as MCP tools.</p>
           <div class="pc-diagram" data-mini="insight-mcp"></div>
+          <p class="pc-note is-ph">[In your words: why you built insight-mcp]</p>
           <div class="pc-foot"><p class="pc-stack">FastMCP · BM25 · fastembed · RRF</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-proths" href="#proths">
@@ -765,6 +879,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <h3 class="pc-name">Proths</h3>
           <p class="pc-line">Retrains itself when traffic drifts, and only ships a better model.</p>
           <div class="pc-diagram" data-mini="proths"></div>
+          <p class="pc-note is-ph">[In your words: why you built Proths]</p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
       </div>
@@ -785,7 +900,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   <section class="sec" id="experience" aria-labelledby="exp-h">
     <div class="wrap exp-grid">
       <header class="exp-head">
-        <p class="eyebrow">Experience</p>
+        <p class="eyebrow">How I got here</p>
         <h2 class="h2" id="exp-h">From mechanical engineering to <em class="acc">ML systems.</em></h2>
       </header>
       <div class="tl" id="tl">
@@ -821,11 +936,44 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     </div>
   </section>
 
+  <section class="sec" id="beyond" aria-labelledby="by-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Beyond the projects</p>
+          <h2 class="h2" id="by-h">The person behind <em class="acc">the pipelines.</em></h2>
+        </div>
+        <p class="sec-note is-ph">Updated [MONTH 2026]</p>
+      </header>
+      <div class="by-grid">
+        <article class="by-card">
+          <h3><span class="dot" aria-hidden="true"></span>Now</h3>
+          <p>Looking for a full-time ML / MLOps role in Paris.</p>
+          <p class="ph is-ph">[What you're learning right now]</p>
+          <p class="ph is-ph">[What you're building next]</p>
+        </article>
+        <article class="by-card warm is-ph">
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>Off screen</h3>
+          <p class="ph is-ph">[A sport or practice you keep up]</p>
+          <p class="ph is-ph">[Something you make, fix or collect]</p>
+          <p class="ph is-ph">[A place in Paris you like]</p>
+          <div class="by-ph is-ph">[ONE CANDID PHOTO]</div>
+        </article>
+        <article class="by-card">
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Before data</h3>
+          <p>DUT GMP at IUT Paris 13, 2018–2020: mechanical design and production engineering.</p>
+          <p class="ph is-ph">[What that background still changes in how you work]</p>
+          <div class="by-ph is-ph">[A CAD PART OR SKETCH YOU MADE]</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="skills" aria-labelledby="sk-h">
     <div class="wrap">
       <header class="sec-head">
         <div>
-          <p class="eyebrow">Skills</p>
+          <p class="eyebrow">What I reach for</p>
           <h2 class="h2" id="sk-h">The stack behind the projects.</h2>
         </div>
         <p class="sec-note">Every tool listed here appears in a project or in the internship. The right column says where.</p>
@@ -842,7 +990,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
   <section class="contact" id="contact" aria-labelledby="ct-h">
     <div class="contact-card">
-      <p class="eyebrow">Contact</p>
+      <p class="eyebrow">Let's talk</p>
       <h2 class="contact-title" id="ct-h">Hiring for ML, MLOps or <em class="acc">data roles?</em></h2>
       <p class="contact-sub">I'm open to full-time ML / MLOps roles in Paris. Email is the fastest way to reach me.</p>
       <div class="mailrow"><span class="mail" id="mail">sam.pondevie@gmail.com</span><button class="copy" type="button" data-copy="sam.pondevie@gmail.com">Copy</button></div>
@@ -872,7 +1020,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           </div>
         </div>
       </header>
-      <figure class="demo" aria-label="Demo video placeholder">
+      <figure class="demo is-ph" aria-label="Demo video placeholder">
         <div class="demo-in">
           <span class="demo-play glass" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
           <b>Demo video · to add</b>
@@ -1636,6 +1784,7 @@ void main(){
     head.append(el('p', 'g-kicker', kicker), h);
     const b = el('div', 'pg-sb');
     [].concat(body).forEach((n) => (typeof n === 'string' ? b.insertAdjacentHTML('beforeend', n) : b.append(n)));
+    if ([].concat(body).every((n) => n instanceof Element && n.classList.contains('todo'))) s.classList.add('is-ph');
     s.append(head, b);
     return s;
   }
@@ -1699,7 +1848,7 @@ void main(){
     $('b', next).textContent = PROJECTS[NEXT[slug]].title + ' →';
     F('note').textContent = P.story
       ? 'Work in progress. Facts and numbers come from the repository (README, config, code); the wording is still a draft. Values marked X are not measured yet.'
-      : 'Work in progress. Summary and stack come from the repository description; the rest of the page is a template to fill.';
+      : 'Work in progress. Summary and stack come from the repository description; the full write-up is coming.';
     return P.story ? storyCtl(secs, slug) : null;
   }
 
@@ -1789,6 +1938,24 @@ void main(){
     } catch (e) { fallback(); }
   }));
 
+  /* ---------- Daylight option (nav, hero and About band for now), remembered per viewer ---------- */
+  (function theme() {
+    const root = document.documentElement, btn = $('.theme-tog');
+    const apply = (v) => {
+      root.dataset.theme = v;
+      btn.setAttribute('aria-pressed', String(v === 'day'));
+      btn.setAttribute('aria-label', v === 'day' ? 'Switch to the night theme' : 'Switch to the daylight theme');
+    };
+    apply(root.dataset.theme === 'day' ? 'day' : 'night');
+    btn.addEventListener('click', () => {
+      const v = root.dataset.theme === 'day' ? 'night' : 'day';
+      store.set('sampdv.theme', v);
+      if (!document.startViewTransition || reduce) { apply(v); return; }
+      root.classList.add('vt-theme');
+      document.startViewTransition(() => apply(v)).finished.finally(() => root.classList.remove('vt-theme'));
+    });
+  })();
+
   /* ---------- Prototype controls: accent, title, typeface ---------- */
   (function proto() {
     const root = document.documentElement;
@@ -1796,6 +1963,7 @@ void main(){
     const onSite = /(^|\.)sampdv\.com$/.test(location.hostname);
     const usePanel = !onSite || new URLSearchParams(location.search).has('proto');
     box.hidden = !usePanel;
+    root.classList.toggle('hide-ph', !usePanel);
     const saved = (k) => (usePanel ? store.get(k) : null);
     // Apply on load; remember only what the viewer picks, so a new default reaches everyone else.
     const setAccent = (v) => { root.dataset.accent = v; };
