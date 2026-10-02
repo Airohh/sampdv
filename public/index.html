@@ -197,7 +197,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
    from the same data as the scroll story on its page. ---------- */
 .pcards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
 .pc{position:relative;display:grid;grid-template-rows:auto auto auto 1fr auto auto;gap:12px;min-width:0;padding:22px 22px 18px;border:1px solid var(--line);border-radius:22px;color:var(--fg);text-decoration:none;
-  background:radial-gradient(90% 55% at 50% 0%,rgba(16,41,90,.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,rgba(5,8,15,.6);
+  background:radial-gradient(90% 55% at 50% 0%,rgba(16,41,90,.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,rgba(5,8,15,var(--card-a,.8));
   -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);
   transition:border-color .3s ease}
 .pc:hover,.pc:focus-visible{border-color:rgba(243,214,193,.38)}
@@ -630,7 +630,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .f > .wrap{position:relative}
 .f{background:radial-gradient(70% 30% at 50% 70%,rgba(226,72,47,.18),rgba(226,72,47,0) 70%),var(--bg)}
 /* the waves fade in and out at the section edges, so no hard line shows against the next section */
-.ember{position:absolute;left:0;top:0;width:130%;height:100%;pointer-events:none;opacity:.95;-webkit-mask-image:linear-gradient(transparent 0,#000 14%,#000 74%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 14%,#000 74%,transparent 100%)}
+/* wave strength: medium by default; subtle and strong are prototype-panel studies */
+:root{--ember-op:.7;--card-a:.8}
+:root[data-ember="subtle"]{--ember-op:.48;--card-a:.88}
+:root[data-ember="strong"]{--ember-op:.95;--card-a:.6}
+.ember{position:absolute;left:0;top:0;width:130%;height:100%;pointer-events:none;opacity:var(--ember-op);-webkit-mask-image:linear-gradient(transparent 0,#000 14%,#000 74%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 14%,#000 74%,transparent 100%)}
 .ember .drift{animation:ember-drift 26s linear infinite alternate}
 @keyframes ember-drift{to{transform:translateX(-18%)}}
 @media (prefers-reduced-motion:reduce){.ember .drift{animation:none}}
@@ -843,7 +847,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <filter id="ember-soft" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="26"/></filter>
       </defs>
       <g class="drift" fill="none" stroke="url(#ember-g)">
-        <path d="M0 130 C 260 180, 520 70, 820 140 S 1300 200, 1600 120 S 1800 100, 1900 140" stroke-width="90" filter="url(#ember-soft)" opacity=".32"/>
+        <path d="M0 130 C 260 180, 520 70, 820 140 S 1300 200, 1600 120 S 1800 100, 1900 140" stroke-width="90" filter="url(#ember-soft)" opacity=".2"/>
         <path d="M0 380 C 220 300, 440 470, 700 380 S 1150 280, 1420 370 S 1640 430, 1900 360" stroke-width="160" filter="url(#ember-soft)" opacity=".7"/>
         <path d="M0 360 C 230 290, 450 450, 710 360 S 1160 270, 1430 350 S 1650 410, 1900 340" stroke-width="2" vector-effect="non-scaling-stroke"/>
         <path d="M0 384 C 250 316, 470 470, 730 384 S 1180 296, 1450 376 S 1670 432, 1900 364" stroke-width="1.6" opacity=".85" vector-effect="non-scaling-stroke"/>
@@ -1079,6 +1083,14 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <input type="radio" name="font" id="font-geist" value="geist"><label for="font-geist">Geist</label>
         <input type="radio" name="font" id="font-bricolage" value="bricolage"><label for="font-bricolage">Bricolage</label>
         <input type="radio" name="font" id="font-plex" value="plex"><label for="font-plex">Plex</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Ember waves behind the projects</legend>
+      <div class="seg">
+        <input type="radio" name="ember" id="ember-subtle" value="subtle"><label for="ember-subtle">Subtle</label>
+        <input type="radio" name="ember" id="ember-medium" value="medium"><label for="ember-medium">Medium</label>
+        <input type="radio" name="ember" id="ember-strong" value="strong"><label for="ember-strong">Strong</label>
       </div>
     </fieldset>
     <p class="proto-links"><a href="#home">Home</a><a href="#syro">Syro</a><a href="#insight-mcp">insight-mcp</a><a href="#proths">Proths</a><a href="#sdwpf">Side project page</a></p>
@@ -1975,13 +1987,16 @@ void main(){
     const setAccent = (v) => { root.dataset.accent = v; };
     const setRole = (v) => { $$('[data-role]').forEach((n) => { n.textContent = v; }); };
     const setFont = (v) => { root.dataset.font = v; };
+    const setEmber = (v) => { root.dataset.ember = v; };
     const accent = saved('sampdv.accent') || 'italic';
     const role = saved('sampdv.role') || 'Data & AI Engineer';
     const font = saved('sampdv.font') || 'plex';
+    const ember = saved('sampdv.ember') || 'medium';
     $$('input[name="accent"]').forEach((r) => { r.checked = r.value === accent; r.addEventListener('change', () => { setAccent(r.value); store.set('sampdv.accent', r.value); }); });
     $$('input[name="role"]').forEach((r) => { r.checked = r.value === role; r.addEventListener('change', () => { setRole(r.value); store.set('sampdv.role', r.value); }); });
     $$('input[name="font"]').forEach((r) => { r.checked = r.value === font; r.addEventListener('change', () => { setFont(r.value); store.set('sampdv.font', r.value); }); });
-    setAccent(accent); setRole(role); setFont(font);
+    $$('input[name="ember"]').forEach((r) => { r.checked = r.value === ember; r.addEventListener('change', () => { setEmber(r.value); store.set('sampdv.ember', r.value); }); });
+    setAccent(accent); setRole(role); setFont(font); setEmber(ember);
     const setOpen = (v) => { tog.setAttribute('aria-expanded', String(v)); body.hidden = !v; box.classList.toggle('is-min', !v); };
     setOpen(store.get('sampdv.proto') === '1');
     tog.addEventListener('click', () => { const v = body.hidden; setOpen(v); store.set('sampdv.proto', v ? '1' : '0'); });
