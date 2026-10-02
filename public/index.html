@@ -197,7 +197,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
    from the same data as the scroll story on its page. ---------- */
 .pcards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
 .pc{position:relative;display:grid;grid-template-rows:auto auto auto 1fr auto auto;gap:12px;min-width:0;padding:22px 22px 18px;border:1px solid var(--line);border-radius:22px;color:var(--fg);text-decoration:none;
-  background:radial-gradient(90% 55% at 50% 0%,rgba(16,41,90,.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,var(--g-stage);
+  background:radial-gradient(90% 55% at 50% 0%,rgba(16,41,90,.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,rgba(5,8,15,.6);
+  -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);
   transition:border-color .3s ease}
 .pc:hover,.pc:focus-visible{border-color:rgba(243,214,193,.38)}
 .pc:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
@@ -627,7 +628,9 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 /* ember waves behind the projects (2A) */
 .f{position:relative;overflow:hidden}
 .f > .wrap{position:relative}
-.ember{position:absolute;left:0;bottom:0;width:130%;height:80%;pointer-events:none;opacity:.55}
+.f{background:radial-gradient(70% 30% at 50% 70%,rgba(226,72,47,.18),rgba(226,72,47,0) 70%),var(--bg)}
+/* the waves fade in and out at the section edges, so no hard line shows against the next section */
+.ember{position:absolute;left:0;top:0;width:130%;height:100%;pointer-events:none;opacity:.95;-webkit-mask-image:linear-gradient(transparent 0,#000 14%,#000 74%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 14%,#000 74%,transparent 100%)}
 .ember .drift{animation:ember-drift 26s linear infinite alternate}
 @keyframes ember-drift{to{transform:translateX(-18%)}}
 @media (prefers-reduced-motion:reduce){.ember .drift{animation:none}}
@@ -837,15 +840,18 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <svg class="ember" viewBox="0 0 1600 720" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="ember-g" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e2482f"/><stop offset=".55" stop-color="#ff7a45"/><stop offset="1" stop-color="#ffb547"/></linearGradient>
-        <filter id="ember-soft"><feGaussianBlur stdDeviation="18"/></filter>
+        <filter id="ember-soft" x="-10%" y="-60%" width="120%" height="220%"><feGaussianBlur stdDeviation="26"/></filter>
       </defs>
       <g class="drift" fill="none" stroke="url(#ember-g)">
-        <path d="M0 470 C 220 400, 420 550, 680 470 S 1140 380, 1400 460 S 1600 510, 1900 450" stroke-width="70" filter="url(#ember-soft)" opacity=".5"/>
-        <path d="M0 510 C 260 450, 460 590, 720 510 S 1180 430, 1460 510 S 1700 550, 1900 490" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
-        <path d="M0 535 C 240 480, 480 610, 740 535 S 1200 455, 1480 535 S 1720 575, 1900 515" stroke-width="1.2" opacity=".8" vector-effect="non-scaling-stroke"/>
-        <path d="M0 560 C 280 510, 500 630, 760 560 S 1220 480, 1500 560 S 1740 600, 1900 540" stroke-width="1" opacity=".6" vector-effect="non-scaling-stroke"/>
-        <path d="M0 590 C 300 540, 520 650, 780 590 S 1240 510, 1520 590 S 1760 630, 1900 570" stroke-width=".8" opacity=".45" vector-effect="non-scaling-stroke"/>
-        <path d="M0 160 C 260 210, 520 100, 820 170 S 1300 230, 1600 150 S 1800 130, 1900 170" stroke-width="40" filter="url(#ember-soft)" opacity=".18"/>
+        <path d="M0 130 C 260 180, 520 70, 820 140 S 1300 200, 1600 120 S 1800 100, 1900 140" stroke-width="90" filter="url(#ember-soft)" opacity=".32"/>
+        <path d="M0 380 C 220 300, 440 470, 700 380 S 1150 280, 1420 370 S 1640 430, 1900 360" stroke-width="160" filter="url(#ember-soft)" opacity=".7"/>
+        <path d="M0 360 C 230 290, 450 450, 710 360 S 1160 270, 1430 350 S 1650 410, 1900 340" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        <path d="M0 384 C 250 316, 470 470, 730 384 S 1180 296, 1450 376 S 1670 432, 1900 364" stroke-width="1.6" opacity=".85" vector-effect="non-scaling-stroke"/>
+        <path d="M0 408 C 270 342, 490 490, 750 408 S 1200 322, 1470 402 S 1690 454, 1900 388" stroke-width="1.3" opacity=".7" vector-effect="non-scaling-stroke"/>
+        <path d="M0 432 C 290 368, 510 510, 770 432 S 1220 348, 1490 428 S 1710 476, 1900 412" stroke-width="1.1" opacity=".55" vector-effect="non-scaling-stroke"/>
+        <path d="M0 456 C 310 394, 530 530, 790 456 S 1240 374, 1510 454 S 1730 498, 1900 436" stroke-width="1" opacity=".4" vector-effect="non-scaling-stroke"/>
+        <path d="M0 620 C 280 570, 500 680, 760 620 S 1220 540, 1500 620 S 1740 660, 1900 600" stroke-width="80" filter="url(#ember-soft)" opacity=".45"/>
+        <path d="M0 640 C 300 590, 520 700, 780 640 S 1240 560, 1520 640 S 1760 680, 1900 620" stroke-width="1.2" opacity=".6" vector-effect="non-scaling-stroke"/>
       </g>
     </svg>
     <div class="wrap">
