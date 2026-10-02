@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';document.documentElement.dataset.accent='underline';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/[?&]clean\b/.test(location.search))document.documentElement.classList.add('hide-ph');</script>
+<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';document.documentElement.dataset.accent='underline';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/[?&]clean\b/.test(location.search))document.documentElement.classList.add('hide-ph');var pm=/[?&]plain\b/.test(location.search);try{pm=pm||localStorage.getItem('sampdv.mode')==='plain';}catch(e){}if(pm)document.documentElement.dataset.mode='plain';</script>
 <style>
 /* Layout: one dark world. Full-bleed WebGL hero, a cool light About panel that overlaps it,
    then dark sections; project pages reuse the same shell, nav and footer. Single dark look by design (brief §5). */
@@ -768,6 +768,17 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .ct-proj .ax{stroke-width:.8;stroke-dasharray:3 2;opacity:.7}
 @media (max-width:560px){.cartouche{grid-template-columns:62px repeat(3,minmax(0,1fr))}.cartouche>div{padding:8px 9px}.ct-proj svg{width:46px}.ct-v{font-size:11.5px}}
 
+
+/* ---------- v6: plain / technical ---------- */
+:root:not([data-mode="plain"]) .t-plain,[data-mode="plain"] .t-tech{display:none!important}
+.mode-tog{flex:none;display:inline-flex;align-items:center;height:36px;padding:3px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--muted);font:500 11px/1 var(--f-mono);letter-spacing:.04em;cursor:pointer}
+.mode-tog span{display:grid;place-items:center;height:100%;padding:0 10px;border-radius:999px;transition:background .25s,color .25s}
+:root:not([data-mode="plain"]) .mode-tog .m-tech,[data-mode="plain"] .mode-tog .m-plain{background:color-mix(in srgb,var(--fg) 14%,transparent);color:var(--fg)}
+.plain-cta{display:inline-flex;align-items:center;gap:6px;margin:-4px auto 0;padding:8px 4px;border:0;background:none;color:var(--warm);font:500 13px/1.3 var(--f-mono);cursor:pointer;text-decoration:underline dotted;text-underline-offset:4px}
+.plain-cta:hover{text-decoration-style:solid}
+@media (max-width:479.98px){.nav-right{gap:6px}.mode-tog{height:34px}.mode-tog span{padding:0 7px;font-size:10.5px}}
+@media (max-width:374.98px){.logo{font-size:0;gap:0}}
+
 /* unfilled placeholders: shown everywhere, hidden with ?clean */
 .hide-ph :is(.is-ph,.todo){display:none!important}
 .hide-ph .pj-head{grid-template-columns:minmax(0,1fr)}
@@ -853,6 +864,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     </div>
     <div class="nav-right">
       <a class="nav-plain" href="https://github.com/Airohh" target="_blank" rel="noopener">GitHub</a>
+      <button class="mode-tog" type="button" aria-pressed="false" aria-label="Plain words instead of technical detail" title="Switch between technical detail and plain words"><span class="m-tech">Tech</span><span class="m-plain">Plain</span></button>
       <button class="theme-tog" type="button" aria-pressed="false" aria-label="Switch to the daylight theme"><svg class="i i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
       <button class="pill glass" type="button" data-todo="Placeholder: the CV PDF isn't added yet.">Download CV</button>
       <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="sr">Menu</span><i></i><i></i></button>
@@ -895,7 +907,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <button class="a-chip glass" type="button" data-q="agents">Agents</button>
           <button class="a-chip glass" type="button" data-q="forecasting">Forecasting</button>
         </div>
-        <p class="a-sub rise" style="--d:1050ms">I build data pipelines and ML systems and take them to production: retrieval, MLOps, forecasting.</p>
+        <p class="a-sub rise" style="--d:1050ms"><span class="t-tech">I build data pipelines and ML systems and take them to production: retrieval, MLOps, forecasting.</span><span class="t-plain">I build software that learns from data, and I make sure it keeps working once real people use it.</span></p>
+        <button class="plain-cta rise" style="--d:1120ms" type="button" data-mode-toggle><span class="t-tech">Not technical? Read it in plain words →</span><span class="t-plain">Back to the technical version →</span></button>
         <div class="a-social rise" style="--d:1200ms">
           <a class="a-ic glass" href="https://github.com/Airohh" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
           <a class="a-ic glass" href="https://www.linkedin.com/in/sampdv" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
@@ -905,7 +918,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <dl class="band rise" style="--d:1350ms">
         <div><dt>Role</dt><dd data-role>Data &amp; AI Engineer</dd></div>
         <div><dt>Based in</dt><dd>Paris, France</dd></div>
-        <div><dt>Open to</dt><dd>Full-time · ML, MLOps, Data</dd></div>
+        <div><dt>Open to</dt><dd><span class="t-tech">Full-time · ML, MLOps, Data</span><span class="t-plain">Full-time · AI and data jobs</span></dd></div>
         <div><dt>Work</dt><dd>3 flagship projects · 5 side builds</dd></div>
       </dl>
     </div>
@@ -916,25 +929,26 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="about-panel">
       <div class="about-grid">
         <p class="eyebrow" id="about-h">About</p>
-        <p class="about-lede" data-words>I started in <span class="ul">mechanical engineering</span> and moved into data and AI. At SAP in Barcelona, I automated sales reporting and segmented client accounts. At Akabi, I worked on data pipelines with Snowflake, dbt and Terraform. In my own projects, I build the parts that keep a model working <span class="ul">after the first demo</span>: tracked training, served models, drift monitoring, and retraining that only ships a better model.</p>
+        <p class="about-lede t-tech" data-words>I started in <span class="ul">mechanical engineering</span> and moved into data and AI. At SAP in Barcelona, I automated sales reporting and segmented client accounts. At Akabi, I worked on data pipelines with Snowflake, dbt and Terraform. In my own projects, I build the parts that keep a model working <span class="ul">after the first demo</span>: tracked training, served models, drift monitoring, and retraining that only ships a better model.</p>
+        <p class="about-lede t-plain" data-words>I started in <span class="ul">mechanical engineering</span> and moved into data and AI. At SAP in Barcelona, I automated the weekly sales reports and grouped client accounts by how they buy. At Akabi, I built the systems that bring in and check a hotel group’s data every day. In my own projects, I focus on what happens <span class="ul">after the first demo</span>: an AI system that still gives good answers months later, notices when it starts to slip, and is only replaced by a version that proves it is better.</p>
       </div>
       <ol class="pillars">
         <li>
           <span class="p-n">01</span>
-          <h3>Retrieval &amp; LLM systems</h3>
-          <p>Hybrid search, reranking, answers with citations, and search tools that LLM agents can call over MCP.</p>
+          <h3><span class="t-tech">Retrieval &amp; LLM systems</span><span class="t-plain">Assistants that show their sources</span></h3>
+          <p><span class="t-tech">Hybrid search, reranking, answers with citations, and search tools that LLM agents can call over MCP.</span><span class="t-plain">AI that answers from your own documents, shows where each answer comes from, and can be used by other AI tools.</span></p>
           <p class="p-seen">Syro · insight-mcp</p>
         </li>
         <li>
           <span class="p-n">02</span>
-          <h3>MLOps</h3>
-          <p>Tracked runs, a model registry with champion and challenger, drift monitoring with PSI, and retraining on real labels.</p>
+          <h3><span class="t-tech">MLOps</span><span class="t-plain">AI that stays reliable</span></h3>
+          <p><span class="t-tech">Tracked runs, a model registry with champion and challenger, drift monitoring with PSI, and retraining on real labels.</span><span class="t-plain">Every version of a model is recorded, its answers are watched in real use, and it is retrained only when the new version does better.</span></p>
           <p class="p-seen">Proths · airport-forecasting</p>
         </li>
         <li>
           <span class="p-n">03</span>
-          <h3>Data engineering &amp; forecasting</h3>
-          <p>Warehouse pipelines with Snowflake and dbt, infrastructure as code with Terraform, and time-series models validated walk-forward.</p>
+          <h3><span class="t-tech">Data engineering &amp; forecasting</span><span class="t-plain">Data plumbing and forecasts</span></h3>
+          <p><span class="t-tech">Warehouse pipelines with Snowflake and dbt, infrastructure as code with Terraform, and time-series models validated walk-forward.</span><span class="t-plain">Systems that collect and clean company data every day, and models that predict numbers like airport passengers or wind power.</span></p>
           <p class="p-seen">Akabi · sdwpf · airport-forecasting</p>
         </li>
       </ol>
@@ -977,30 +991,30 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="eyebrow">Featured work</p>
           <h2 class="h2" id="work-h">Three systems built to <em class="acc">outlive the demo.</em></h2>
         </div>
-        <div class="sec-side"><p class="sec-note">Retrieval, agents and MLOps. Each card draws the real architecture of the system, checked against its repository.</p><div class="dg-toggle" role="group" aria-label="Diagram detail"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Detailed</button></div></div>
+        <div class="sec-side"><p class="sec-note"><span class="t-tech">Retrieval, agents and MLOps. Each card draws the real architecture of the system, checked against its repository.</span><span class="t-plain">Three AI projects. Each card shows how the system works, step by step.</span></p><div class="dg-toggle" role="group" aria-label="Diagram detail"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Detailed</button></div></div>
       </header>
 
       <div class="pcards">
         <a class="pc" id="card-syro" href="#syro">
-          <p class="pc-kind">LLM &amp; Retrieval</p>
+          <p class="pc-kind"><span class="t-tech">LLM &amp; Retrieval</span><span class="t-plain">AI assistant</span></p>
           <h3 class="pc-name">Syro</h3>
-          <p class="pc-line">Hybrid RAG that cites its sources, or says it doesn’t know.</p>
+          <p class="pc-line"><span class="t-tech">Hybrid RAG that cites its sources, or says it doesn’t know.</span><span class="t-plain">Answers questions from your documents, shows its sources, and says so when it doesn’t know.</span></p>
           <div class="pc-diagram" data-mini="syro"></div>
           <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why you built Syro]</span></p>
           <div class="pc-foot"><p class="pc-stack">Qdrant · BM25 · bge-reranker · Ollama</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-mcp" href="#insight-mcp">
-          <p class="pc-kind">Agents &amp; Retrieval</p>
+          <p class="pc-kind"><span class="t-tech">Agents &amp; Retrieval</span><span class="t-plain">Tool for AI assistants</span></p>
           <h3 class="pc-name">insight-mcp</h3>
-          <p class="pc-line">Document search that AI agents call as MCP tools.</p>
+          <p class="pc-line"><span class="t-tech">Document search that AI agents call as MCP tools.</span><span class="t-plain">A search engine for AI assistants, so they can look things up in your documents.</span></p>
           <div class="pc-diagram" data-mini="insight-mcp"></div>
           <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why you built insight-mcp]</span></p>
           <div class="pc-foot"><p class="pc-stack">FastMCP · BM25 · fastembed · RRF</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-proths" href="#proths">
-          <p class="pc-kind">MLOps</p>
+          <p class="pc-kind"><span class="t-tech">MLOps</span><span class="t-plain">AI that maintains itself</span></p>
           <h3 class="pc-name">Proths</h3>
-          <p class="pc-line">Retrains itself when traffic drifts, and only ships a better model.</p>
+          <p class="pc-line"><span class="t-tech">Retrains itself when traffic drifts, and only ships a better model.</span><span class="t-plain">Notices when real-world data changes, relearns, and only replaces itself when the new version is better.</span></p>
           <div class="pc-diagram" data-mini="proths"></div>
           <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why you built Proths]</span></p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1010,11 +1024,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="f-other" id="also">
         <p class="eyebrow">Also built</p>
         <ul class="f-tiles">
-          <li><a class="f-tile glass" id="tile-pointnet" href="#pointnet-3d-classifier"><span class="k">Vision</span><b>pointnet-3d-classifier</b><span class="s">3D shape classification</span></a></li>
-          <li><a class="f-tile glass" id="tile-sdwpf" href="#sdwpf"><span class="k">Forecasting</span><b>sdwpf</b><span class="s">Wind power forecasting</span></a></li>
-          <li><a class="f-tile glass" id="tile-airport" href="#airport-forecasting"><span class="k">Forecasting</span><b>airport-forecasting</b><span class="s">Passenger traffic forecasting</span></a></li>
-          <li><a class="f-tile glass" id="tile-detector" href="#live-object-detector"><span class="k">Vision</span><b>live-object-detector</b><span class="s">Real-time detection in the browser</span></a></li>
-          <li><a class="f-tile glass" id="tile-opspilot" href="#opspilot"><span class="k">Automation</span><b>opspilot</b><span class="s">n8n automation with human validation</span></a></li>
+          <li><a class="f-tile glass" id="tile-pointnet" href="#pointnet-3d-classifier"><span class="k">Vision</span><b>pointnet-3d-classifier</b><span class="s"><span class="t-tech">3D shape classification</span><span class="t-plain">Recognises 3D parts from their shape alone</span></span></a></li>
+          <li><a class="f-tile glass" id="tile-sdwpf" href="#sdwpf"><span class="k">Forecasting</span><b>sdwpf</b><span class="s"><span class="t-tech">Wind power forecasting</span><span class="t-plain">Predicts how much power wind turbines will produce</span></span></a></li>
+          <li><a class="f-tile glass" id="tile-airport" href="#airport-forecasting"><span class="k">Forecasting</span><b>airport-forecasting</b><span class="s"><span class="t-tech">Passenger traffic forecasting</span><span class="t-plain">Predicts monthly passenger numbers at 6 airports</span></span></a></li>
+          <li><a class="f-tile glass" id="tile-detector" href="#live-object-detector"><span class="k">Vision</span><b>live-object-detector</b><span class="s"><span class="t-tech">Real-time detection in the browser</span><span class="t-plain">Spots objects on a webcam, live in the browser</span></span></a></li>
+          <li><a class="f-tile glass" id="tile-opspilot" href="#opspilot"><span class="k">Automation</span><b>opspilot</b><span class="s"><span class="t-tech">n8n automation with human validation</span><span class="t-plain">Automates office tasks, with a person approving each step</span></span></a></li>
         </ul>
       </div>
     </div>
@@ -1027,38 +1041,38 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="eyebrow">On the bench</p>
           <h2 class="h2" id="nx-h">Next: checking chatbots against <em class="acc">public records.</em></h2>
         </div>
-        <p class="sec-note">Three evaluations in progress, each built on an open French dataset that says what the right answer is.</p>
+        <p class="sec-note"><span class="t-tech">Three evaluations in progress, each built on an open French dataset that says what the right answer is.</span><span class="t-plain">Three studies in progress: I check whether chatbots give correct answers, using official French public data as the answer key.</span></p>
       </header>
       <div class="nx-grid">
         <article class="nx-card" id="nx-votes">
-          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>In progress</span><span>LLM eval · Parliament</span></div>
+          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>In progress</span><span><span class="t-tech">LLM eval · Parliament</span><span class="t-plain">Chatbot check · Parliament</span></span></div>
           <h3>votes-audit</h3>
           <p class="nx-q">“How did my MP vote?” Does a chatbot give the real vote, or invent one when the MP was absent or broke with their group?</p>
           <dl class="nx-spec">
-            <div><dt>Ground truth</dt><dd>Roll-call votes, Assemblée nationale open data</dd></div>
-            <div><dt>So far</dt><dd>266 questions on 74 votes · baselines scored, no chatbot run yet</dd></div>
+            <div><dt><span class="t-tech">Ground truth</span><span class="t-plain">Answer key</span></dt><dd><span class="t-tech">Roll-call votes, Assemblée nationale open data</span><span class="t-plain">The official record of how every MP voted</span></dd></div>
+            <div><dt>So far</dt><dd><span class="t-tech">266 questions on 74 votes · baselines scored, no chatbot run yet</span><span class="t-plain">266 questions on 74 votes ready; no chatbot tested yet</span></dd></div>
           </dl>
-          <p class="nx-chain">fetch → ingest → truth → sample → run → grade → report</p>
+          <p class="nx-chain t-tech">fetch → ingest → truth → sample → run → grade → report</p>
         </article>
         <article class="nx-card" id="nx-ephy">
-          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>In progress</span><span>LLM eval · Agriculture</span></div>
+          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>In progress</span><span><span class="t-tech">LLM eval · Agriculture</span><span class="t-plain">Chatbot check · Agriculture</span></span></div>
           <h3>ephy-audit</h3>
           <p class="nx-q">“Is this pesticide authorised in France?” Do chatbots present withdrawn products as authorised, or mix up EU and French law?</p>
           <dl class="nx-spec">
-            <div><dt>Ground truth</dt><dd>E-Phy catalogue (Anses), weekly snapshot pinned by its sha256</dd></div>
-            <div><dt>So far</dt><dd>116 questions · graded by rules, no LLM judge · baselines only</dd></div>
+            <div><dt><span class="t-tech">Ground truth</span><span class="t-plain">Answer key</span></dt><dd><span class="t-tech">E-Phy catalogue (Anses), weekly snapshot pinned by its sha256</span><span class="t-plain">The official French register of authorised products (Anses), saved every week</span></dd></div>
+            <div><dt>So far</dt><dd><span class="t-tech">116 questions · graded by rules, no LLM judge · baselines only</span><span class="t-plain">116 questions ready, scored automatically, without asking another AI to grade</span></dd></div>
           </dl>
-          <p class="nx-chain">fetch → ingest → checks → sample → run → grade → report</p>
+          <p class="nx-chain t-tech">fetch → ingest → checks → sample → run → grade → report</p>
         </article>
         <article class="nx-card" id="nx-policy">
-          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>In progress</span><span>LLM eval · Tax &amp; benefits</span></div>
+          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>In progress</span><span><span class="t-tech">LLM eval · Tax &amp; benefits</span><span class="t-plain">Chatbot check · Tax &amp; benefits</span></span></div>
           <h3>policybench-fr</h3>
           <p class="nx-q">Can a chatbot work out housing aid, the prime d’activité, RSA or income tax for a given household?</p>
           <dl class="nx-spec">
-            <div><dt>Ground truth</dt><dd>OpenFisca-France, pinned at version 176.1.0</dd></div>
-            <div><dt>So far</dt><dd>45 reference households, being checked against the official CAF simulators</dd></div>
+            <div><dt><span class="t-tech">Ground truth</span><span class="t-plain">Answer key</span></dt><dd><span class="t-tech">OpenFisca-France, pinned at version 176.1.0</span><span class="t-plain">OpenFisca, the open-source model of French tax and benefit rules</span></dd></div>
+            <div><dt>So far</dt><dd><span class="t-tech">45 reference households, being checked against the official CAF simulators</span><span class="t-plain">45 example households, being checked against the official CAF benefits simulator</span></dd></div>
           </dl>
-          <p class="nx-chain">reference → freshness audit → simulator check → scoring</p>
+          <p class="nx-chain t-tech">reference → freshness audit → simulator check → scoring</p>
         </article>
       </div>
       <div class="nx-foot">
@@ -1081,14 +1095,14 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">Now</p>
             <h3>Open to full-time roles</h3>
-            <p class="tl-where">ML Engineer · MLOps · Data Engineer · Paris</p>
+            <p class="tl-where"><span class="t-tech">ML Engineer · MLOps · Data Engineer · Paris</span><span class="t-plain">AI and data engineering jobs · Paris</span></p>
           </li>
           <li class="tl-item" id="tl-akabi">
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">Apr – Oct 2025</p>
             <h3>Data Engineer Intern · Akabi</h3>
             <p class="tl-where">Paris · consulting, on assignment for Accor</p>
-            <p class="tl-what">Production data pipelines on Snowflake with quality checks and alerting on every run, and dev, staging and prod environments in Terraform, deployed through GitLab CI/CD.</p>
+            <p class="tl-what"><span class="t-tech">Production data pipelines on Snowflake with quality checks and alerting on every run, and dev, staging and prod environments in Terraform, deployed through GitLab CI/CD.</span><span class="t-plain">Built the pipelines that bring in and check Accor’s data every day, and automated how they are set up and released.</span></p>
             <ul class="chips" aria-label="Stack"><li>Snowflake</li><li>dbt</li><li>Terraform</li><li>GitLab CI/CD</li></ul>
           </li>
           <li class="tl-item" id="tl-sap">
@@ -1096,19 +1110,19 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <p class="tl-when">Nov 2023 – Mar 2024</p>
             <h3>Data Analytics &amp; Data Science Intern · SAP</h3>
             <p class="tl-where">Barcelona · international team, all in English</p>
-            <p class="tl-what">Automated the weekly sales reporting end to end, and segmented client accounts with K-means on their purchasing profiles, with the data prepared in SAP Data Hub.</p>
+            <p class="tl-what"><span class="t-tech">Automated the weekly sales reporting end to end, and segmented client accounts with K-means on their purchasing profiles, with the data prepared in SAP Data Hub.</span><span class="t-plain">Automated the weekly sales reports, and grouped client accounts by how they buy.</span></p>
             <ul class="chips" aria-label="Stack"><li>SQL</li><li>Python</li><li>K-means</li><li>SAP Data Hub</li></ul>
           </li>
           <li class="tl-item" id="tl-efrei">
             <span class="tl-dot" aria-hidden="true"></span>
-            <p class="tl-when">2023 – 2026</p>
+            <p class="tl-when">2020 – 2025</p>
             <h3>Engineering school · EFREI Paris</h3>
-            <p class="tl-where">Data major, BI &amp; Analytics minor · semesters abroad in Cape Town and Barcelona</p>
+            <p class="tl-where"><span class="t-tech">Data major, BI &amp; Analytics minor · semesters abroad in Cape Town and Barcelona</span><span class="t-plain">Engineering degree, data specialism · semesters abroad in Cape Town and Barcelona</span></p>
           </li>
           <li class="tl-item" id="tl-iut">
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">2018 – 2020</p>
-            <h3>DUT GMP · IUT Paris 13</h3>
+            <h3><span class="t-tech">DUT GMP · IUT Paris 13</span><span class="t-plain">Mechanical engineering diploma · IUT Paris 13</span></h3>
             <p class="tl-where">Mechanical and production engineering</p>
           </li>
         </ol>
@@ -1128,7 +1142,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="by-grid">
         <article class="by-card">
           <h3><span class="dot" aria-hidden="true"></span>Now</h3>
-          <p>Looking for a full-time ML / MLOps role in Paris.</p>
+          <p><span class="t-tech">Looking for a full-time ML / MLOps role in Paris.</span><span class="t-plain">Looking for a full-time AI or data job in Paris.</span></p>
           <p class="ph is-ph">[What you're learning right now]</p>
           <p class="ph is-ph">[What you're building next]</p>
         </article>
@@ -1143,7 +1157,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         </article>
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Before data</h3>
-          <p>DUT GMP at IUT Paris 13, 2018–2020: mechanical design and production engineering.</p>
+          <p><span class="t-tech">DUT GMP at IUT Paris 13, 2018–2020: mechanical design and production engineering.</span><span class="t-plain">Two-year mechanical engineering diploma at IUT Paris 13, 2018–2020: designing parts and planning how they are made.</span></p>
           <p class="ph is-ph">[What that background still changes in how you work]</p>
           <div class="by-ph is-ph">[A CAD PART OR SKETCH YOU MADE]</div>
         </article>
@@ -1158,14 +1172,14 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="eyebrow">What I reach for</p>
           <h2 class="h2" id="sk-h">Only what I’ve used, <em class="acc">and where.</em></h2>
         </div>
-        <p class="sec-note">Every tool listed here appears in a project or in the internship. The right column says where.</p>
+        <p class="sec-note"><span class="t-tech">Every tool listed here appears in a project or in the internship. The right column says where.</span><span class="t-plain">The tool names, for anyone checking keywords. The right column says where I used each one.</span></p>
       </header>
       <dl class="sk">
-        <div class="sk-row"><dt>Retrieval &amp; LLMs</dt><dd class="sk-items"><ul><li>BM25</li><li>Dense embeddings</li><li>RRF</li><li>Qdrant</li><li>Cross-encoder reranking</li><li>Ollama</li><li>MCP</li></ul></dd><dd class="sk-used">Syro · insight-mcp</dd></div>
-        <div class="sk-row"><dt>MLOps &amp; serving</dt><dd class="sk-items"><ul><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>Celery</li><li>Prometheus</li><li>Grafana</li><li>ONNX</li></ul></dd><dd class="sk-used">Proths · Syro · insight-mcp · pointnet</dd></div>
-        <div class="sk-row"><dt>Data engineering</dt><dd class="sk-items"><ul><li>Snowflake</li><li>dbt</li><li>Terraform</li><li>GitLab CI/CD</li><li>SAP Data Hub</li><li>n8n</li></ul></dd><dd class="sk-used">Akabi · SAP · opspilot</dd></div>
-        <div class="sk-row"><dt>Modeling</dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>PSI drift checks</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · SAP</dd></div>
-        <div class="sk-row"><dt>Languages</dt><dd class="sk-items"><ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></dd><dd class="sk-used">all projects · Akabi · SAP · Syro UI · detector</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Retrieval &amp; LLMs</span><span class="t-plain">AI assistants &amp; search</span></dt><dd class="sk-items"><ul><li>BM25</li><li>Dense embeddings</li><li>RRF</li><li>Qdrant</li><li>Cross-encoder reranking</li><li>Ollama</li><li>MCP</li></ul></dd><dd class="sk-used">Syro · insight-mcp</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">MLOps &amp; serving</span><span class="t-plain">Keeping AI running</span></dt><dd class="sk-items"><ul><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>Celery</li><li>Prometheus</li><li>Grafana</li><li>ONNX</li></ul></dd><dd class="sk-used">Proths · Syro · insight-mcp · pointnet</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Data engineering</span><span class="t-plain">Data pipelines</span></dt><dd class="sk-items"><ul><li>Snowflake</li><li>dbt</li><li>Terraform</li><li>GitLab CI/CD</li><li>SAP Data Hub</li><li>n8n</li></ul></dd><dd class="sk-used">Akabi · SAP · opspilot</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Modeling</span><span class="t-plain">Machine learning</span></dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>PSI drift checks</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · SAP</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Languages</span><span class="t-plain">Programming</span></dt><dd class="sk-items"><ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></dd><dd class="sk-used">all projects · Akabi · SAP · Syro UI · detector</dd></div>
       </dl>
     </div>
   </section>
@@ -1174,7 +1188,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="contact-card">
       <p class="eyebrow">Let's talk</p>
       <h2 class="contact-title" id="ct-h">Building something that has to <em class="acc">keep running?</em></h2>
-      <p class="contact-sub">I'm open to full-time ML, MLOps and data roles in Paris. Email is the fastest way to reach me.</p>
+      <p class="contact-sub"><span class="t-tech">I'm open to full-time ML, MLOps and data roles in Paris. Email is the fastest way to reach me.</span><span class="t-plain">I'm looking for a full-time job in AI or data, in Paris. Email is the fastest way to reach me.</span></p>
       <div class="mailrow"><span class="mail" id="mail">sam.pondevie@gmail.com</span><button class="copy" type="button" data-copy="sam.pondevie@gmail.com">Copy</button></div>
       <div class="contact-actions">
         <a class="cta" href="mailto:sam.pondevie@gmail.com"><span class="cta-fill" aria-hidden="true"></span><span>Email me</span><span class="cta-arrow" aria-hidden="true"><svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
@@ -1347,6 +1361,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   const PROJECTS = {
     'syro': {
       title: 'Syro', kind: 'LLM & Retrieval', target: 'card-syro', story: true, repo: GH + 'Syro',
+      kindPlain: 'AI assistant', plain: 'An assistant that answers questions from your own documents. Every answer points to the passage it comes from, and when the documents don’t hold the answer, it says so instead of making one up.',
       lede: 'Multi-domain RAG platform: hybrid search (Qdrant + BM25, fused with RRF), a cross-encoder reranker with an abstention threshold, answers that cite their sources, async ingestion with Celery.',
       pageLede: 'A multi-domain RAG platform. Hybrid search, a cross-encoder reranker, and answers that cite <b>[Source N]</b>, <b>or say “I can’t find it” when nothing in your documents is relevant.</b>',
       stack: ['Python', 'FastAPI', 'Qdrant', 'BM25', 'bge-reranker-v2-m3', 'Ollama', 'Celery + Redis', 'React', 'Docker'],
@@ -1359,6 +1374,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     },
     'insight-mcp': {
       title: 'insight-mcp', kind: 'Agents & Retrieval', target: 'card-mcp', story: true, repo: GH + 'insight-mcp',
+      kindPlain: 'Tool for AI assistants', plain: 'A document search tool that AI assistants like Claude can use on their own. It finds the relevant passages and their sources; the assistant then writes the answer.',
       lede: 'Self-contained MCP server exposing hybrid document search (BM25 + dense, fused with RRF) as tools for AI agents. Retrieval only, Prometheus metrics, bearer auth, Docker, CI/CD.',
       pageLede: 'An MCP server that gives AI agents document search as tools. <b>It does retrieval only:</b> it returns passages, scores and sources, and the client’s LLM writes the cited answer.',
       stack: ['Python', 'FastMCP', 'BM25', 'fastembed (ONNX)', 'RRF', 'SQLite', 'Prometheus', 'Docker', 'GitHub Actions'],
@@ -1370,6 +1386,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     },
     'proths': {
       title: 'Proths', kind: 'MLOps', target: 'card-proths', story: true, repo: GH + 'Proths',
+      kindPlain: 'AI that maintains itself', plain: 'A system that sorts news articles by topic and looks after itself. It watches whether incoming articles start to look different, retrains when they do, and only switches to the new model if it scores better on the same fixed test.',
       lede: 'Complete MLOps loop on a news classifier (AG News): FastAPI serving, SQLite prediction journal, drift detection with PSI and KS, retraining on feedback labels, champion/challenger promotion on a fixed holdout. MLflow, Prometheus, Grafana.',
       pageLede: 'A news classifier (AG News, 4 classes) served by an API, monitored continuously and retrained on its own when traffic shifts. <b>A new model reaches production only if it beats the current one on a fixed holdout.</b>',
       stack: ['scikit-learn', 'MLflow', 'FastAPI', 'SQLite', 'Prometheus', 'Grafana', 'Docker Compose', 'GitHub Actions'],
@@ -1382,26 +1399,31 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     },
     'pointnet-3d-classifier': {
       title: 'pointnet-3d-classifier', kind: 'Vision', target: 'tile-pointnet', repo: GH + 'pointnet-3d-classifier',
+      kindPlain: 'Computer vision', plain: 'Recognises what a 3D part is from its shape alone, and checks how well that holds up when the shape is noisy, partly hidden or rotated.',
       lede: 'Classifies 3D CAD meshes from geometry alone with PointNet, with a robustness analysis (noise, occlusion, SO(3) rotations), ONNX export and FastAPI serving.',
       stack: ['PyTorch', 'PointNet', 'ONNX', 'FastAPI']
     },
     'sdwpf': {
       title: 'sdwpf', kind: 'Forecasting', target: 'tile-sdwpf', repo: GH + 'sdwpf-ml-time-serie',
+      kindPlain: 'Forecasting', plain: 'Predicts how much electricity a wind farm will produce ahead of time, and compares the model with simple rules of thumb to check that it actually helps.',
       lede: 'Wind power forecasting on the SDWPF dataset: XGBoost against naive and persistence baselines, multi-horizon benchmark, walk-forward validation.',
       stack: ['XGBoost', 'pandas', 'Python']
     },
     'airport-forecasting': {
       title: 'airport-forecasting', kind: 'Forecasting', target: 'tile-airport', repo: GH + 'airport-forecasting',
+      kindPlain: 'Forecasting', plain: 'Predicts how many passengers 6 European airports will see each month, comparing a machine learning model with a classic statistical one.',
       lede: 'Monthly passenger forecasting for 6 airports (Eurostat data): LightGBM against SARIMA, recursive evaluation, drift tracked with PSI.',
       stack: ['LightGBM', 'SARIMA', 'statsmodels', 'PSI']
     },
     'live-object-detector': {
       title: 'live-object-detector', kind: 'Vision', target: 'tile-detector', repo: GH + 'live-object-detector',
+      kindPlain: 'Computer vision', plain: 'Point a webcam at a scene and it recognises the objects in it, live, without sending any image to a server.',
       lede: 'Real-time object detection that runs entirely in the browser, on the webcam.',
       stack: ['ONNX Runtime Web', 'JavaScript']
     },
     'opspilot': {
       title: 'opspilot', kind: 'Automation', target: 'tile-opspilot', repo: GH + 'opspilot-ai-automation',
+      kindPlain: 'Office automation', plain: 'Automates routine operations tasks with an AI step, but a person approves each action before it happens. The time saved is shown as a clearly labelled simulation.',
       lede: 'Local n8n operations workflow with an LLM and a human approval step, Notion integration, and a clearly labelled ROI simulation.',
       stack: ['n8n', 'LLM', 'Notion']
     }
@@ -1417,7 +1439,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     { title: 'votes-audit', kind: 'In progress · LLM evaluation', text: 'Do chatbots report how French MPs really voted, or invent a vote? Roll-call votes from Assemblée nationale open data.', target: 'nx-votes' },
     { title: 'ephy-audit', kind: 'In progress · LLM evaluation', text: 'Do chatbots know which pesticides are authorised in France? E-Phy catalogue (Anses), rule-based grading.', target: 'nx-ephy' },
     { title: 'policybench-fr', kind: 'In progress · LLM evaluation', text: 'Can chatbots compute French housing aid, RSA and income tax? Benchmark against OpenFisca.', target: 'nx-policy' },
-    { title: 'EFREI Paris', kind: 'Education · 2023–2026', text: 'Engineering school, Paris.', target: 'tl-efrei' },
+    { title: 'EFREI Paris', kind: 'Education · 2020–2025', text: 'Engineering school, Paris.', target: 'tl-efrei' },
     { title: 'IUT Paris 13', kind: 'Education · 2018–2020', text: 'DUT GMP, mechanical and production engineering.', target: 'tl-iut' }
   ];
   const DOCS = Object.keys(PROJECTS).map((slug) => {
@@ -1886,7 +1908,10 @@ void main(){
 
   /* ---------- About: paragraph lights up word by word with scroll ---------- */
   function aboutWords() {
-    const p = $('[data-words]');
+    const all = $$('[data-words]').map(wordsIn);
+    return { update() { all.forEach((w) => w.update()); } };
+  }
+  function wordsIn(p) {
     const parts = [...p.childNodes];
     p.textContent = '';
     const addWords = (text, parent) => text.split(/(\s+)/).forEach((t) => {
@@ -1904,6 +1929,7 @@ void main(){
     return {
       update() {
         let n = spans.length;
+        if (!p.offsetParent) return;
         if (!reduce) {
           const r = p.getBoundingClientRect(), vh = window.innerHeight;
           const start = vh * 0.88, span = vh * 0.5 + r.height * 0.5;
@@ -2066,13 +2092,18 @@ void main(){
     s.append(head, b);
     return s;
   }
+  function setLede(slug) {
+    const P = PROJECTS[slug], plain = document.documentElement.dataset.mode === 'plain';
+    F('eyebrow').textContent = 'Project · ' + (plain && P.kindPlain ? P.kindPlain : P.kind);
+    if (plain && P.plain) F('lede').textContent = P.plain;
+    else if (P.pageLede) F('lede').innerHTML = P.pageLede; else F('lede').textContent = P.lede;
+  }
   function renderProject(slug) {
     const P = PROJECTS[slug];
-    F('eyebrow').textContent = 'Project · ' + P.kind;
+    setLede(slug);
     const title = F('title');
     title.textContent = P.title;
     title.classList.toggle('is-long', P.title.length > 12);
-    if (P.pageLede) F('lede').innerHTML = P.pageLede; else F('lede').textContent = P.lede;
     F('repo').href = P.repo;
 
     const metrics = F('metrics');
@@ -2102,7 +2133,7 @@ void main(){
       h.append(el('span', 'draft', 'Draft'));
       head.append(el('p', 'g-kicker', 'Approach & architecture'), h, el('p', 'g-cue', P.cue));
       st.append(head);
-      st.insertAdjacentHTML('beforeend', storyHTML(slug, store.get('sampdv.dg.story') || (window.matchMedia('(max-width: 899px)').matches ? 'simple' : 'detailed')));
+      st.insertAdjacentHTML('beforeend', storyHTML(slug, store.get('sampdv.dg.story') || (document.documentElement.dataset.mode === 'plain' || window.matchMedia('(max-width: 899px)').matches ? 'simple' : 'detailed')));
       const stage = $('.g-stage', st);
       bindToggle(stage, 'sampdv.dg.story', (v) => { stage.dataset.dg = v; });
       secs.append(st);
@@ -2242,6 +2273,30 @@ void main(){
       root.classList.add('vt-theme');
       document.startViewTransition(() => apply(v)).finished.finally(() => root.classList.remove('vt-theme'));
     });
+  })();
+
+  /* ---------- Plain / technical: same page, jargon swapped for plain words ---------- */
+  (function plainMode() {
+    const root = document.documentElement;
+    const btns = $$('.mode-tog');
+    const sync = () => btns.forEach((b) => b.setAttribute('aria-pressed', String(root.dataset.mode === 'plain')));
+    const apply = (plain) => {
+      root.dataset.mode = plain ? 'plain' : 'tech';
+      sync();
+      if (view === 'project' && slugNow) setLede(slugNow);
+      if (view === 'home') about.update();
+    };
+    const toggle = () => {
+      const plain = root.dataset.mode !== 'plain';
+      store.set('sampdv.mode', plain ? 'plain' : 'tech');
+      if (plain && view === 'home') $$('#work .dg-toggle button[data-dg="simple"]').forEach((b) => { if (b.getAttribute('aria-pressed') !== 'true') b.click(); });
+      if (!document.startViewTransition || reduce) { apply(plain); return; }
+      root.classList.add('vt-theme');
+      document.startViewTransition(() => apply(plain)).finished.finally(() => root.classList.remove('vt-theme'));
+    };
+    btns.forEach((b) => b.addEventListener('click', toggle));
+    $$('[data-mode-toggle]').forEach((b) => b.addEventListener('click', toggle));
+    sync();
   })();
 
   /* ---------- Prototype controls: accent, title, typeface ---------- */
