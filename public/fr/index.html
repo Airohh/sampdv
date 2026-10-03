@@ -755,22 +755,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 /* timeline: one line on what the job was */
 .tl-what{margin:2px 0 0;max-width:58ch;font-size:15px;line-height:1.55;color:var(--muted)}
 
-/* footer: engineering title block (cartouche) */
-.foot-in{align-items:flex-end}
-.foot-left{display:grid;gap:6px}
-.foot-left .foot-small{flex-basis:auto}
-.cartouche{width:min(100%,640px);display:grid;grid-template-columns:84px repeat(3,minmax(0,1fr));gap:1px;border:1px solid rgba(244,245,248,.34);background:rgba(244,245,248,.34);font-family:var(--f-mono)}
-.cartouche>div{display:flex;flex-direction:column;justify-content:center;gap:5px;min-width:0;padding:9px 12px;background:var(--bg)}
-.ct-k{font-size:9.5px;line-height:1;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.ct-v{font-size:12.5px;line-height:1.3;color:var(--fg);overflow-wrap:anywhere}
-.ct-v.warm{color:var(--warm)}
-.ct-v.ok{color:var(--ok)}
-.cartouche .ct-title{grid-column:span 3}
-.ct-title .ct-v{font-family:var(--f-serif);font-weight:600;font-size:18px;letter-spacing:-.01em}
-.cartouche .ct-proj{grid-row:span 3;align-items:center;gap:7px;padding:8px}
-.ct-proj svg{width:58px;height:28px;fill:none;stroke:var(--fg);stroke-width:1.3}
-.ct-proj .ax{stroke-width:.8;stroke-dasharray:3 2;opacity:.7}
-@media (max-width:560px){.cartouche{grid-template-columns:62px repeat(3,minmax(0,1fr))}.cartouche>div{padding:8px 9px}.ct-proj svg{width:46px}.ct-v{font-size:11.5px}}
 
 
 /* ---------- v6: plain / technical ---------- */
@@ -788,6 +772,76 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .lang-tog{display:none;flex:none;place-items:center;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;color:var(--fg);text-decoration:none;font:600 11px/1 var(--f-mono);letter-spacing:.04em;transition:background .2s}
 .lang-tog:hover{background:color-mix(in srgb,var(--fg) 10%,transparent)}
 @media (min-width:480px){.lang-tog{display:grid}}
+
+
+/* ---------- v8 ---------- */
+/* one View menu holds language, detail level and theme, so the bar stays light */
+.view-wrap{position:relative;flex:none}
+.view-tog{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 14px 0 12px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--fg);font:600 12px/1 var(--f-mono);letter-spacing:.04em;cursor:pointer;transition:background .2s}
+.view-tog:hover,.view-tog[aria-expanded="true"]{background:color-mix(in srgb,var(--fg) 10%,transparent)}
+.view-tog svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.view-anchor{position:relative;max-width:64rem;margin:0 auto;height:0;pointer-events:none}
+.view-panel{position:absolute;right:8px;top:10px;z-index:60;pointer-events:auto;width:min(290px,calc(100vw - 32px));display:grid;gap:12px;padding:16px;border:1px solid var(--line);border-radius:20px;background:#080b13;box-shadow:0 24px 60px rgba(0,0,0,.45);text-align:left}
+.vp-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+.vp-k{font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.view-panel .lang-tog{display:grid}
+
+/* project cards: the question first, the technique second */
+.pc{grid-template-rows:auto auto auto auto 1fr auto auto}
+.pc-name{font-size:calc(clamp(1.6rem,2.3vw,2rem) * var(--d-size))}
+.pc-q{margin:0;max-width:24ch;font-family:var(--f-serif);font-weight:var(--d-weight,600);font-size:calc(clamp(1.35rem,1.9vw,1.6rem) * var(--d-size));line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+.pc-line{font-size:14.5px}
+
+/* more projects: five real cards, each with its own small picture */
+.mp{margin-top:56px}
+.mp-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;margin-bottom:16px}
+.mp-head .eyebrow{margin:0}
+.mp-note{margin:0;font-size:14px;color:var(--muted)}
+.mp-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.mp-card{position:relative;display:flex;flex-direction:column;gap:9px;padding:14px 14px 16px;border:1px solid var(--line);border-radius:20px;background:rgba(5,8,15,var(--card-a,.8));-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);color:var(--fg);text-decoration:none;transition:border-color .3s ease,transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
+.mp-card:hover,.mp-card:focus-visible{border-color:rgba(var(--warm-rgb),.5);transform:translateY(-3px);box-shadow:0 22px 50px -24px rgba(var(--hot),.5)}
+.mp-card:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.mp-vis{display:block;height:128px;margin-bottom:4px;border-radius:12px;background:#0a0f1d;overflow:hidden}
+.mp-vis svg{display:block;width:100%;height:100%}
+.mp-vis .c{fill:#a9bde6}
+.mp-vis .l{fill:none;stroke:#a9bde6;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mp-vis .w{fill:none;stroke:var(--warm);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mp-vis .d{stroke-dasharray:5 4}
+.mp-vis .wf{fill:rgba(var(--warm-rgb),.18)}
+.mp-vis .wfill{fill:var(--warm)}
+.mp-vis .ok{fill:none;stroke:var(--ok);stroke-width:2}
+.mp-vis .okf{fill:var(--ok)}
+.mp-vis .g{stroke:rgba(244,245,248,.14);stroke-width:1}
+.mp-card:hover .mp-vis .d{animation:mv-dash 1.2s linear infinite}
+@keyframes mv-dash{to{stroke-dashoffset:-18}}
+.mp-k{font:500 10.5px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.mp-name{font-size:15px;font-weight:600;overflow-wrap:anywhere}
+.mp-q{font-family:var(--f-serif);font-weight:var(--d-weight,600);font-size:calc(1.2rem * var(--d-size));line-height:1.18;text-wrap:balance}
+.mp-line{font-size:13.5px;line-height:1.45;color:var(--muted)}
+.mp-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.mp-tags{font:500 11px/1.4 var(--f-mono);color:var(--faint)}
+.mp-cta{font:500 11.5px/1 var(--f-mono);color:var(--warm);white-space:nowrap}
+
+/* experience: one line of story under the title */
+.exp-lead{margin:18px 0 0;max-width:30ch;font-size:clamp(1.1rem,1.6vw,1.35rem);line-height:1.4;color:var(--muted);text-wrap:pretty}
+.tl-where a{color:var(--warm);text-decoration:none}
+.tl-where a:hover{text-decoration:underline}
+
+/* what's next: each evaluation shows what is done and what comes next */
+.nx-steps{list-style:none;margin:2px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.nx-steps li{display:grid;align-content:start;gap:8px;font:500 10.5px/1.3 var(--f-mono);color:var(--faint)}
+.nx-steps li::before{content:"";height:4px;border-radius:2px;background:rgba(244,245,248,.14)}
+.nx-steps li.done{color:var(--fg)}
+.nx-steps li.done::before{background:var(--warm)}
+.nx-steps li.now{color:var(--alert)}
+.nx-steps li.now::before{background:linear-gradient(90deg,var(--alert) 0 50%,rgba(255,181,71,.25) 50%)}
+.nx-when{margin:0;font:500 12px/1.4 var(--f-mono);color:var(--warm)}
+
+/* outside work: tennis leads */
+@media (min-width:1000px){.by-grid.v8{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr)}}
+.by-card .by-lead{font-family:var(--f-serif);font-size:calc(1.45rem * var(--d-size));line-height:1.25}
+
+
 
 /* unfilled placeholders: shown everywhere, hidden with ?clean */
 .hide-ph :is(.is-ph,.todo){display:none!important}
@@ -873,18 +927,31 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="nav-links"><a href="#work">Projets</a><a href="#experience">Parcours</a><a href="#contact">Contact</a></div>
     </div>
     <div class="nav-right">
-      <a class="nav-plain" href="https://github.com/Airohh" target="_blank" rel="noopener">GitHub</a>
-      <a class="lang-tog" href="/" hreflang="en" lang="en" aria-label="English version" title="English version">EN</a>
-      <button class="mode-tog" type="button" aria-pressed="false" aria-label="Mots simples au lieu du détail technique" title="Basculer entre détail technique et mots simples"><span class="m-tech">Tech</span><span class="m-plain">Simple</span></button>
-      <button class="theme-tog" type="button" aria-pressed="false" aria-label="Passer au thème jour"><svg class="i i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+      <div class="view-wrap">
+        <button class="view-tog" type="button" aria-expanded="false" aria-controls="view-panel" aria-label="Options d’affichage : langue, niveau de détail, thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="view-lang">FR</span></button>
+      </div>
       <button class="pill glass" type="button" data-todo="À venir : le CV en PDF n’est pas encore en ligne.">Mon CV</button>
       <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="sr">Menu</span><i></i><i></i></button>
     </div>
   </nav>
+  <div class="view-anchor">
+    <div class="view-panel" id="view-panel" hidden>
+      <div class="vp-row"><span class="vp-k">Langue</span>
+    <a class="lang-tog" href="/" hreflang="en" lang="en" aria-label="English version" title="English version">EN</a>
+      </div>
+      <div class="vp-row"><span class="vp-k">Détail</span>
+    <button class="mode-tog" type="button" aria-pressed="false" aria-label="Mots simples au lieu du détail technique" title="Basculer entre détail technique et mots simples"><span class="m-tech">Tech</span><span class="m-plain">Simple</span></button>
+      </div>
+      <div class="vp-row"><span class="vp-k">Thème</span>
+    <button class="theme-tog" type="button" aria-pressed="false" aria-label="Passer au thème jour"><svg class="i i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+      </div>
+    </div>
+  </div>
   <div class="nav-panel glass" id="nav-panel" hidden>
-    <a href="#work" style="--i:0">Projets <small>3 + 5 projets</small></a>
-    <a href="#experience" style="--i:1">Parcours <small>SAP · Akabi · EFREI</small></a>
-    <a href="#skills" style="--i:2">Compétences <small>Outils</small></a>
+    <a href="#work" style="--i:0">Projets <small>8 projets</small></a>
+    <a href="#experience" style="--i:1">Parcours <small>Accor · SAP · EFREI</small></a>
+    <a href="#next" style="--i:2">La suite <small>3 en cours</small></a>
+    <a href="#skills" style="--i:3">Outils <small>Stack</small></a>
     <a href="#contact" style="--i:3">Contact <small>E-mail</small></a>
     <a href="https://github.com/Airohh" target="_blank" rel="noopener" style="--i:4">GitHub <small>Airohh ↗</small></a>
     <a class="lang-link" href="/" hreflang="en" lang="en" style="--i:5">English <small>EN</small></a>
@@ -897,7 +964,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="hero-bg" aria-hidden="true"><canvas class="a-canvas"></canvas><div class="a-shade"></div></div>
     <div class="hero-inner">
       <div class="hero-center">
-        <p class="a-status a-hello glass rise" style="--d:150ms"><span class="avatar" aria-hidden="true"><i></i><b></b></span><span>Bonjour, moi c’est <strong>Sam</strong>.<span class="hide-sm"> Ouvert à un CDI à Paris.</span></span><span class="dot" aria-hidden="true"></span></p>
+        <p class="a-status a-hello glass rise" style="--d:150ms"><span class="avatar" aria-hidden="true"><i></i><b></b></span><span>Bonjour, moi c’est <strong>Sam</strong>.<span class="hide-sm"> Je cherche un CDI en data et IA.</span></span><span class="dot" aria-hidden="true"></span></p>
         <h1 class="a-title">
           <span class="a-l"><span class="w" style="--i:0">Des</span> <span class="w" style="--i:1">données</span> <span class="w" style="--i:2">aux</span></span>
           <span class="a-l"><span class="w" style="--i:3">systèmes</span> <span class="w" style="--i:4">d’IA</span> <em class="w acc" style="--i:5">fiables.</em></span>
@@ -930,8 +997,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <dl class="band rise" style="--d:1350ms">
         <div><dt>Poste</dt><dd data-role>Ingénieur Data &amp; IA</dd></div>
         <div><dt>Basé à</dt><dd>Paris, France</dd></div>
-        <div><dt>Recherche</dt><dd><span class="t-tech">CDI · ML, MLOps, data</span><span class="t-plain">CDI · IA et data</span></dd></div>
-        <div><dt>Projets</dt><dd>3 projets phares · 5 projets annexes</dd></div>
+        <div><dt>Langues</dt><dd>Français, anglais</dd></div>
+        <div><dt>Projets</dt><dd>8 réalisés · 3 à venir</dd></div>
       </dl>
     </div>
   </section>
@@ -941,27 +1008,27 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="about-panel">
       <div class="about-grid">
         <p class="eyebrow" id="about-h">À propos</p>
-        <p class="about-lede t-tech" data-words>J’ai commencé par le <span class="ul">génie mécanique</span> avant de passer à la data et à l’IA. Chez SAP à Barcelone, j’ai automatisé le reporting commercial et segmenté les comptes clients. Chez Akabi, j’ai travaillé sur des pipelines de données avec Snowflake, dbt et Terraform. Dans mes projets perso, je construis ce qui fait tenir un modèle <span class="ul">après la première démo</span> : entraînements tracés, modèles servis, suivi de la dérive, et un réentraînement qui ne met en production qu’un meilleur modèle.</p>
-        <p class="about-lede t-plain" data-words>J’ai commencé par le <span class="ul">génie mécanique</span> avant de passer à la data et à l’IA. Chez SAP à Barcelone, j’ai automatisé les rapports de ventes hebdomadaires et regroupé les comptes clients selon leur façon d’acheter. Chez Akabi, j’ai construit les systèmes qui récupèrent et vérifient chaque jour les données d’un groupe hôtelier. Dans mes projets perso, je m’intéresse à ce qui se passe <span class="ul">après la première démo</span> : une IA qui donne encore de bonnes réponses des mois plus tard, qui repère quand elle commence à décrocher, et qui n’est remplacée que par une version qui prouve qu’elle fait mieux.</p>
+        <p class="about-lede t-tech" data-words>J’ai commencé par le <span class="ul">génie mécanique</span> avant de passer à la data et à l’IA. Chez SAP à Barcelone, j’ai participé à l’automatisation du reporting commercial et segmenté les comptes clients. Chez Akabi, en mission chez Accor, j’ai travaillé sur des pipelines de données avec Snowflake, Terraform et un outil interne d’ETL et d’orchestration. Dans mes projets perso, je construis ce qui fait tenir un modèle <span class="ul">après la première démo</span> : entraînements tracés, modèles servis, suivi de la dérive, et un réentraînement qui ne met en production qu’un meilleur modèle.</p>
+        <p class="about-lede t-plain" data-words>J’ai commencé par le <span class="ul">génie mécanique</span> avant de passer à la data et à l’IA. Chez SAP à Barcelone, j’ai participé à l’automatisation des rapports de ventes hebdomadaires et regroupé les comptes clients selon leur façon d’acheter. Chez Akabi, en mission chez Accor, j’ai travaillé sur les systèmes qui récupèrent et vérifient chaque jour les données du groupe hôtelier. Dans mes projets perso, je m’intéresse à ce qui se passe <span class="ul">après la première démo</span> : une IA qui donne encore de bonnes réponses des mois plus tard, qui repère quand elle commence à décrocher, et qui n’est remplacée que par une version qui prouve qu’elle fait mieux.</p>
       </div>
       <ol class="pillars">
         <li>
           <span class="p-n">01</span>
-          <h3><span class="t-tech">Recherche et systèmes LLM</span><span class="t-plain">Des assistants qui citent leurs sources</span></h3>
+          <h3>Des réponses vérifiables</h3>
           <p><span class="t-tech">Recherche hybride, reranking, réponses citées, et outils de recherche que des agents LLM appellent via MCP.</span><span class="t-plain">Une IA qui répond à partir de vos propres documents, montre d’où vient chaque réponse, et peut servir à d’autres outils d’IA.</span></p>
           <p class="p-seen">Syro · insight-mcp</p>
         </li>
         <li>
           <span class="p-n">02</span>
-          <h3><span class="t-tech">MLOps</span><span class="t-plain">Une IA qui reste fiable</span></h3>
+          <h3>Des modèles qui restent bons après la mise en production</h3>
           <p><span class="t-tech">Runs tracés, registre de modèles avec champion et challenger, suivi de la dérive par PSI, et réentraînement sur de vrais labels.</span><span class="t-plain">Chaque version d’un modèle est enregistrée, ses réponses sont surveillées en conditions réelles, et il n’est réentraîné que si la nouvelle version fait mieux.</span></p>
           <p class="p-seen">Proths · airport-forecasting</p>
         </li>
         <li>
           <span class="p-n">03</span>
-          <h3><span class="t-tech">Data engineering et prévision</span><span class="t-plain">Plomberie de données et prévisions</span></h3>
-          <p><span class="t-tech">Pipelines d’entrepôt de données avec Snowflake et dbt, infrastructure as code avec Terraform, et modèles de séries temporelles validés en walk-forward.</span><span class="t-plain">Des systèmes qui collectent et nettoient chaque jour les données d’une entreprise, et des modèles qui prévoient des chiffres comme le trafic aérien ou la production éolienne.</span></p>
-          <p class="p-seen">Akabi · sdwpf · airport-forecasting</p>
+          <h3>Des données et des prévisions fiables</h3>
+          <p><span class="t-tech">Pipelines d’entrepôt de données sur Snowflake, infrastructure as code avec Terraform, et modèles de séries temporelles validés en walk-forward.</span><span class="t-plain">Des systèmes qui collectent et nettoient chaque jour les données d’une entreprise, et des modèles qui prévoient des chiffres comme le trafic aérien ou la production éolienne.</span></p>
+          <p class="p-seen">Akabi pour Accor · sdwpf · airport-forecasting</p>
         </li>
       </ol>
       <div class="about-sign">
@@ -974,7 +1041,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <figure class="about-photo" aria-label="Emplacement de la photo">
       <span class="ph-head" aria-hidden="true"></span><span class="ph-body" aria-hidden="true"></span>
       <span class="ph-tag is-ph">[TA PHOTO · lumière chaude, mi-corps]</span>
-      <figcaption><b>Sam Pondevie</b><span>Paris · ouvert à un CDI</span></figcaption>
+      <figcaption><b>Sam Pondevie</b><span>Ingénieur Data &amp; IA · Paris</span></figcaption>
     </figure>
     </div>
   </section>
@@ -1000,8 +1067,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="wrap">
       <header class="sec-head">
         <div>
-          <p class="eyebrow">Projets phares</p>
-          <h2 class="h2" id="work-h">Trois systèmes faits pour <em class="acc">durer après la démo.</em></h2>
+          <p class="eyebrow">01 — Projets</p>
+          <h2 class="h2" id="work-h">Ce que je <em class="acc">construis.</em></h2>
         </div>
         <div class="sec-side"><p class="sec-note"><span class="t-tech">Recherche, agents et MLOps. Chaque carte dessine la vraie architecture du système, vérifiée dans son dépôt.</span><span class="t-plain">Trois projets d’IA. Chaque carte montre comment le système fonctionne, étape par étape.</span></p><div class="dg-toggle" role="group" aria-label="Niveau de détail du schéma"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Détaillé</button></div></div>
       </header>
@@ -1010,7 +1077,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <a class="pc" id="card-syro" href="#syro">
           <p class="pc-kind"><span class="t-tech">LLM et recherche</span><span class="t-plain">Assistant IA</span></p>
           <h3 class="pc-name">Syro</h3>
-          <p class="pc-line"><span class="t-tech">Un RAG hybride qui cite ses sources, ou dit qu’il ne sait pas.</span><span class="t-plain">Répond aux questions à partir de vos documents, montre ses sources, et le dit quand il ne sait pas.</span></p>
+          <p class="pc-q">Un assistant qui montre d’où vient sa réponse.</p>
+          <p class="pc-line"><span class="t-tech">Recherche hybride, reranker, et des réponses qui citent [Source N], ou disent qu’elles ne trouvent pas.</span><span class="t-plain">Il répond à partir de vos propres documents, avec la source derrière chaque réponse, ou dit qu’il ne sait pas.</span></p>
           <div class="pc-diagram" data-mini="syro"></div>
           <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi tu as construit Syro]</span></p>
           <div class="pc-foot"><p class="pc-stack">Qdrant · BM25 · bge-reranker · Ollama</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1018,7 +1086,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <a class="pc" id="card-mcp" href="#insight-mcp">
           <p class="pc-kind"><span class="t-tech">Agents et recherche</span><span class="t-plain">Outil pour assistants IA</span></p>
           <h3 class="pc-name">insight-mcp</h3>
-          <p class="pc-line"><span class="t-tech">Une recherche documentaire que des agents IA appellent comme outils MCP.</span><span class="t-plain">Un moteur de recherche pour assistants IA, pour qu’ils puissent chercher dans vos documents.</span></p>
+          <p class="pc-q">Une recherche que les agents IA appellent seuls.</p>
+          <p class="pc-line"><span class="t-tech">Une recherche documentaire exposée comme outils MCP ; c’est le modèle de l’agent qui rédige la réponse.</span><span class="t-plain">Un moteur de recherche pour assistants IA, pour qu’ils puissent chercher dans vos documents.</span></p>
           <div class="pc-diagram" data-mini="insight-mcp"></div>
           <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi tu as construit insight-mcp]</span></p>
           <div class="pc-foot"><p class="pc-stack">FastMCP · BM25 · fastembed · RRF</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1026,79 +1095,72 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <a class="pc" id="card-proths" href="#proths">
           <p class="pc-kind"><span class="t-tech">MLOps</span><span class="t-plain">Une IA qui s’entretient seule</span></p>
           <h3 class="pc-name">Proths</h3>
-          <p class="pc-line"><span class="t-tech">Se réentraîne quand le trafic dérive, et ne met en production qu’un meilleur modèle.</span><span class="t-plain">Repère quand les données réelles changent, réapprend, et ne se remplace que si la nouvelle version est meilleure.</span></p>
+          <p class="pc-q">Que se passe-t-il quand les données changent ?</p>
+          <p class="pc-line"><span class="t-tech">Il se réentraîne quand le trafic dérive, et ne met en production qu’un modèle qui bat l’actuel.</span><span class="t-plain">Il repère quand les données réelles changent, réapprend, et ne se remplace que si la nouvelle version est meilleure.</span></p>
           <div class="pc-diagram" data-mini="proths"></div>
           <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi tu as construit Proths]</span></p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
       </div>
 
-      <div class="f-other" id="also">
-        <p class="eyebrow">Aussi réalisés</p>
-        <ul class="f-tiles">
-          <li><a class="f-tile glass" id="tile-pointnet" href="#pointnet-3d-classifier"><span class="k">Vision</span><b>pointnet-3d-classifier</b><span class="s"><span class="t-tech">Classification de formes 3D</span><span class="t-plain">Reconnaît des pièces 3D à partir de leur seule forme</span></span></a></li>
-          <li><a class="f-tile glass" id="tile-sdwpf" href="#sdwpf"><span class="k">Prévision</span><b>sdwpf</b><span class="s"><span class="t-tech">Prévision de production éolienne</span><span class="t-plain">Prévoit la production électrique d’éoliennes</span></span></a></li>
-          <li><a class="f-tile glass" id="tile-airport" href="#airport-forecasting"><span class="k">Prévision</span><b>airport-forecasting</b><span class="s"><span class="t-tech">Prévision du trafic passagers</span><span class="t-plain">Prévoit le nombre mensuel de passagers dans 6 aéroports</span></span></a></li>
-          <li><a class="f-tile glass" id="tile-detector" href="#live-object-detector"><span class="k">Vision</span><b>live-object-detector</b><span class="s"><span class="t-tech">Détection en temps réel dans le navigateur</span><span class="t-plain">Repère des objets sur une webcam, en direct dans le navigateur</span></span></a></li>
-          <li><a class="f-tile glass" id="tile-opspilot" href="#opspilot"><span class="k">Automatisation</span><b>opspilot</b><span class="s"><span class="t-tech">Automatisation n8n avec validation humaine</span><span class="t-plain">Automatise des tâches de bureau, avec une personne qui valide chaque étape</span></span></a></li>
-        </ul>
+      <div class="mp" id="also">
+        <header class="mp-head">
+          <p class="eyebrow">Autres projets</p>
+          <p class="mp-note">Cinq autres, chacun avec sa page.</p>
+        </header>
+        <div class="mp-grid">
+          <a class="mp-card" id="tile-pointnet" href="#pointnet-3d-classifier">
+            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="xMidYMid meet"><g class="c"><circle cx="62" cy="34" r="2.1"/><circle cx="74" cy="31" r="2.1"/><circle cx="86" cy="29" r="2.1"/><circle cx="98" cy="28" r="2.1"/><circle cx="110" cy="28" r="2.1"/><circle cx="122" cy="28" r="2.1"/><circle cx="134" cy="29" r="2.1"/><circle cx="146" cy="31" r="2.1"/><circle cx="158" cy="34" r="2.1"/><circle cx="62" cy="47" r="2.1"/><circle cx="62" cy="60" r="2.1"/><circle cx="62" cy="73" r="2.1"/><circle cx="62" cy="86" r="2.1"/><circle cx="158" cy="47" r="2.1"/><circle cx="158" cy="60" r="2.1"/><circle cx="158" cy="73" r="2.1"/><circle cx="158" cy="86" r="2.1"/><circle cx="72" cy="96" r="2.1"/><circle cx="85" cy="98" r="2.1"/><circle cx="98" cy="99" r="2.1"/><circle cx="110" cy="100" r="2.1"/><circle cx="122" cy="99" r="2.1"/><circle cx="135" cy="98" r="2.1"/><circle cx="148" cy="96" r="2.1"/></g><g class="c" opacity=".55"><circle cx="110" cy="54" r="2"/><circle cx="110" cy="72" r="2"/><circle cx="101" cy="63" r="2"/><circle cx="119" cy="63" r="2"/></g><circle class="w d" cx="110" cy="63" r="15"/></svg></span>
+            <span class="mp-k"><span class="t-tech">Vision 3D · PointNet</span><span class="t-plain">Vision par ordinateur</span></span>
+            <b class="mp-name">pointnet-3d-classifier</b>
+            <span class="mp-q">Un modèle peut-il reconnaître une pièce à sa seule forme ?</span>
+            <span class="mp-line"><span class="t-tech">PointNet sur des maillages CAO 3D, testé face au bruit, à l’occlusion et aux rotations ; export ONNX, service FastAPI.</span><span class="t-plain">Il reconnaît des pièces 3D à leur forme, et vérifie si ça tient.</span></span>
+            <span class="mp-foot"><span class="mp-tags">PyTorch · ONNX · FastAPI</span><span class="mp-cta">Découvrir →</span></span>
+          </a>
+          <a class="mp-card" id="tile-sdwpf" href="#sdwpf">
+            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="none"><path class="g" d="M10 104 H210"/><path class="g" d="M140 14 V112"/><path class="l" d="M10 92 C 30 60, 46 72, 62 52 S 94 84, 116 58 S 132 40, 140 46"/><path class="w d" d="M140 46 C 158 34, 174 36, 186 48 S 204 70, 210 64"/></svg></span>
+            <span class="mp-k"><span class="t-tech">Prévision · séries temporelles</span><span class="t-plain">Prévision</span></span>
+            <b class="mp-name">sdwpf</b>
+            <span class="mp-q">Combien d’électricité le parc éolien va-t-il produire ?</span>
+            <span class="mp-line"><span class="t-tech">XGBoost face aux baselines naïve et de persistance, multi-horizon, validé en walk-forward.</span><span class="t-plain">Il prévoit la production éolienne à l’avance, et vérifie qu’il bat des règles simples.</span></span>
+            <span class="mp-foot"><span class="mp-tags">XGBoost · pandas</span><span class="mp-cta">Découvrir →</span></span>
+          </a>
+          <a class="mp-card" id="tile-airport" href="#airport-forecasting">
+            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="none"><path class="g" d="M10 108 H210"/><path class="wf" d="M142 60 L164 48 L186 56 L210 42 L210 76 L186 90 L164 84 L142 78 Z"/><path class="l" d="M10 94 L26 82 L42 86 L58 72 L74 80 L90 66 L106 74 L122 60 L142 69"/><path class="w d" d="M142 69 L164 66 L186 73 L210 59"/></svg></span>
+            <span class="mp-k"><span class="t-tech">Prévision · séries temporelles</span><span class="t-plain">Prévision</span></span>
+            <b class="mp-name">airport-forecasting</b>
+            <span class="mp-q">Peut-on prévoir les passagers du mois prochain ?</span>
+            <span class="mp-line"><span class="t-tech">6 aéroports, données Eurostat : LightGBM face à SARIMA, évaluation récursive, dérive suivie par PSI.</span><span class="t-plain">Prévisions mensuelles de passagers pour 6 aéroports européens.</span></span>
+            <span class="mp-foot"><span class="mp-tags">LightGBM · SARIMA</span><span class="mp-cta">Découvrir →</span></span>
+          </a>
+          <a class="mp-card" id="tile-detector" href="#live-object-detector">
+            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="xMidYMid meet"><rect class="w" x="36" y="30" width="56" height="78" rx="4"/><rect class="wfill" x="36" y="20" width="38" height="10"/><rect class="ok" x="122" y="60" width="58" height="42" rx="4"/><rect class="okf" x="122" y="50" width="30" height="10"/><circle cx="200" cy="16" r="4" fill="#ff5a4e"/></svg></span>
+            <span class="mp-k"><span class="t-tech">Vision en temps réel</span><span class="t-plain">Vision par ordinateur</span></span>
+            <b class="mp-name">live-object-detector</b>
+            <span class="mp-q">De la détection d’objets en direct, sans envoyer une seule image.</span>
+            <span class="mp-line"><span class="t-tech">Tourne entièrement dans le navigateur, sur la webcam, avec ONNX Runtime Web.</span><span class="t-plain">Il reconnaît des objets sur une webcam, en direct, dans votre navigateur.</span></span>
+            <span class="mp-foot"><span class="mp-tags">ONNX Runtime Web · JS</span><span class="mp-cta">Découvrir →</span></span>
+          </a>
+          <a class="mp-card" id="tile-opspilot" href="#opspilot">
+            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="xMidYMid meet"><rect class="l" x="10" y="51" width="40" height="26" rx="6"/><rect class="l" x="64" y="51" width="40" height="26" rx="6"/><circle class="w" cx="136" cy="64" r="15"/><path class="w" d="M129 64 L134 69 L143 59"/><rect class="l" x="168" y="51" width="40" height="26" rx="6"/><path class="g" d="M50 64 H64 M104 64 H121 M151 64 H168"/></svg></span>
+            <span class="mp-k"><span class="t-tech">Automatisation · n8n</span><span class="t-plain">Automatisation de bureau</span></span>
+            <b class="mp-name">opspilot</b>
+            <span class="mp-q">Une automatisation qui attend le feu vert d’un humain.</span>
+            <span class="mp-line"><span class="t-tech">Workflow n8n en local avec une étape LLM, une validation humaine et Notion ; le ROI est une simulation clairement signalée.</span><span class="t-plain">Il automatise les tâches courantes, mais une personne valide chaque action avant.</span></span>
+            <span class="mp-foot"><span class="mp-tags">n8n · LLM · Notion</span><span class="mp-cta">Découvrir →</span></span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="next" aria-labelledby="nx-h">
-    <div class="wrap">
-      <header class="sec-head">
-        <div>
-          <p class="eyebrow">Sur l’établi</p>
-          <h2 class="h2" id="nx-h">Prochaine étape : confronter les chatbots aux <em class="acc">données publiques.</em></h2>
-        </div>
-        <p class="sec-note"><span class="t-tech">Trois évaluations en cours, chacune fondée sur un jeu de données public français qui donne la bonne réponse.</span><span class="t-plain">Trois études en cours : je vérifie si les chatbots donnent des réponses justes, avec des données publiques officielles comme corrigé.</span></p>
-      </header>
-      <div class="nx-grid">
-        <article class="nx-card" id="nx-votes">
-          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>En cours</span><span><span class="t-tech">Éval. LLM · Parlement</span><span class="t-plain">Test de chatbots · Parlement</span></span></div>
-          <h3>votes-audit</h3>
-          <p class="nx-q">« Comment mon député a-t-il voté ? » Un chatbot donne-t-il le vrai vote, ou en invente-t-il un quand le député était absent ou s’est écarté de son groupe ?</p>
-          <dl class="nx-spec">
-            <div><dt><span class="t-tech">Vérité terrain</span><span class="t-plain">Corrigé</span></dt><dd><span class="t-tech">Scrutins publics, open data de l’Assemblée nationale</span><span class="t-plain">Le relevé officiel du vote de chaque député</span></dd></div>
-            <div><dt>Où j’en suis</dt><dd><span class="t-tech">266 questions sur 74 scrutins · baselines notées, aucun chatbot testé pour l’instant</span><span class="t-plain">266 questions sur 74 scrutins prêtes ; aucun chatbot testé pour l’instant</span></dd></div>
-          </dl>
-          <p class="nx-chain t-tech">fetch → ingest → truth → sample → run → grade → report</p>
-        </article>
-        <article class="nx-card" id="nx-ephy">
-          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>En cours</span><span><span class="t-tech">Éval. LLM · Agriculture</span><span class="t-plain">Test de chatbots · Agriculture</span></span></div>
-          <h3>ephy-audit</h3>
-          <p class="nx-q">« Ce pesticide est-il autorisé en France ? » Les chatbots présentent-ils des produits retirés comme autorisés, ou confondent-ils droit européen et droit français ?</p>
-          <dl class="nx-spec">
-            <div><dt><span class="t-tech">Vérité terrain</span><span class="t-plain">Corrigé</span></dt><dd><span class="t-tech">Catalogue E-Phy (Anses), instantané hebdomadaire figé par son sha256</span><span class="t-plain">Le registre officiel des produits autorisés en France (Anses), sauvegardé chaque semaine</span></dd></div>
-            <div><dt>Où j’en suis</dt><dd><span class="t-tech">116 questions · notation par règles, sans LLM juge · baselines seulement</span><span class="t-plain">116 questions prêtes, notées automatiquement, sans demander à une autre IA de corriger</span></dd></div>
-          </dl>
-          <p class="nx-chain t-tech">fetch → ingest → checks → sample → run → grade → report</p>
-        </article>
-        <article class="nx-card" id="nx-policy">
-          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>En cours</span><span><span class="t-tech">Éval. LLM · Impôts et prestations</span><span class="t-plain">Test de chatbots · Impôts et prestations</span></span></div>
-          <h3>policybench-fr</h3>
-          <p class="nx-q">Un chatbot sait-il calculer les aides au logement, la prime d’activité, le RSA ou l’impôt sur le revenu d’un foyer donné ?</p>
-          <dl class="nx-spec">
-            <div><dt><span class="t-tech">Vérité terrain</span><span class="t-plain">Corrigé</span></dt><dd><span class="t-tech">OpenFisca-France, figé en version 176.1.0</span><span class="t-plain">OpenFisca, le modèle open source des règles fiscales et sociales françaises</span></dd></div>
-            <div><dt>Où j’en suis</dt><dd><span class="t-tech">45 foyers de référence, en cours de vérification avec les simulateurs officiels de la CAF</span><span class="t-plain">45 foyers types, en cours de vérification avec le simulateur officiel de la CAF</span></dd></div>
-          </dl>
-          <p class="nx-chain t-tech">reference → freshness audit → simulator check → scoring</p>
-        </article>
-      </div>
-      <div class="nx-foot">
-        <p class="sec-note">Même règle pour les trois : mesurer, pas militer. Tous les résultats sont publiés, y compris « aucune différence ».</p>
-        <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi ces trois-là]</span></p>
-      </div>
-    </div>
-  </section>
 
   <section class="sec" id="experience" aria-labelledby="exp-h">
     <div class="wrap exp-grid">
       <header class="exp-head">
-        <p class="eyebrow">Mon parcours</p>
-        <h2 class="h2" id="exp-h">Des plans de CAO aux <em class="acc">pipelines de production.</em></h2>
+        <p class="eyebrow">02 — Parcours</p>
+        <h2 class="h2" id="exp-h">Comment j’en suis <em class="acc">arrivé là.</em></h2>
+        <p class="exp-lead">Des plans de CAO aux pipelines de production : le génie mécanique d’abord, puis la data, puis l’IA qui tourne en production.</p>
       </header>
       <div class="tl" id="tl">
         <div class="tl-track" aria-hidden="true"><i></i></div>
@@ -1106,23 +1168,23 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <li class="tl-item is-now" id="tl-now">
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">Aujourd’hui</p>
-            <h3>Ouvert à un CDI</h3>
-            <p class="tl-where"><span class="t-tech">ML Engineer · MLOps · Data Engineer · Paris</span><span class="t-plain">Postes en IA et data · Paris</span></p>
+            <h3>Trois évaluations de chatbots</h3>
+            <p class="tl-where">Recherche personnelle, en cours · <a href="#next">voir la suite ↓</a></p>
           </li>
           <li class="tl-item" id="tl-akabi">
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">avr. – oct. 2025</p>
-            <h3>Stagiaire Data Engineer · Akabi</h3>
-            <p class="tl-where">Paris · conseil, en mission chez Accor</p>
-            <p class="tl-what"><span class="t-tech">Pipelines de données en production sur Snowflake, avec contrôles qualité et alertes à chaque exécution, et environnements dev, staging et prod en Terraform, déployés via GitLab CI/CD.</span><span class="t-plain">J’ai construit les pipelines qui récupèrent et vérifient chaque jour les données d’Accor, et automatisé leur mise en place et leurs mises en production.</span></p>
-            <ul class="chips" aria-label="Outils"><li>Snowflake</li><li>dbt</li><li>Terraform</li><li>GitLab CI/CD</li></ul>
+            <h3>La plateforme data d’Accor</h3>
+            <p class="tl-where">Stagiaire Data Engineer · Akabi (conseil), en mission chez Accor · Paris</p>
+            <p class="tl-what"><span class="t-tech">Pipelines de données en production sur Snowflake, avec contrôles qualité et alertes à chaque exécution, construits avec un outil interne d’ETL et d’orchestration ; environnements dev, staging et prod en Terraform, déployés via GitLab CI/CD.</span><span class="t-plain">J’ai travaillé sur les pipelines qui récupèrent et vérifient chaque jour les données d’Accor, et sur l’automatisation de leur mise en place et de leurs mises en production.</span></p>
+            <ul class="chips" aria-label="Outils"><li>Snowflake</li><li>Outil interne d’ETL et d’orchestration</li><li>Terraform</li><li>GitLab CI/CD</li></ul>
           </li>
           <li class="tl-item" id="tl-sap">
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">nov. 2023 – mars 2024</p>
             <h3>Stagiaire Data Analytics &amp; Data Science · SAP</h3>
             <p class="tl-where">Barcelone · équipe internationale, tout en anglais</p>
-            <p class="tl-what"><span class="t-tech">Automatisation de bout en bout du reporting commercial hebdomadaire, et segmentation des comptes clients par K-means sur leurs profils d’achat, avec des données préparées dans SAP Data Hub.</span><span class="t-plain">J’ai automatisé les rapports de ventes hebdomadaires et regroupé les comptes clients selon leur façon d’acheter.</span></p>
+            <p class="tl-what"><span class="t-tech">Participation à l’automatisation du reporting commercial hebdomadaire, et segmentation des comptes clients par K-means sur leurs profils d’achat, avec des données préparées dans SAP Data Hub.</span><span class="t-plain">J’ai participé à l’automatisation des rapports de ventes hebdomadaires, et regroupé les comptes clients selon leur façon d’acheter.</span></p>
             <ul class="chips" aria-label="Outils"><li>SQL</li><li>Python</li><li>K-means</li><li>SAP Data Hub</li></ul>
           </li>
           <li class="tl-item" id="tl-efrei">
@@ -1137,8 +1199,99 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <h3><span class="t-tech">DUT GMP · IUT Paris 13</span><span class="t-plain">Diplôme de génie mécanique · IUT Paris 13</span></h3>
             <p class="tl-where">Génie mécanique et productique</p>
           </li>
+          <li class="tl-item" id="tl-bac">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-when">2018</p>
+            <h3>Bac S · spécialité maths</h3>
+            <p class="tl-where">Baccalauréat scientifique</p>
+          </li>
         </ol>
       </div>
+    </div>
+  </section>
+
+  <section class="sec" id="next" aria-labelledby="nx-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">03 — À venir</p>
+          <h2 class="h2" id="nx-h">Ce que je construis <em class="acc">ensuite.</em></h2>
+        </div>
+        <p class="sec-note"><span class="t-tech">Trois évaluations en cours. Chacune confronte les chatbots à un jeu de données officiel français qui contient la bonne réponse.</span><span class="t-plain">Trois études en cours : je vérifie si les chatbots donnent des réponses justes, avec des données publiques officielles comme corrigé.</span></p>
+      </header>
+      <div class="nx-grid">
+        <article class="nx-card" id="nx-votes">
+          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>En construction</span><span><span class="t-tech">Éval. LLM · Parlement</span><span class="t-plain">Test de chatbots · Parlement</span></span></div>
+          <h3>votes-audit</h3>
+          <p class="nx-q">« Comment mon député a-t-il voté ? » Un chatbot donne-t-il le vrai vote, ou en invente-t-il un quand le député était absent ou s’est écarté de son groupe ?</p>
+          <ol class="nx-steps" aria-label="Avancement">
+            <li class="done"><span class="sr">Fait : </span>Données et corrigé</li>
+            <li class="done"><span class="sr">Fait : </span>266 questions</li>
+            <li><span class="sr">À venir : </span>Tests des chatbots</li>
+            <li><span class="sr">À venir : </span>Rapport public</li>
+          </ol>
+          <dl class="nx-spec">
+            <div><dt><span class="t-tech">Vérité terrain</span><span class="t-plain">Corrigé</span></dt><dd><span class="t-tech">Scrutins publics, open data de l’Assemblée nationale</span><span class="t-plain">Le relevé officiel du vote de chaque député</span></dd></div>
+          </dl>
+          <p class="nx-chain t-tech">fetch → ingest → truth → sample → run → grade → report</p>
+        </article>
+        <article class="nx-card" id="nx-ephy">
+          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>En construction</span><span><span class="t-tech">Éval. LLM · Agriculture</span><span class="t-plain">Test de chatbots · Agriculture</span></span></div>
+          <h3>ephy-audit</h3>
+          <p class="nx-q">« Ce pesticide est-il autorisé en France ? » Les chatbots présentent-ils des produits retirés comme autorisés, ou confondent-ils droit européen et droit français ?</p>
+          <ol class="nx-steps" aria-label="Avancement">
+            <li class="done"><span class="sr">Fait : </span>Données et corrigé</li>
+            <li class="now"><span class="sr">En cours : </span>116 questions, derniers contrôles</li>
+            <li><span class="sr">À venir : </span>Tests des chatbots</li>
+            <li><span class="sr">À venir : </span>Rapport public</li>
+          </ol>
+          <dl class="nx-spec">
+            <div><dt><span class="t-tech">Vérité terrain</span><span class="t-plain">Corrigé</span></dt><dd><span class="t-tech">Catalogue E-Phy (Anses), instantané hebdomadaire figé par son sha256</span><span class="t-plain">Le registre officiel des produits autorisés en France (Anses), sauvegardé chaque semaine</span></dd></div>
+          </dl>
+          <p class="nx-chain t-tech">fetch → ingest → checks → sample → run → grade → report</p>
+        </article>
+        <article class="nx-card" id="nx-policy">
+          <div class="nx-top"><span class="nx-status"><i aria-hidden="true"></i>En construction</span><span><span class="t-tech">Éval. LLM · Impôts et prestations</span><span class="t-plain">Test de chatbots · Impôts et prestations</span></span></div>
+          <h3>policybench-fr</h3>
+          <p class="nx-q">Un chatbot sait-il calculer les aides au logement, la prime d’activité, le RSA ou l’impôt sur le revenu d’un foyer donné ?</p>
+          <ol class="nx-steps" aria-label="Avancement">
+            <li class="done"><span class="sr">Fait : </span>Référence · 45 foyers</li>
+            <li class="now"><span class="sr">En cours : </span>Contrôle avec le simulateur de la CAF</li>
+            <li><span class="sr">À venir : </span>Tests des chatbots</li>
+            <li><span class="sr">À venir : </span>Rapport public</li>
+          </ol>
+          <dl class="nx-spec">
+            <div><dt><span class="t-tech">Vérité terrain</span><span class="t-plain">Corrigé</span></dt><dd><span class="t-tech">OpenFisca-France, figé en version 176.1.0</span><span class="t-plain">OpenFisca, le modèle open source des règles fiscales et sociales françaises</span></dd></div>
+          </dl>
+          <p class="nx-chain t-tech">reference → freshness audit → simulator check → scoring</p>
+        </article>
+      </div>
+      <div class="nx-foot">
+        <div style="display:grid;gap:6px">
+          <p class="sec-note">Même règle pour les trois : mesurer, pas militer. Tous les résultats sont publiés, y compris « aucune différence ».</p>
+          <p class="nx-when is-ph">Premier rapport public : [MOIS 2026]</p>
+        </div>
+        <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi ces trois-là]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="skills" aria-labelledby="sk-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">04 — Outils</p>
+          <h2 class="h2" id="sk-h">Mes outils, et <em class="acc">où je les ai utilisés.</em></h2>
+        </div>
+        <p class="sec-note"><span class="t-tech">Chaque outil listé ici apparaît dans un projet ou un stage. La colonne de droite dit où.</span><span class="t-plain">Les noms d’outils, pour qui vérifie les mots-clés. La colonne de droite dit où je les ai utilisés.</span></p>
+      </header>
+      <dl class="sk">
+        <div class="sk-row"><dt><span class="t-tech">Recherche et LLM</span><span class="t-plain">Assistants IA et recherche</span></dt><dd class="sk-items"><ul><li>BM25</li><li>Embeddings denses</li><li>RRF</li><li>Qdrant</li><li>Reranking cross-encoder</li><li>Ollama</li><li>MCP</li></ul></dd><dd class="sk-used">Syro · insight-mcp</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">MLOps et mise en service</span><span class="t-plain">Faire tourner l’IA</span></dt><dd class="sk-items"><ul><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>Celery</li><li>Prometheus</li><li>Grafana</li><li>ONNX</li></ul></dd><dd class="sk-used">Proths · Syro · insight-mcp · pointnet</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Data engineering</span><span class="t-plain">Pipelines de données</span></dt><dd class="sk-items"><ul><li>Snowflake</li><li>ETL et orchestration</li><li>Terraform</li><li>GitLab CI/CD</li><li>SAP Data Hub</li><li>n8n</li></ul></dd><dd class="sk-used">Accor (Akabi) · SAP · opspilot</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Modélisation</span><span class="t-plain">Machine learning</span></dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>Contrôles de dérive PSI</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · SAP</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Langages</span><span class="t-plain">Programmation</span></dt><dd class="sk-items"><ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></dd><dd class="sk-used">tous les projets · Akabi · SAP · Syro UI · detector</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -1146,26 +1299,23 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="wrap">
       <header class="sec-head">
         <div>
-          <p class="eyebrow">Au-delà des projets</p>
-          <h2 class="h2" id="by-h">Tennis, Total War et <em class="acc">un bon bar.</em></h2>
+          <p class="eyebrow">05 — À côté</p>
+          <h2 class="h2" id="by-h">À côté du <em class="acc">travail.</em></h2>
         </div>
-        <p class="sec-note is-ph">Mis à jour [MOIS 2026]</p>
       </header>
-      <div class="by-grid">
-        <article class="by-card">
-          <h3><span class="dot" aria-hidden="true"></span>En ce moment</h3>
-          <p><span class="t-tech">Je cherche un CDI en ML / MLOps à Paris.</span><span class="t-plain">Je cherche un CDI en IA ou en data à Paris.</span></p>
-          <p class="ph is-ph">[Ce que tu apprends en ce moment]</p>
-          <p class="ph is-ph">[Ce que tu construis ensuite]</p>
-        </article>
+      <div class="by-grid v8">
         <article class="by-card warm" id="by-off">
-          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>Hors écran</h3>
-          <p>Le tennis, et le sport en général.</p>
-          <p>Les jeux 4X et de grande stratégie : Total War, Crusader Kings III.</p>
-          <p>Un bon bar entre amis.</p>
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5.5c3.5 3 3.5 10 0 13M19 5.5c-3.5 3-3.5 10 0 13"/></svg>Tennis</h3>
+          <p class="by-lead">Le tennis d’abord, et le sport en général.</p>
+          <p class="ph is-ph">[Depuis quand tu joues, à quel rythme, ton niveau]</p>
           <p class="hand by-note"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M2 20 C 12 4, 26 2, 36 10"/><path d="M30 5 L37 10 L30 15"/></svg><span>Fan de Roger Federer ? Gros points. Le GOAT.</span></p>
           <p class="by-hint">Psst : tapez son nom dans la recherche en haut.</p>
-          <div class="by-ph is-ph">[UNE PHOTO SPONTANÉE]</div>
+          <div class="by-ph is-ph">[UNE PHOTO DE TENNIS]</div>
+        </article>
+        <article class="by-card">
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M4 18 3 8l5 4 4-7 4 7 5-4-1 10"/></svg>Grande stratégie</h3>
+          <p>Les jeux Paradox comme Crusader Kings III, et Total War.</p>
+          <p class="ph is-ph">[Ta campagne préférée, en une ligne]</p>
         </article>
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Avant la data</h3>
@@ -1177,30 +1327,12 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     </div>
   </section>
 
-  <section class="sec" id="skills" aria-labelledby="sk-h">
-    <div class="wrap">
-      <header class="sec-head">
-        <div>
-          <p class="eyebrow">Mes outils</p>
-          <h2 class="h2" id="sk-h">Seulement ce que j’ai utilisé, <em class="acc">et où.</em></h2>
-        </div>
-        <p class="sec-note"><span class="t-tech">Chaque outil listé ici apparaît dans un projet ou un stage. La colonne de droite dit où.</span><span class="t-plain">Les noms d’outils, pour qui vérifie les mots-clés. La colonne de droite dit où je les ai utilisés.</span></p>
-      </header>
-      <dl class="sk">
-        <div class="sk-row"><dt><span class="t-tech">Recherche et LLM</span><span class="t-plain">Assistants IA et recherche</span></dt><dd class="sk-items"><ul><li>BM25</li><li>Embeddings denses</li><li>RRF</li><li>Qdrant</li><li>Reranking cross-encoder</li><li>Ollama</li><li>MCP</li></ul></dd><dd class="sk-used">Syro · insight-mcp</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">MLOps et mise en service</span><span class="t-plain">Faire tourner l’IA</span></dt><dd class="sk-items"><ul><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>Celery</li><li>Prometheus</li><li>Grafana</li><li>ONNX</li></ul></dd><dd class="sk-used">Proths · Syro · insight-mcp · pointnet</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Data engineering</span><span class="t-plain">Pipelines de données</span></dt><dd class="sk-items"><ul><li>Snowflake</li><li>dbt</li><li>Terraform</li><li>GitLab CI/CD</li><li>SAP Data Hub</li><li>n8n</li></ul></dd><dd class="sk-used">Akabi · SAP · opspilot</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Modélisation</span><span class="t-plain">Machine learning</span></dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>Contrôles de dérive PSI</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · SAP</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Langages</span><span class="t-plain">Programmation</span></dt><dd class="sk-items"><ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></dd><dd class="sk-used">tous les projets · Akabi · SAP · Syro UI · detector</dd></div>
-      </dl>
-    </div>
-  </section>
 
   <section class="contact" id="contact" aria-labelledby="ct-h">
     <div class="contact-card">
-      <p class="eyebrow">Parlons-en</p>
-      <h2 class="contact-title" id="ct-h">Un projet qui doit <em class="acc">tenir dans la durée ?</em></h2>
-      <p class="contact-sub"><span class="t-tech">Je suis ouvert à un CDI en ML, MLOps ou data à Paris. L’e-mail est le moyen le plus rapide de me joindre.</span><span class="t-plain">Je cherche un CDI en IA ou en data, à Paris. L’e-mail est le moyen le plus rapide de me joindre.</span></p>
+      <p class="eyebrow">Contact</p>
+      <h2 class="contact-title" id="ct-h">Me <em class="acc">contacter.</em></h2>
+      <p class="contact-sub">Je cherche un CDI en data ou en IA. L’e-mail est le moyen le plus rapide de me joindre.</p>
       <div class="mailrow"><span class="mail" id="mail">sam.pondevie@gmail.com</span><button class="copy" type="button" data-copy="sam.pondevie@gmail.com">Copier</button></div>
       <div class="contact-actions">
         <a class="cta" href="mailto:sam.pondevie@gmail.com"><span class="cta-fill" aria-hidden="true"></span><span>M’écrire</span><span class="cta-arrow" aria-hidden="true"><svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
@@ -1246,7 +1378,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <div class="foot-left">
       <p><b>Sam Pondevie</b> · <span data-role>Ingénieur Data &amp; IA</span> · Paris</p>
       <nav class="foot-links" aria-label="Pied de page">
         <a href="https://github.com/Airohh" target="_blank" rel="noopener">GitHub</a>
@@ -1254,17 +1385,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <a href="#home">Haut de page ↑</a>
       </nav>
       <p class="foot-small">En construction · les valeurs marquées X ne sont pas encore mesurées.</p>
-    </div>
-    <div class="cartouche" role="group" aria-label="Cartouche, comme sur un dessin technique">
-      <div class="ct-proj" title="Projection européenne (méthode E), la norme de dessin en Europe"><svg viewBox="0 0 64 30" aria-hidden="true"><path d="M2 8 L24 2 L24 28 L2 22 Z"/><circle cx="46" cy="15" r="13"/><circle cx="46" cy="15" r="7"/><path class="ax" d="M0 15 H64 M46 0 V30"/></svg><span class="ct-k">ISO E</span></div>
-      <div class="ct-title"><span class="ct-k">Titre</span><span class="ct-v">sampdv.com · Portfolio de Sam Pondevie</span></div>
-      <div><span class="ct-k">Dessiné par</span><span class="ct-v">Sam Pondevie</span></div>
-      <div><span class="ct-k">Date</span><span class="ct-v">2026-10-02</span></div>
-      <div><span class="ct-k">Ind.</span><span class="ct-v warm">C</span></div>
-      <div><span class="ct-k">État</span><span class="ct-v ok">Ouvert à un CDI</span></div>
-      <div><span class="ct-k">Réalisé avec</span><span class="ct-v">Astro · Cloudflare</span></div>
-      <div><span class="ct-k">Échelle</span><span class="ct-v">1:1</span></div>
-    </div>
   </div>
 </footer>
 
@@ -1446,13 +1566,14 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     'live-object-detector': 'opspilot', 'opspilot': 'pointnet-3d-classifier'
   };
   const EXTRA = [
-    { title: 'Akabi', kind: 'Expérience · avr.–oct. 2025', text: 'Stagiaire Data Engineer à Paris, en mission chez Accor. Snowflake, dbt, Terraform, GitLab CI/CD.', target: 'tl-akabi' },
-    { title: 'SAP', kind: 'Expérience · nov. 2023–mars 2024', text: 'Stagiaire Data Analytics & Data Science à Barcelone. Reporting commercial hebdomadaire automatisé, segmentation clients K-means, SAP Data Hub, SQL, Python.', target: 'tl-sap' },
-    { title: 'votes-audit', kind: 'En cours · évaluation de LLM', text: 'Les chatbots rapportent-ils le vrai vote des députés, ou en inventent-ils un ? Scrutins publics de l’Assemblée nationale.', target: 'nx-votes' },
-    { title: 'ephy-audit', kind: 'En cours · évaluation de LLM', text: 'Les chatbots savent-ils quels pesticides sont autorisés en France ? Catalogue E-Phy (Anses), notation par règles.', target: 'nx-ephy' },
-    { title: 'policybench-fr', kind: 'En cours · évaluation de LLM', text: 'Les chatbots savent-ils calculer les aides au logement, le RSA et l’impôt ? Benchmark face à OpenFisca.', target: 'nx-policy' },
+    { title: 'Akabi · Accor', kind: 'Expérience · avr.–oct. 2025', text: 'Stagiaire Data Engineer en mission sur la plateforme data d’Accor. Snowflake, Terraform, GitLab CI/CD, un outil interne d’ETL et d’orchestration.', target: 'tl-akabi' },
+    { title: 'SAP', kind: 'Expérience · nov. 2023–mars 2024', text: 'Stagiaire Data Analytics & Data Science à Barcelone. Participation à l’automatisation du reporting commercial hebdomadaire ; segmentation clients K-means ; SAP Data Hub, SQL, Python.', target: 'tl-sap' },
+    { title: 'votes-audit', kind: 'À venir · évaluation de LLM', text: 'Les chatbots rapportent-ils le vrai vote des députés, ou en inventent-ils un ? Scrutins publics de l’Assemblée nationale.', target: 'nx-votes' },
+    { title: 'ephy-audit', kind: 'À venir · évaluation de LLM', text: 'Les chatbots savent-ils quels pesticides sont autorisés en France ? Catalogue E-Phy (Anses), notation par règles.', target: 'nx-ephy' },
+    { title: 'policybench-fr', kind: 'À venir · évaluation de LLM', text: 'Les chatbots savent-ils calculer les aides au logement, le RSA et l’impôt ? Benchmark face à OpenFisca.', target: 'nx-policy' },
     { title: 'EFREI Paris', kind: 'Formation · 2020–2025', text: 'École d’ingénieurs, Paris. Majeure data.', target: 'tl-efrei' },
-    { title: 'IUT Paris 13', kind: 'Formation · 2018–2020', text: 'DUT GMP, génie mécanique et productique.', target: 'tl-iut' }
+    { title: 'IUT Paris 13', kind: 'Formation · 2018–2020', text: 'DUT GMP, génie mécanique et productique.', target: 'tl-iut' },
+    { title: 'Bac S', kind: 'Formation · 2018', text: 'Baccalauréat scientifique, spécialité maths.', target: 'tl-bac' }
   ];
   const DOCS = Object.keys(PROJECTS).map((slug) => {
     const p = PROJECTS[slug];
@@ -1688,8 +1809,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     { re: /\b(federer|roger|goat|wimbledon)\b/, title: 'Roger Federer. Le GOAT.', text: '20 titres du Grand Chelem, 8 Wimbledon et ce revers à une main. Vous venez de marquer de gros points.', ball: true },
     { re: /\b(nadal|rafa|djokovic|novak|alcaraz|sinner)\b/, title: 'Respect. Mais le GOAT est suisse.', text: 'Un seul nom rapporte gros ici. Essayez.', ball: true },
     { re: /\b(tennis|atp|backhand|forehand|revers|coup droit)\b/, title: 'Le tennis, toujours.', text: 'Alors, qui est le GOAT ? Un seul nom rapporte gros.', ball: true },
-    { re: /\b(total ?war|ck ?3|crusader|paradox|4x|civ|civilization|civilisation|grand strategy|grande strategie|europa universalis)\b/, title: 'Encore un tour.', text: 'Fan de Total War et de Crusader Kings III. Partant pour comparer nos campagnes.' },
-    { re: /\b(bar|bars|beer|beers|pint|pints|apero|drinks?|biere|bieres|pinte|pintes|verre|verres)\b/, title: 'Un bon bar entre amis.', text: 'Les bonnes adresses à Paris sont les bienvenues. C’est aussi un bon endroit pour parler boulot.' }
+    { re: /\b(paradox|ck ?3|crusader|europa universalis|eu ?4|hearts of iron|hoi ?4|stellaris|victoria|grand strategy|grande strategie|total ?war|4x)\b/, title: 'Encore un tour.', text: 'Les jeux Paradox comme Crusader Kings III, et Total War. Partant pour comparer nos campagnes.' }
   ];
   function easterEgg(q, onPick) {
     const s = q.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -2285,6 +2405,16 @@ void main(){
       root.classList.add('vt-theme');
       document.startViewTransition(() => apply(v)).finished.finally(() => root.classList.remove('vt-theme'));
     });
+  })();
+
+  /* ---------- View menu: language, detail level and theme in one place ---------- */
+  (function viewMenu() {
+    const tog = $('.view-tog'), panel = $('#view-panel');
+    if (!tog || !panel) return;
+    const set = (open) => { tog.setAttribute('aria-expanded', String(open)); panel.hidden = !open; };
+    tog.addEventListener('click', (e) => { e.stopPropagation(); set(panel.hidden); });
+    document.addEventListener('click', (e) => { if (!panel.hidden && !panel.contains(e.target)) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { set(false); tog.focus(); } });
   })();
 
   /* ---------- Language switch: keep the mode and the place you are at ---------- */
