@@ -18,7 +18,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
 <script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';document.documentElement.dataset.accent='underline';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/[?&]clean\b/.test(location.search))document.documentElement.classList.add('hide-ph');var pm=/[?&]plain\b/.test(location.search);try{pm=pm||localStorage.getItem('sampdv.mode')==='plain';}catch(e){}if(pm)document.documentElement.dataset.mode='plain';</script>
 <style>
 /* Layout: one dark world. Full-bleed WebGL hero, a cool light About panel that overlaps it,
@@ -842,6 +842,26 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 
 
+
+/* ---------- v10 ---------- */
+/* the name is the title; role and promise sit under it */
+.a-title.a-name{margin-bottom:14px}
+.a-tagline{margin:0 auto 32px;max-width:30ch;font-family:var(--f-serif);font-weight:var(--d-weight,500);font-size:calc(clamp(1.3rem,2.5vw,2.05rem) * var(--d-size));line-height:1.2;letter-spacing:-.01em;text-wrap:balance;color:var(--fg)}
+.a-tagline .acc{transition-delay:1.3s}
+.avatar img{display:block;width:100%;height:100%;object-fit:cover}
+.about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+/* a signature-style name instead of a real signature */
+.sig-hand{font-family:'Mrs Saint Delafield','Segoe Script','Brush Script MT',cursive;font-weight:400;font-size:clamp(2.6rem,4vw,3.4rem);line-height:1;color:var(--ink);transform:rotate(-4deg);transform-origin:left center;margin:2px 0 -4px}
+/* slots kept for later, shown as coming soon */
+.soon,.by-card .soon{margin:0;font:500 11px/1.45 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+
+/* ---------- v11 ---------- */
+/* the status pill has no photo now */
+.a-hello{padding:8px 16px}
+/* the About photo is a square of 400 px at most, so the 800 px source stays sharp on dense screens */
+.about-photo{min-height:0;width:100%;max-width:400px;aspect-ratio:1/1;align-self:center;justify-self:center;border-radius:28px}
+
 /* unfilled placeholders: shown everywhere, hidden with ?clean */
 .hide-ph :is(.is-ph,.todo){display:none!important}
 .hide-ph .pj-head{grid-template-columns:minmax(0,1fr)}
@@ -963,11 +983,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="hero-bg" aria-hidden="true"><canvas class="a-canvas"></canvas><div class="a-shade"></div></div>
     <div class="hero-inner">
       <div class="hero-center">
-        <p class="a-status a-hello glass rise" style="--d:150ms"><span class="avatar" aria-hidden="true"><i></i><b></b></span><span>Hi, I'm <strong>Sam</strong>.<span class="hide-sm"> Looking for a full-time data &amp; AI role.</span></span><span class="dot" aria-hidden="true"></span></p>
-        <h1 class="a-title">
-          <span class="a-l"><span class="w" style="--i:0">Turning</span> <span class="w" style="--i:1">data</span> <span class="w" style="--i:2">into</span></span>
-          <span class="a-l"><em class="w acc" style="--i:3">reliable</em> <span class="w" style="--i:4">AI</span> <span class="w" style="--i:5">systems.</span></span>
+        <p class="a-status a-hello glass rise" style="--d:150ms"><span>Looking for a full-time data &amp; AI role</span><span class="dot" aria-hidden="true"></span></p>
+        <h1 class="a-title a-name">
+          <span class="a-l"><span class="w" style="--i:0">Sam</span> <span class="w" style="--i:1">Pondevie</span></span>
         </h1>
+        <p class="a-tagline rise" style="--d:650ms">Data &amp; AI Engineer. Turning data into <em class="acc">reliable</em> AI systems.</p>
         <div class="a-searchwrap rise" style="--d:750ms">
           <form class="a-search glass" role="search" autocomplete="off">
             <label class="sr" for="q">Search my projects and experience</label>
@@ -1032,14 +1052,12 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </ol>
       <div class="about-sign">
         <p>If that's the kind of work your team does, I'd like to hear about it.</p>
-        <span class="sig is-ph">[YOUR SIGNATURE]</span>
+        <span class="sig-hand" aria-hidden="true">Sam Pondevie</span>
         <span class="sig-name">Sam Pondevie · Paris</span>
       </div>
-      <div class="about-foot"><span class="draft">Draft copy</span></div>
     </div>
-    <figure class="about-photo" aria-label="Photo placeholder">
-      <span class="ph-head" aria-hidden="true"></span><span class="ph-body" aria-hidden="true"></span>
-      <span class="ph-tag is-ph">[YOUR PHOTO · warm light, half body]</span>
+    <figure class="about-photo">
+      <img src="img/sam.jpg" alt="Sam Pondevie, smiling, outdoors" width="800" height="800" loading="lazy" decoding="async">
       <figcaption><b>Sam Pondevie</b><span>Data &amp; AI Engineer · Paris</span></figcaption>
     </figure>
     </div>
@@ -1079,7 +1097,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="pc-q">An assistant that shows where its answer came from.</p>
           <p class="pc-line"><span class="t-tech">Hybrid search, a reranker, and answers that cite [Source N], or say they can’t find it.</span><span class="t-plain">It answers from your own documents, with the source behind each answer, or says it doesn’t know.</span></p>
           <div class="pc-diagram" data-mini="syro"></div>
-          <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why you built Syro]</span></p>
+          <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Because an answer without a source is just a guess.</span></p>
           <div class="pc-foot"><p class="pc-stack">Qdrant · BM25 · bge-reranker · Ollama</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-mcp" href="#insight-mcp">
@@ -1088,7 +1106,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="pc-q">Search that AI agents can call on their own.</p>
           <p class="pc-line"><span class="t-tech">Document search exposed as MCP tools; the agent’s own model writes the answer.</span><span class="t-plain">A search engine for AI assistants, so they can look things up in your documents.</span></p>
           <div class="pc-diagram" data-mini="insight-mcp"></div>
-          <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why you built insight-mcp]</span></p>
+          <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>I wanted agents to look things up, not make things up.</span></p>
           <div class="pc-foot"><p class="pc-stack">FastMCP · BM25 · fastembed · RRF</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-proths" href="#proths">
@@ -1097,7 +1115,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="pc-q">What happens when the data changes?</p>
           <p class="pc-line"><span class="t-tech">It retrains when traffic drifts, and only ships a model that beats the current one.</span><span class="t-plain">It notices when real-world data changes, relearns, and only replaces itself when the new version is better.</span></p>
           <div class="pc-diagram" data-mini="proths"></div>
-          <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why you built Proths]</span></p>
+          <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Retraining is easy. Knowing it got better is the hard part.</span></p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Case study <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
       </div>
@@ -1190,7 +1208,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">2020 – 2025</p>
             <h3>Engineering school · EFREI Paris</h3>
-            <p class="tl-where"><span class="t-tech">Data major, BI &amp; Analytics minor · semesters abroad in Cape Town and Barcelona</span><span class="t-plain">Engineering degree, data specialism · semesters abroad in Cape Town and Barcelona</span></p>
+            <p class="tl-where"><span class="t-tech">Data major, BI &amp; Analytics minor · diploma awarded in 2026 · semesters abroad in Cape Town and Barcelona</span><span class="t-plain">Engineering degree, data specialism, awarded in 2026 · semesters abroad in Cape Town and Barcelona</span></p>
           </li>
           <li class="tl-item" id="tl-iut">
             <span class="tl-dot" aria-hidden="true"></span>
@@ -1268,9 +1286,9 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="nx-foot">
         <div style="display:grid;gap:6px">
           <p class="sec-note">Same rule for all three: measure, don’t campaign. Every result gets published, including “no difference”.</p>
-          <p class="nx-when is-ph">First public report: [MONTH 2026]</p>
+          <p class="nx-when">First public report: coming soon</p>
         </div>
-        <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[In your words: why these three]</span></p>
+        <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Same question every time: does the chatbot know, or does it guess?</span></p>
       </div>
     </div>
   </section>
@@ -1304,23 +1322,22 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </header>
       <div class="by-grid v8">
         <article class="by-card warm" id="by-off">
-          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5.5c3.5 3 3.5 10 0 13M19 5.5c-3.5 3-3.5 10 0 13"/></svg>Tennis</h3>
-          <p class="by-lead">Tennis first, and sport in general.</p>
-          <p class="ph is-ph">[Since when you play, how often, your level]</p>
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5.5c3.5 3 3.5 10 0 13M19 5.5c-3.5 3-3.5 10 0 13"/></svg>Sport</h3>
+          <p class="by-lead">Tennis first.</p>
+          <p>Also skiing, volleyball, swimming and sailing.</p>
           <p class="hand by-note"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M2 20 C 12 4, 26 2, 36 10"/><path d="M30 5 L37 10 L30 15"/></svg><span>Roger Federer fan? Big points. The GOAT.</span></p>
           <p class="by-hint">Psst: try his name in the search at the top.</p>
-          <div class="by-ph is-ph">[ONE TENNIS PHOTO]</div>
         </article>
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M4 18 3 8l5 4 4-7 4 7 5-4-1 10"/></svg>Grand strategy</h3>
           <p>Paradox games like Crusader Kings III, and Total War.</p>
-          <p class="ph is-ph">[Your favourite campaign, in one line]</p>
+          <p class="soon">Favourite campaign · coming soon</p>
         </article>
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Before data</h3>
           <p><span class="t-tech">DUT GMP at IUT Paris 13, 2018–2020: mechanical design and production engineering.</span><span class="t-plain">Two-year mechanical engineering diploma at IUT Paris 13, 2018–2020: designing parts and planning how they are made.</span></p>
-          <p class="ph is-ph">[What that background still changes in how you work]</p>
-          <div class="by-ph is-ph">[A CAD PART OR SKETCH YOU MADE]</div>
+          <p class="soon">What it still changes in how I work · coming soon</p>
+          <div class="by-ph">CAD part or sketch · coming soon</div>
         </article>
       </div>
     </div>
@@ -1359,11 +1376,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           </div>
         </div>
       </header>
-      <figure class="demo is-ph" aria-label="Demo video placeholder">
+      <figure class="demo" aria-label="Demo video, coming soon">
         <div class="demo-in">
           <span class="demo-play glass" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
-          <b>Demo video · to add</b>
-          <span>30–60 s screen capture, 720p, under 25 MB. Shown only once it can play.</span>
+          <b>Demo video · coming soon</b>
+          <span>A short screen capture of the project in action.</span>
         </div>
       </figure>
     </div>
@@ -1513,7 +1530,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       cue: 'Scroll to follow one tool call from the agent and back',
       problem: 'An agent needs grounded passages from a document corpus, with sources it can cite. insight-mcp gives it search as MCP tools and leaves the writing to the client, so the server needs no model and no API key.',
       results: `<p>On the demo corpus, for “zero trust identity strategy”, both modes rank the Continuous Identity publication first. Hybrid also surfaces the digital wallets &amp; IAM publication, which shares no keyword with the query.</p>`,
-      resultsTodo: 'Latency per tool (p95 from mcp_tool_duration_seconds) and retrieval quality on a labelled question set.'
+      resultsTodo: 'Coming next: latency per tool (p95) and retrieval quality on a labelled question set.'
     },
     'proths': {
       title: 'Proths', kind: 'MLOps', target: 'card-proths', story: true, repo: GH + 'Proths',
@@ -1570,7 +1587,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     { title: 'votes-audit', kind: 'Coming next · LLM evaluation', text: 'Do chatbots report how French MPs really voted, or invent a vote? Roll-call votes from Assemblée nationale open data.', target: 'nx-votes' },
     { title: 'ephy-audit', kind: 'Coming next · LLM evaluation', text: 'Do chatbots know which pesticides are authorised in France? E-Phy catalogue (Anses), rule-based grading.', target: 'nx-ephy' },
     { title: 'policybench-fr', kind: 'Coming next · LLM evaluation', text: 'Can chatbots compute French housing aid, RSA and income tax? Benchmark against OpenFisca.', target: 'nx-policy' },
-    { title: 'EFREI Paris', kind: 'Education · 2020–2025', text: 'Engineering school, Paris.', target: 'tl-efrei' },
+    { title: 'EFREI Paris', kind: 'Education · 2020–2025', text: 'Engineering school, Paris. Data major; diploma awarded in 2026.', target: 'tl-efrei' },
     { title: 'IUT Paris 13', kind: 'Education · 2018–2020', text: 'DUT GMP, mechanical and production engineering.', target: 'tl-iut' },
     { title: 'Bac S', kind: 'Education · 2018', text: 'Scientific baccalaureate, maths specialty.', target: 'tl-bac' }
   ];
@@ -2208,14 +2225,13 @@ void main(){
   const F = (k) => $('[data-f="' + k + '"]', projView);
   function todo(text) {
     const box = el('div', 'todo');
-    box.append(el('span', 'todo-tag', 'To write'), el('p', null, text));
+    box.append(el('span', 'todo-tag', 'Coming soon'), el('p', null, text));
     return box;
   }
   function section(kicker, title, body, draft) {
     const s = el('section', 'pg-sec');
     const head = el('div', 'pg-sh');
     const h = el('h2', null, title);
-    if (draft) { h.append(' '); h.append(el('span', 'draft', 'Draft')); }
     head.append(el('p', 'g-kicker', kicker), h);
     const b = el('div', 'pg-sb');
     [].concat(body).forEach((n) => (typeof n === 'string' ? b.insertAdjacentHTML('beforeend', n) : b.append(n)));
@@ -2256,12 +2272,11 @@ void main(){
     secs.replaceChildren();
     secs.append(P.problem
       ? section('Problem', 'Why it exists', el('p', null, P.problem), true)
-      : section('Problem', 'Why it exists', todo('What was hard or missing before this project, in one or two sentences, written from the repo.')));
+      : section('Problem', 'Why it exists', todo('The story behind this project is on its way. Meanwhile, the code and its README are on GitHub.')));
     if (P.story) {
       const st = el('section', 'pj-story');
       const head = el('div', 'pj-storyhead');
-      const h = el('h2', null, 'How it works ');
-      h.append(el('span', 'draft', 'Draft'));
+      const h = el('h2', null, 'How it works');
       head.append(el('p', 'g-kicker', 'Approach & architecture'), h, el('p', 'g-cue', P.cue));
       st.append(head);
       st.insertAdjacentHTML('beforeend', storyHTML(slug, store.get('sampdv.dg.story') || (document.documentElement.dataset.mode === 'plain' || window.matchMedia('(max-width: 899px)').matches ? 'simple' : 'detailed')));
@@ -2269,11 +2284,11 @@ void main(){
       bindToggle(stage, 'sampdv.dg.story', (v) => { stage.dataset.dg = v; });
       secs.append(st);
     } else {
-      secs.append(section('Approach & architecture', 'How it works', todo('The main steps of the pipeline, three to five, each with the tool it uses.')));
+      secs.append(section('Approach & architecture', 'How it works', todo('A step-by-step view of how it works is on its way.')));
     }
     const results = [];
     if (P.results) results.push(P.results);
-    if (P.resultsTodo || !P.results) results.push(todo(P.resultsTodo || 'One or two measured results, or what the project demonstrates if there is no benchmark.'));
+    if (P.resultsTodo || !P.results) results.push(todo(P.resultsTodo || 'Measured results are on their way.'));
     secs.append(section('Results', 'What it achieves', results));
     const links = el('div', 'pg-links');
     const gh = el('a', 'pill glass', 'GitHub repository ↗');

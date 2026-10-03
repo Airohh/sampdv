@@ -19,7 +19,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
 <script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';document.documentElement.dataset.accent='underline';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/[?&]clean\b/.test(location.search))document.documentElement.classList.add('hide-ph');var pm=/[?&]plain\b/.test(location.search);try{pm=pm||localStorage.getItem('sampdv.mode')==='plain';}catch(e){}if(pm)document.documentElement.dataset.mode='plain';</script>
 <style>
 /* Layout: one dark world. Full-bleed WebGL hero, a cool light About panel that overlaps it,
@@ -843,6 +843,26 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 
 
+
+/* ---------- v10 ---------- */
+/* the name is the title; role and promise sit under it */
+.a-title.a-name{margin-bottom:14px}
+.a-tagline{margin:0 auto 32px;max-width:30ch;font-family:var(--f-serif);font-weight:var(--d-weight,500);font-size:calc(clamp(1.3rem,2.5vw,2.05rem) * var(--d-size));line-height:1.2;letter-spacing:-.01em;text-wrap:balance;color:var(--fg)}
+.a-tagline .acc{transition-delay:1.3s}
+.avatar img{display:block;width:100%;height:100%;object-fit:cover}
+.about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+/* a signature-style name instead of a real signature */
+.sig-hand{font-family:'Mrs Saint Delafield','Segoe Script','Brush Script MT',cursive;font-weight:400;font-size:clamp(2.6rem,4vw,3.4rem);line-height:1;color:var(--ink);transform:rotate(-4deg);transform-origin:left center;margin:2px 0 -4px}
+/* slots kept for later, shown as coming soon */
+.soon,.by-card .soon{margin:0;font:500 11px/1.45 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+
+
+/* ---------- v11 ---------- */
+/* the status pill has no photo now */
+.a-hello{padding:8px 16px}
+/* the About photo is a square of 400 px at most, so the 800 px source stays sharp on dense screens */
+.about-photo{min-height:0;width:100%;max-width:400px;aspect-ratio:1/1;align-self:center;justify-self:center;border-radius:28px}
+
 /* unfilled placeholders: shown everywhere, hidden with ?clean */
 .hide-ph :is(.is-ph,.todo){display:none!important}
 .hide-ph .pj-head{grid-template-columns:minmax(0,1fr)}
@@ -964,11 +984,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <div class="hero-bg" aria-hidden="true"><canvas class="a-canvas"></canvas><div class="a-shade"></div></div>
     <div class="hero-inner">
       <div class="hero-center">
-        <p class="a-status a-hello glass rise" style="--d:150ms"><span class="avatar" aria-hidden="true"><i></i><b></b></span><span>Bonjour, moi c’est <strong>Sam</strong>.<span class="hide-sm"> Je cherche un CDI en data et IA.</span></span><span class="dot" aria-hidden="true"></span></p>
-        <h1 class="a-title">
-          <span class="a-l"><span class="w" style="--i:0">Des</span> <span class="w" style="--i:1">données</span> <span class="w" style="--i:2">aux</span></span>
-          <span class="a-l"><span class="w" style="--i:3">systèmes</span> <span class="w" style="--i:4">d’IA</span> <em class="w acc" style="--i:5">fiables.</em></span>
+        <p class="a-status a-hello glass rise" style="--d:150ms"><span>Je cherche un CDI en data et IA</span><span class="dot" aria-hidden="true"></span></p>
+        <h1 class="a-title a-name">
+          <span class="a-l"><span class="w" style="--i:0">Sam</span> <span class="w" style="--i:1">Pondevie</span></span>
         </h1>
+        <p class="a-tagline rise" style="--d:650ms">Ingénieur Data &amp; IA. Des données aux systèmes d’IA <em class="acc">fiables</em>.</p>
         <div class="a-searchwrap rise" style="--d:750ms">
           <form class="a-search glass" role="search" autocomplete="off">
             <label class="sr" for="q">Rechercher dans mes projets et mon parcours</label>
@@ -1033,14 +1053,12 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </ol>
       <div class="about-sign">
         <p>Si c’est le genre de travail que fait votre équipe, j’aimerais en parler avec vous.</p>
-        <span class="sig is-ph">[TA SIGNATURE]</span>
+        <span class="sig-hand" aria-hidden="true">Sam Pondevie</span>
         <span class="sig-name">Sam Pondevie · Paris</span>
       </div>
-      <div class="about-foot"><span class="draft">Texte provisoire</span></div>
     </div>
-    <figure class="about-photo" aria-label="Emplacement de la photo">
-      <span class="ph-head" aria-hidden="true"></span><span class="ph-body" aria-hidden="true"></span>
-      <span class="ph-tag is-ph">[TA PHOTO · lumière chaude, mi-corps]</span>
+    <figure class="about-photo">
+      <img src="../img/sam.jpg" alt="Sam Pondevie, souriant, en extérieur" width="800" height="800" loading="lazy" decoding="async">
       <figcaption><b>Sam Pondevie</b><span>Ingénieur Data &amp; IA · Paris</span></figcaption>
     </figure>
     </div>
@@ -1080,7 +1098,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="pc-q">Un assistant qui montre d’où vient sa réponse.</p>
           <p class="pc-line"><span class="t-tech">Recherche hybride, reranker, et des réponses qui citent [Source N], ou disent qu’elles ne trouvent pas.</span><span class="t-plain">Il répond à partir de vos propres documents, avec la source derrière chaque réponse, ou dit qu’il ne sait pas.</span></p>
           <div class="pc-diagram" data-mini="syro"></div>
-          <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi tu as construit Syro]</span></p>
+          <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Parce qu’une réponse sans source, c’est une supposition.</span></p>
           <div class="pc-foot"><p class="pc-stack">Qdrant · BM25 · bge-reranker · Ollama</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-mcp" href="#insight-mcp">
@@ -1089,7 +1107,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="pc-q">Une recherche que les agents IA appellent seuls.</p>
           <p class="pc-line"><span class="t-tech">Une recherche documentaire exposée comme outils MCP ; c’est le modèle de l’agent qui rédige la réponse.</span><span class="t-plain">Un moteur de recherche pour assistants IA, pour qu’ils puissent chercher dans vos documents.</span></p>
           <div class="pc-diagram" data-mini="insight-mcp"></div>
-          <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi tu as construit insight-mcp]</span></p>
+          <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Je voulais que les agents cherchent, pas qu’ils inventent.</span></p>
           <div class="pc-foot"><p class="pc-stack">FastMCP · BM25 · fastembed · RRF</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
         <a class="pc" id="card-proths" href="#proths">
@@ -1098,7 +1116,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           <p class="pc-q">Que se passe-t-il quand les données changent ?</p>
           <p class="pc-line"><span class="t-tech">Il se réentraîne quand le trafic dérive, et ne met en production qu’un modèle qui bat l’actuel.</span><span class="t-plain">Il repère quand les données réelles changent, réapprend, et ne se remplace que si la nouvelle version est meilleure.</span></p>
           <div class="pc-diagram" data-mini="proths"></div>
-          <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi tu as construit Proths]</span></p>
+          <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Réentraîner, c’est facile. Savoir si c’est mieux, c’est le vrai sujet.</span></p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
         </a>
       </div>
@@ -1191,7 +1209,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-when">2020 – 2025</p>
             <h3>École d’ingénieurs · EFREI Paris</h3>
-            <p class="tl-where"><span class="t-tech">Majeure Data, mineure BI &amp; Analytics · semestres à l’étranger au Cap et à Barcelone</span><span class="t-plain">Diplôme d’ingénieur, spécialité data · semestres à l’étranger au Cap et à Barcelone</span></p>
+            <p class="tl-where"><span class="t-tech">Majeure Data, mineure BI &amp; Analytics · diplôme obtenu en 2026 · semestres à l’étranger au Cap et à Barcelone</span><span class="t-plain">Diplôme d’ingénieur, spécialité data, obtenu en 2026 · semestres à l’étranger au Cap et à Barcelone</span></p>
           </li>
           <li class="tl-item" id="tl-iut">
             <span class="tl-dot" aria-hidden="true"></span>
@@ -1269,9 +1287,9 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="nx-foot">
         <div style="display:grid;gap:6px">
           <p class="sec-note">Même règle pour les trois : mesurer, pas militer. Tous les résultats sont publiés, y compris « aucune différence ».</p>
-          <p class="nx-when is-ph">Premier rapport public : [MOIS 2026]</p>
+          <p class="nx-when">Premier rapport public : bientôt</p>
         </div>
-        <p class="pc-note is-ph"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>[Avec tes mots : pourquoi ces trois-là]</span></p>
+        <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>À chaque fois la même question : le chatbot sait-il, ou devine-t-il ?</span></p>
       </div>
     </div>
   </section>
@@ -1305,23 +1323,22 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </header>
       <div class="by-grid v8">
         <article class="by-card warm" id="by-off">
-          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5.5c3.5 3 3.5 10 0 13M19 5.5c-3.5 3-3.5 10 0 13"/></svg>Tennis</h3>
-          <p class="by-lead">Le tennis d’abord, et le sport en général.</p>
-          <p class="ph is-ph">[Depuis quand tu joues, à quel rythme, ton niveau]</p>
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 5.5c3.5 3 3.5 10 0 13M19 5.5c-3.5 3-3.5 10 0 13"/></svg>Sport</h3>
+          <p class="by-lead">Le tennis d’abord.</p>
+          <p>Et aussi le ski, le volley, la natation et la voile.</p>
           <p class="hand by-note"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M2 20 C 12 4, 26 2, 36 10"/><path d="M30 5 L37 10 L30 15"/></svg><span>Fan de Roger Federer ? Gros points. Le GOAT.</span></p>
           <p class="by-hint">Psst : tapez son nom dans la recherche en haut.</p>
-          <div class="by-ph is-ph">[UNE PHOTO DE TENNIS]</div>
         </article>
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M4 18 3 8l5 4 4-7 4 7 5-4-1 10"/></svg>Grande stratégie</h3>
           <p>Les jeux Paradox comme Crusader Kings III, et Total War.</p>
-          <p class="ph is-ph">[Ta campagne préférée, en une ligne]</p>
+          <p class="soon">Campagne préférée · bientôt</p>
         </article>
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Avant la data</h3>
           <p><span class="t-tech">DUT GMP à l’IUT Paris 13, 2018–2020 : conception mécanique et productique.</span><span class="t-plain">Diplôme de génie mécanique en deux ans à l’IUT Paris 13, 2018–2020 : concevoir des pièces et organiser leur fabrication.</span></p>
-          <p class="ph is-ph">[Ce que cette formation change encore dans ta façon de travailler]</p>
-          <div class="by-ph is-ph">[UNE PIÈCE CAO OU UN CROQUIS DE TOI]</div>
+          <p class="soon">Ce que ça change encore dans ma façon de travailler · bientôt</p>
+          <div class="by-ph">Pièce CAO ou croquis · bientôt</div>
         </article>
       </div>
     </div>
@@ -1360,11 +1377,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
           </div>
         </div>
       </header>
-      <figure class="demo is-ph" aria-label="Emplacement de la vidéo de démo">
+      <figure class="demo" aria-label="Vidéo de démo, bientôt">
         <div class="demo-in">
           <span class="demo-play glass" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
-          <b>Vidéo de démo · à ajouter</b>
-          <span>Capture d’écran de 30 à 60 s, 720p, moins de 25 Mo. Affichée seulement quand elle est prête.</span>
+          <b>Vidéo de démo · bientôt</b>
+          <span>Une courte capture d’écran du projet en action.</span>
         </div>
       </figure>
     </div>
@@ -1514,7 +1531,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       cue: 'Faites défiler pour suivre un appel d’outil, de l’agent jusqu’au retour',
       problem: 'Un agent a besoin de passages fiables tirés d’un corpus, avec des sources qu’il peut citer. insight-mcp lui donne la recherche sous forme d’outils MCP et laisse la rédaction au client : le serveur n’a besoin ni de modèle ni de clé API.',
       results: `<p>Sur le corpus démo, pour « zero trust identity strategy », les deux modes classent en premier la publication Continuous Identity. Le mode hybride fait aussi remonter la publication sur les portefeuilles numériques et l’IAM, qui ne partage aucun mot avec la requête.</p>`,
-      resultsTodo: 'Latence par outil (p95 depuis mcp_tool_duration_seconds) et qualité de recherche sur un jeu de questions annoté.'
+      resultsTodo: 'À venir : latence par outil (p95) et qualité de recherche sur un jeu de questions annoté.'
     },
     'proths': {
       title: 'Proths', kind: 'MLOps', target: 'card-proths', story: true, repo: GH + 'Proths',
@@ -1571,7 +1588,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     { title: 'votes-audit', kind: 'À venir · évaluation de LLM', text: 'Les chatbots rapportent-ils le vrai vote des députés, ou en inventent-ils un ? Scrutins publics de l’Assemblée nationale.', target: 'nx-votes' },
     { title: 'ephy-audit', kind: 'À venir · évaluation de LLM', text: 'Les chatbots savent-ils quels pesticides sont autorisés en France ? Catalogue E-Phy (Anses), notation par règles.', target: 'nx-ephy' },
     { title: 'policybench-fr', kind: 'À venir · évaluation de LLM', text: 'Les chatbots savent-ils calculer les aides au logement, le RSA et l’impôt ? Benchmark face à OpenFisca.', target: 'nx-policy' },
-    { title: 'EFREI Paris', kind: 'Formation · 2020–2025', text: 'École d’ingénieurs, Paris. Majeure data.', target: 'tl-efrei' },
+    { title: 'EFREI Paris', kind: 'Formation · 2020–2025', text: 'École d’ingénieurs, Paris. Majeure data ; diplôme obtenu en 2026.', target: 'tl-efrei' },
     { title: 'IUT Paris 13', kind: 'Formation · 2018–2020', text: 'DUT GMP, génie mécanique et productique.', target: 'tl-iut' },
     { title: 'Bac S', kind: 'Formation · 2018', text: 'Baccalauréat scientifique, spécialité maths.', target: 'tl-bac' }
   ];
@@ -2209,14 +2226,13 @@ void main(){
   const F = (k) => $('[data-f="' + k + '"]', projView);
   function todo(text) {
     const box = el('div', 'todo');
-    box.append(el('span', 'todo-tag', 'À rédiger'), el('p', null, text));
+    box.append(el('span', 'todo-tag', 'Bientôt'), el('p', null, text));
     return box;
   }
   function section(kicker, title, body, draft) {
     const s = el('section', 'pg-sec');
     const head = el('div', 'pg-sh');
     const h = el('h2', null, title);
-    if (draft) { h.append(' '); h.append(el('span', 'draft', 'Brouillon')); }
     head.append(el('p', 'g-kicker', kicker), h);
     const b = el('div', 'pg-sb');
     [].concat(body).forEach((n) => (typeof n === 'string' ? b.insertAdjacentHTML('beforeend', n) : b.append(n)));
@@ -2257,12 +2273,11 @@ void main(){
     secs.replaceChildren();
     secs.append(P.problem
       ? section('Problème', 'Pourquoi ce projet', el('p', null, P.problem), true)
-      : section('Problème', 'Pourquoi ce projet', todo('Ce qui était difficile ou manquait avant ce projet, en une ou deux phrases, d’après le dépôt.')));
+      : section('Problème', 'Pourquoi ce projet', todo('L’histoire de ce projet arrive bientôt. En attendant, le code et son README sont sur GitHub.')));
     if (P.story) {
       const st = el('section', 'pj-story');
       const head = el('div', 'pj-storyhead');
-      const h = el('h2', null, 'Comment ça marche ');
-      h.append(el('span', 'draft', 'Brouillon'));
+      const h = el('h2', null, 'Comment ça marche');
       head.append(el('p', 'g-kicker', 'Approche et architecture'), h, el('p', 'g-cue', P.cue));
       st.append(head);
       st.insertAdjacentHTML('beforeend', storyHTML(slug, store.get('sampdv.dg.story') || (document.documentElement.dataset.mode === 'plain' || window.matchMedia('(max-width: 899px)').matches ? 'simple' : 'detailed')));
@@ -2270,11 +2285,11 @@ void main(){
       bindToggle(stage, 'sampdv.dg.story', (v) => { stage.dataset.dg = v; });
       secs.append(st);
     } else {
-      secs.append(section('Approche et architecture', 'Comment ça marche', todo('Les grandes étapes du pipeline, de trois à cinq, chacune avec son outil.')));
+      secs.append(section('Approche et architecture', 'Comment ça marche', todo('Une présentation étape par étape arrive bientôt.')));
     }
     const results = [];
     if (P.results) results.push(P.results);
-    if (P.resultsTodo || !P.results) results.push(todo(P.resultsTodo || 'Un ou deux résultats mesurés, ou ce que le projet démontre s’il n’y a pas de benchmark.'));
+    if (P.resultsTodo || !P.results) results.push(todo(P.resultsTodo || 'Les résultats mesurés arrivent bientôt.'));
     secs.append(section('Résultats', 'Ce que ça donne', results));
     const links = el('div', 'pg-links');
     const gh = el('a', 'pill glass', 'Dépôt GitHub ↗');
