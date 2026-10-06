@@ -18,8 +18,8 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Mrs+Saint+Delafield&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';document.documentElement.dataset.accent='underline';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/[?&]clean\b/.test(location.search))document.documentElement.classList.add('hide-ph');var pm=/[?&]plain\b/.test(location.search);try{pm=pm||localStorage.getItem('sampdv.mode')==='plain';}catch(e){}if(pm)document.documentElement.dataset.mode='plain';</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Caveat:wght@500;600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
+<script>document.documentElement.classList.add('js');document.documentElement.dataset.font='plex';document.documentElement.dataset.accent='marker';try{if(localStorage.getItem('sampdv.theme')==='day')document.documentElement.dataset.theme='day';}catch(e){}if(/[?&]clean\b/.test(location.search))document.documentElement.classList.add('hide-ph');var pm=/[?&]plain\b/.test(location.search);try{pm=pm||localStorage.getItem('sampdv.mode')==='plain';}catch(e){}if(pm)document.documentElement.dataset.mode='plain';</script>
 <style>
 /* Layout: one dark world. Full-bleed WebGL hero, a cool light About panel that overlaps it,
    then dark sections; project pages reuse the same shell, nav and footer. Single dark look by design (brief §5). */
@@ -626,10 +626,9 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .about-sign{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:40px;padding-top:24px;border-top:1px solid var(--ink-line)}
 .about-sign p{flex-basis:100%;margin:0;max-width:44ch;font-family:var(--f-serif);font-size:calc(1.3rem * var(--d-size));line-height:1.3}
 .sig{display:grid;place-items:center;width:180px;height:54px;border:1px dashed rgba(10,13,20,.35);border-radius:10px;font:500 11px/1 var(--f-mono);color:var(--ink-faint)}
-.sig-name{font:500 12px/1.4 var(--f-mono);color:var(--ink-muted)}
 
 /* ember waves behind the projects (2A) */
-.f{position:relative;overflow:hidden}
+.f{position:relative;overflow:hidden;overflow:clip}
 .f > .wrap{position:relative}
 .f{background:radial-gradient(70% 30% at 50% 70%,rgba(var(--hot),.18),rgba(var(--hot),0) 70%),var(--bg)}
 /* the waves fade in and out at the section edges, so no hard line shows against the next section */
@@ -690,14 +689,39 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 @keyframes vt-fade-in{from{opacity:0}}
 
 
+/* project page: a background drawn for each project, behind the header (v12) */
+.g{position:relative;isolation:isolate}
+.g-wrap{position:relative}
+.pj-bg{position:absolute;left:0;top:0;z-index:-1;width:100%;height:min(1000px,115vh);pointer-events:none;opacity:0;transition:opacity 1s ease;
+  -webkit-mask-image:linear-gradient(#000 42%,transparent 96%);mask-image:linear-gradient(#000 42%,transparent 96%)}
+.pj-bg.on{opacity:1}
+/* short headers (the five other projects) get room top right for the drawing: text top left, demo bottom right */
+@media (min-width:1100px){
+  .pj-head{min-height:620px}
+  .pj-head .g-head{align-self:start}
+  .pj-head .demo{align-self:end}
+}
+@media (min-width:900px){
+  .pj-bg{-webkit-mask-image:linear-gradient(#000 42%,transparent 96%),linear-gradient(90deg,rgba(0,0,0,.2) 34%,#000 58%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(#000 42%,transparent 96%),linear-gradient(90deg,rgba(0,0,0,.2) 34%,#000 58%);mask-composite:intersect}
+}
+.g-metric{background:rgba(3,5,10,.88)}
+.pj-head .demo{background:radial-gradient(70% 70% at 50% 110%,rgba(16,41,90,.45),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,rgba(5,8,15,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+
 /* ---------- warmth v2 ---------- */
 /* hand-drawn underline: the default accent on key words, plus .ul on phrases in the text */
 [data-accent="underline"] .acc{font-style:normal}
-[data-accent="underline"] .acc,.ul{background-image:var(--ul-img);background-repeat:no-repeat;background-position:0 100%;background-size:100% .32em;padding-bottom:.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .9s var(--ease-out)}
-.js [data-accent="underline"] .acc:not(.in),.js .ul:not(.in){background-size:0 .32em}
+[data-accent="underline"] :is(.acc,.ul){background-image:var(--ul-img);background-repeat:no-repeat;background-position:0 100%;background-size:100% .32em;padding-bottom:.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .9s var(--ease-out)}
+.js [data-accent="underline"] :is(.acc,.ul):not(.in){background-size:0 .32em}
 .a-title .acc{transition-delay:1.1s}
-.about-lede .ul{background-size:100% .26em}
-.js .about-lede .ul:not(.in){background-size:0 .26em}
+[data-accent="underline"] .about-lede .ul{background-size:100% .26em}
+.js [data-accent="underline"] .about-lede .ul:not(.in){background-size:0 .26em}
+
+/* key words: a soft marker stroke behind the word (default since v12). The wavy underline read like a
+   spelling mistake; it stays as a study in the prototype panel. */
+[data-accent="marker"] .acc{font-style:normal}
+[data-accent="marker"] :is(.acc,.ul){background-image:linear-gradient(100deg,rgba(var(--hot),.18),rgba(var(--hot),.42) .35em,rgba(var(--hot),.32) 65%,rgba(var(--hot),.46) calc(100% - .3em),rgba(var(--hot),.2));background-repeat:no-repeat;background-position:0 88%;background-size:100% .46em;border-radius:.1em .3em .14em .26em;padding-inline:.06em;margin-inline:-.06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .9s var(--ease-out)}
+.js [data-accent="marker"] :is(.acc,.ul):not(.in){background-size:0 .46em}
 
 /* handwritten notes */
 .hand{font-family:'Caveat','Segoe Print','Bradley Hand',cursive;font-weight:600;color:var(--warm);line-height:1.1}
@@ -851,7 +875,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .avatar img{display:block;width:100%;height:100%;object-fit:cover}
 .about-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 /* a signature-style name instead of a real signature */
-.sig-hand{font-family:'Mrs Saint Delafield','Segoe Script','Brush Script MT',cursive;font-weight:400;font-size:clamp(2.6rem,4vw,3.4rem);line-height:1;color:var(--ink);transform:rotate(-4deg);transform-origin:left center;margin:2px 0 -4px}
 /* slots kept for later, shown as coming soon */
 .soon,.by-card .soon{margin:0;font:500 11px/1.45 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 
@@ -1052,8 +1075,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </ol>
       <div class="about-sign">
         <p>If that's the kind of work your team does, I'd like to hear about it.</p>
-        <span class="sig-hand" aria-hidden="true">Sam Pondevie</span>
-        <span class="sig-name">Sam Pondevie · Paris</span>
       </div>
     </div>
     <figure class="about-photo">
@@ -1361,6 +1382,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 <!-- ====================== PROJECT PAGE (filled from data; the three flagships get a scroll story) ====================== -->
 <main class="g" id="view-project" hidden>
+  <canvas class="pj-bg" aria-hidden="true"></canvas>
   <div class="g-wrap">
     <div class="pj-head">
       <header class="g-head">
@@ -1410,6 +1432,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     <fieldset>
       <legend>Accent on the key word</legend>
       <div class="seg">
+        <input type="radio" name="accent" id="acc-marker" value="marker"><label for="acc-marker">Marker</label>
         <input type="radio" name="accent" id="acc-underline" value="underline"><label for="acc-underline">Underline</label>
         <input type="radio" name="accent" id="acc-italic" value="italic"><label for="acc-italic">Italic</label>
         <input type="radio" name="accent" id="acc-mono" value="mono"><label for="acc-mono">Mono</label>
@@ -1845,7 +1868,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   function ping(target) {
     const node = document.getElementById(target);
     if (!node) return;
-    node.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center', inline: 'center' });
+    node.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center', inline: 'nearest' });
     node.classList.remove('f-ping'); void node.offsetWidth; node.classList.add('f-ping');
   }
   function glassSearch(sec) {
@@ -2351,7 +2374,7 @@ void main(){
     views.project.hidden = next !== 'project';
     view = next;
     slugNow = next === 'project' ? key : null;
-    if (next === 'project') ctl = renderProject(key);
+    if (next === 'project') { ctl = renderProject(key); bg.set(key); } else bg.stop();
     if (next === 'home') { hero.start(); intro(); } else hero.stop();
     const target = key && key !== 'home' ? document.getElementById(key) : null;
     if (next !== 'home' || key === 'home') window.scrollTo({ top: 0, behavior: 'instant' });
@@ -2510,7 +2533,7 @@ void main(){
       }));
       h1.setAttribute('aria-label', HERO[v].join(' ').replace(/[\[\]]/g, ''));
     };
-    const accent = saved('sampdv.accent') || 'underline';
+    const accent = saved('sampdv.accent') || 'marker';
     const role = saved('sampdv.role') || 'Data & AI Engineer';
     const font = saved('sampdv.font') || 'plex';
     const ember = saved('sampdv.ember') || 'medium';
@@ -2526,6 +2549,411 @@ void main(){
     const setOpen = (v) => { tog.setAttribute('aria-expanded', String(v)); body.hidden = !v; box.classList.toggle('is-min', !v); };
     setOpen(store.get('sampdv.proto') === '1');
     tog.addEventListener('click', () => { const v = body.hidden; setOpen(v); store.set('sampdv.proto', v ? '1' : '0'); });
+  })();
+
+  /* ---------- Project pages: a background drawn for each project, behind the header.
+     Canvas 2D in the palette colours. Each scene draws inside the free area next to the text (measured, so it never
+     runs under the words); paused when hidden or scrolled away, one still frame with reduced motion. ---------- */
+  const bg = (function projectBg() {
+    const canvas = $('.pj-bg');
+    if (!canvas || !canvas.getContext) return { set() {}, stop() {} };
+    const ctx = canvas.getContext('2d'), page = canvas.parentNode;
+    const FR = document.documentElement.lang === 'fr';
+    const C = { hot: '226,96,58', warm: '243,214,193', ink: '244,245,248', mono: 'monospace' };
+    const TAU = Math.PI * 2;
+    const rgba = (c, a) => 'rgba(' + c + ',' + (a < 0 ? 0 : a > 1 ? 1 : a).toFixed(3) + ')';
+    const rng = (seed) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+    const clamp = (p) => (p < 0 ? 0 : p > 1 ? 1 : p);
+    const ease = (p) => { p = clamp(p); return p * p * (3 - 2 * p); };
+    const ramp = (p, a, b) => ease((p - a) / (b - a));
+    const mod = (a, n) => ((a % n) + n) % n;
+    const box = (x, y, w, h, r) => { ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x, y, w, h, r); else ctx.rect(x, y, w, h); };
+    const line = (ax, ay, bx, by) => { ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); };
+    const font = (px) => { ctx.font = '500 ' + px + 'px ' + C.mono; };
+    const bez = (a, b, c, d, u) => { const v = 1 - u; return v * v * v * a + 3 * v * v * u * b + 3 * v * u * u * c + u * u * u * d; };
+    let W = 0, H = 0, slug = null, draw = null, raf = 0, last = 0, t = 0, onScreen = true;
+
+    // Every scene gets the area A = { x0, y0, x1, y1, w, h, k (overall strength), wide } and a seeded random R.
+    const SCENES = {
+      // Pages of text. Every few seconds three passages light up and thread into one answer, marked [1] [2] [3].
+      'syro'(A, R) {
+        const { x0, y0, w, h, k } = A, n = w > 440 ? 4 : 3;
+        const pw = Math.min(118, w / (n + 0.7)), ph = Math.min(pw * 1.3, h * 0.42), pages = [];
+        for (let i = 0; i < n; i++) {
+          const lines = [], rows = Math.max(4, Math.floor((ph - 26) / 13));
+          for (let m = 0; m < rows; m++) lines.push({ y: 16 + m * (ph - 26) / rows, w: (m === rows - 1 ? 0.4 + R() * 0.2 : 0.6 + R() * 0.36) * (pw - 26) });
+          pages.push({ x: x0 + (w - pw) * (n === 1 ? 0.5 : i / (n - 1)), y: y0 + 6 + (i % 2) * h * 0.08, ph: R() * TAU, lines, cy: 0 });
+        }
+        const aw = Math.min(250, w * 0.7), ah = 62, ax = x0 + (w - aw) / 2, ay = A.y1 - ah;
+        const P = 7;
+        return (t) => {
+          const cyc = Math.floor(t / P), p = mod(t, P) / P, r = rng(cyc * 7919 + 13), picks = [], used = new Set();
+          while (picks.length < 3) { const pi = Math.floor(r() * n), li = Math.floor(r() * (pages[pi].lines.length - 1)); if (!used.has(pi)) { used.add(pi); picks.push([pi, li]); } }
+          const on = ramp(p, 0.04, 0.16) * (1 - ramp(p, 0.84, 0.98)), grow = ramp(p, 0.16, 0.52);
+          ctx.lineWidth = 1;
+          pages.forEach((pg, i) => {
+            pg.cy = pg.y + Math.sin(t * 0.35 + pg.ph) * 4;
+            box(pg.x, pg.cy, pw, ph, 8); ctx.fillStyle = rgba(C.ink, 0.025 * k); ctx.fill(); ctx.strokeStyle = rgba(C.ink, 0.12 * k); ctx.stroke();
+            pg.lines.forEach((ln, m) => {
+              const hit = picks.some(([a, b]) => a === i && b === m);
+              ctx.fillStyle = hit ? rgba(C.hot, (0.12 + 0.7 * on) * k) : rgba(C.ink, 0.1 * k);
+              box(pg.x + 13, pg.cy + ln.y, ln.w, hit ? 4 : 3, 2); ctx.fill();
+            });
+          });
+          picks.forEach(([pi, li], j) => {
+            const pg = pages[pi], ln = pg.lines[li];
+            const sx = pg.x + 13 + ln.w, sy = pg.cy + ln.y + 2, ex = ax + 27 + j * 40, ey = ay;
+            const cx1 = sx + 30, cy1 = sy + 40, cx2 = ex, cy2 = ey - 70;
+            ctx.beginPath(); ctx.moveTo(sx, sy);
+            let hx = sx, hy = sy;
+            for (let s = 1; s <= 40 * grow; s++) { const u = s / 40; hx = bez(sx, cx1, cx2, ex, u); hy = bez(sy, cy1, cy2, ey, u); ctx.lineTo(hx, hy); }
+            ctx.strokeStyle = rgba(C.hot, 0.5 * on * k); ctx.lineWidth = 1.2; ctx.stroke();
+            if (grow > 0 && grow < 1) { ctx.beginPath(); ctx.arc(hx, hy, 2.4, 0, TAU); ctx.fillStyle = rgba(C.hot, 0.95 * on * k); ctx.fill(); }
+          });
+          box(ax, ay, aw, ah, 10); ctx.fillStyle = rgba('3,5,10', 0.8); ctx.fill(); ctx.strokeStyle = rgba(C.hot, (0.2 + 0.3 * on) * k); ctx.lineWidth = 1; ctx.stroke();
+          ctx.fillStyle = rgba(C.ink, 0.13 * k);
+          box(ax + 14, ay + 34, aw * 0.62, 3, 2); ctx.fill(); box(ax + 14, ay + 46, aw * 0.4, 3, 2); ctx.fill();
+          const chips = on * ramp(p, 0.46, 0.56);
+          font(11); ctx.textBaseline = 'middle';
+          for (let j = 0; j < 3; j++) {
+            box(ax + 12 + j * 40, ay + 8, 30, 18, 4); ctx.fillStyle = rgba(C.hot, 0.14 * chips * k); ctx.fill(); ctx.strokeStyle = rgba(C.hot, 0.6 * chips * k); ctx.stroke();
+            ctx.fillStyle = rgba(C.hot, 0.95 * chips * k); ctx.fillText('[' + (j + 1) + ']', ax + 17 + j * 40, ay + 17.5);
+          }
+        };
+      },
+
+      // One MCP server, agents around it: requests go in, results come back, the called tool lights up.
+      'insight-mcp'(A, R) {
+        const { x0, y0, w, h, k } = A, cx = x0 + w / 2, cy = y0 + h * 0.5, rx = w * 0.46, ry = h * 0.44;
+        const s = Math.min(w, h) * 0.1 + 14, n = A.wide ? 8 : 6, agents = [];
+        for (let i = 0; i < n; i++) {
+          const a = (i / n) * TAU + (R() - 0.5) * 0.5, d = 0.62 + R() * 0.38;
+          agents.push({ x: cx + Math.cos(a) * rx * d, y: cy + Math.sin(a) * ry * d, per: 2.8 + R() * 2.4, off: R() * 10, tool: Math.floor(R() * 3) });
+        }
+        return (t) => {
+          ctx.lineWidth = 1;
+          for (let i = 1; i <= 3; i++) {
+            ctx.setLineDash([2, 9]); ctx.lineDashOffset = -t * 6 * (i % 2 ? 1 : -1);
+            ctx.beginPath(); ctx.ellipse(cx, cy, rx * (0.3 + i * 0.24), ry * (0.3 + i * 0.24), 0, 0, TAU);
+            ctx.strokeStyle = rgba(C.ink, 0.07 * k); ctx.stroke();
+          }
+          ctx.setLineDash([]);
+          const busy = [0, 0, 0];
+          agents.forEach((g) => {
+            const p = mod(t + g.off, g.per) / g.per;
+            line(g.x, g.y, cx, cy); ctx.strokeStyle = rgba(C.ink, 0.08 * k); ctx.lineWidth = 1; ctx.stroke();
+            if (p < 0.42) {
+              const u = ease(p / 0.42);
+              ctx.beginPath(); ctx.arc(g.x + (cx - g.x) * u, g.y + (cy - g.y) * u, 2, 0, TAU); ctx.fillStyle = rgba(C.ink, 0.7 * k); ctx.fill();
+            } else if (p < 0.55) busy[g.tool] = 1;
+            else if (p < 0.97) {
+              const u = ease((p - 0.55) / 0.42), v = Math.max(0, u - 0.12);
+              line(cx + (g.x - cx) * v, cy + (g.y - cy) * v, cx + (g.x - cx) * u, cy + (g.y - cy) * u); ctx.strokeStyle = rgba(C.hot, 0.5 * k); ctx.lineWidth = 1.6; ctx.stroke();
+              ctx.beginPath(); ctx.arc(cx + (g.x - cx) * u, cy + (g.y - cy) * u, 2.4, 0, TAU); ctx.fillStyle = rgba(C.hot, 0.95 * k); ctx.fill();
+            }
+            const got = p > 0.95 || p < 0.05 ? 1 : 0;
+            ctx.beginPath(); ctx.arc(g.x, g.y, 6, 0, TAU); ctx.fillStyle = rgba(C.hot, (0.06 + 0.4 * got) * k); ctx.fill();
+            ctx.strokeStyle = rgba(got ? C.hot : C.ink, (got ? 0.8 : 0.32) * k); ctx.lineWidth = 1.2; ctx.stroke();
+          });
+          box(cx - s, cy - s * 0.74, s * 2, s * 1.48, 12); ctx.fillStyle = rgba('3,5,10', 0.88); ctx.fill(); ctx.strokeStyle = rgba(C.hot, 0.5 * k); ctx.lineWidth = 1.2; ctx.stroke();
+          for (let j = 0; j < 3; j++) {
+            box(cx - s * 0.7, cy - s * 0.42 + j * s * 0.32, s * 1.4, s * 0.2, 4);
+            ctx.fillStyle = rgba(C.hot, (busy[j] ? 0.6 : 0.08) * k); ctx.fill();
+          }
+          font(10.5); ctx.textBaseline = 'alphabetic'; ctx.fillStyle = rgba(C.ink, 0.5 * k);
+          ctx.fillText('MCP server', cx - s, cy - s * 0.74 - 8);
+        };
+      },
+
+      // The reference distribution and live traffic: the live curve drifts away, PSI crosses its line, a retrain brings it back.
+      'proths'(A) {
+        const { x0, y0, w, h, k } = A;
+        const gx0 = x0 + 34, gw = w - 40, base = y0 + h * 0.56, amp = h * 0.5;
+        const g = (x, m, s) => Math.exp(-((x - m) ** 2) / (2 * s * s));
+        const ref = (x) => 0.75 * g(x, 0.36, 0.11) + 0.5 * g(x, 0.66, 0.09);
+        const live = (x, d) => 0.75 * (1 - 0.35 * d) * g(x, 0.36 + 0.16 * d, 0.11 + 0.03 * d) + 0.5 * (1 + 0.5 * d) * g(x, 0.66 + 0.08 * d, 0.09);
+        const P = 10, drift = (t) => { const p = mod(t, P) / P; return p < 0.72 ? ease(p / 0.72) : 1 - ramp(p, 0.76, 0.86); };
+        const sh = h * 0.2, sy = A.y1 - sh, thr = 0.62, N = 110, step = 0.1;
+        const curve = (f) => { ctx.beginPath(); for (let i = 0; i <= 120; i++) { const u = i / 120, x = gx0 + u * gw, y = base - f(u) * amp; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); } };
+        return (t) => {
+          const d = drift(t);
+          line(gx0, base, gx0 + gw, base); ctx.strokeStyle = rgba(C.ink, 0.14 * k); ctx.lineWidth = 1; ctx.stroke();
+          curve((u) => live(u, d)); ctx.lineTo(gx0 + gw, base); ctx.lineTo(gx0, base); ctx.closePath();
+          const fill = ctx.createLinearGradient(0, base - amp, 0, base); fill.addColorStop(0, rgba(C.hot, 0.22 * k)); fill.addColorStop(1, rgba(C.hot, 0));
+          ctx.fillStyle = fill; ctx.fill();
+          curve((u) => live(u, d)); ctx.strokeStyle = rgba(C.hot, 0.8 * k); ctx.lineWidth = 1.6; ctx.stroke();
+          curve(ref); ctx.setLineDash([4, 5]); ctx.strokeStyle = rgba(C.ink, 0.42 * k); ctx.lineWidth = 1.2; ctx.stroke(); ctx.setLineDash([]);
+          font(10.5); ctx.textBaseline = 'alphabetic';
+          ctx.fillStyle = rgba(C.ink, 0.5 * k); ctx.fillText(FR ? 'référence' : 'reference', gx0 + gw * 0.08, base - amp * 0.82);
+          ctx.fillStyle = rgba(C.hot, 0.9 * k); ctx.fillText(FR ? 'trafic réel' : 'live traffic', gx0 + gw * (0.7 + 0.08 * d), base - amp * (0.56 + 0.26 * d));
+          // PSI over time, scrolling left; the dashed line is the trigger, each drop is a retrain
+          const ty = sy + sh - thr * sh;
+          line(gx0, ty, gx0 + gw, ty); ctx.setLineDash([3, 5]); ctx.strokeStyle = rgba(C.hot, 0.45 * k); ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
+          ctx.beginPath();
+          for (let i = 0; i <= N; i++) { const x = gx0 + (i / N) * gw, y = sy + sh - drift(t - (N - i) * step) * sh; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+          ctx.strokeStyle = rgba(C.ink, 0.5 * k); ctx.lineWidth = 1.2; ctx.stroke();
+          for (let i = 0; i <= N; i++) {
+            const ph = mod(t - (N - i) * step, P) / P;
+            if (ph >= 0.76 && ph < 0.76 + step / P) {
+              const x = gx0 + (i / N) * gw;
+              line(x, sy - 6, x, sy + sh + 2); ctx.strokeStyle = rgba(C.hot, 0.6 * k); ctx.stroke();
+              ctx.fillStyle = rgba(C.hot, 0.85 * k); ctx.fillText(FR ? 'réentraînement' : 'retrain', x + 5, sy - 1);
+            }
+          }
+          ctx.fillStyle = rgba(C.ink, 0.45 * k); ctx.fillText('PSI', gx0 - 32, ty + 4);
+        };
+      },
+
+      // A pipe flange as a point cloud, turning slowly; now and then noise shakes it, like the robustness tests.
+      'pointnet-3d-classifier'(A, R) {
+        const pts = [], N = A.wide ? 1300 : 700;
+        const holes = [0, 1, 2, 3, 4, 5].map((i) => [Math.cos(i * Math.PI / 3) * 0.64, Math.sin(i * Math.PI / 3) * 0.64]);
+        for (let guard = 0; pts.length < N && guard < N * 4; guard++) {
+          const u = R(), a = R() * TAU;
+          let x, y, z;
+          if (u < 0.4) { x = Math.cos(a) * 0.32; z = Math.sin(a) * 0.32; y = -0.5 + R() * 1.2; }
+          else if (u < 0.9) {
+            const r = Math.sqrt(0.32 ** 2 + R() * (0.86 ** 2 - 0.32 ** 2));
+            x = Math.cos(a) * r; z = Math.sin(a) * r; y = R() < 0.5 ? -0.5 : -0.64;
+            if (holes.some(([hx, hz]) => (x - hx) ** 2 + (z - hz) ** 2 < 0.0085)) continue;
+          } else { x = Math.cos(a) * 0.86; z = Math.sin(a) * 0.86; y = -0.64 + R() * 0.14; }
+          pts.push([x, y + 0.08, z, R() - 0.5, R() - 0.5, R() - 0.5]);
+        }
+        const cx = A.x0 + A.w / 2, cy = A.y0 + A.h * 0.52, S = Math.min(A.w, A.h) * 0.46, k = A.k;
+        return (t) => {
+          const a = t * 0.22, ca = Math.cos(a), sa = Math.sin(a), ct = Math.cos(0.5), st = Math.sin(0.5);
+          const p = mod(t, 9) / 9, j = 0.06 * Math.sin(Math.PI * clamp((p - 0.7) / 0.25));
+          for (const q of pts) {
+            const x = q[0] + q[3] * j, y = q[1] + q[4] * j, z = q[2] + q[5] * j;
+            const X = x * ca + z * sa, Z = -x * sa + z * ca, Y = y * ct - Z * st, D = y * st + Z * ct;
+            const f = 3 / (3 + D), near = clamp((1 - D) / 2), sz = 0.8 + 1.5 * near;
+            ctx.fillStyle = near > 0.55 ? rgba(C.hot, (0.2 + 0.65 * near) * k) : rgba(C.ink, (0.1 + 0.32 * near) * k);
+            ctx.fillRect(cx + X * S * f, cy - Y * S * f, sz, sz);
+          }
+        };
+      },
+
+      // Wind: particles follow a smooth flow and leave short trails; three turbines turn in it.
+      'sdwpf'(A, R) {
+        const { x0, y0, x1, y1, w, h, k } = A, parts = [];
+        const spawn = (p, anywhere) => { p.x = anywhere ? x0 + R() * w : x0 - 10 + R() * 30; p.y = y0 + R() * h; p.tr = []; p.v = 40 + R() * 50; p.hot = R() < 0.18; p.life = 0; };
+        for (let i = 0, n = A.wide ? 110 : 60; i < n; i++) { const p = {}; spawn(p, true); parts.push(p); }
+        const field = (x, y, t) => 0.32 * Math.sin(y * 0.012 + t * 0.25) + 0.22 * Math.sin(x * 0.008 - t * 0.18) + 0.12 * Math.cos((x + y) * 0.005);
+        const turb = [[0.3, 0.62], [0.58, 0.5], [0.84, 0.4]].map(([u, s], i) => ({ x: x0 + w * u, y: y1, h: h * s, w: 0.8 + i * 0.22 }));
+        return (t, dt) => {
+          turb.forEach((b) => {
+            const hy = b.y - b.h;
+            line(b.x, b.y, b.x, hy); ctx.strokeStyle = rgba(C.warm, 0.24 * k); ctx.lineWidth = 1.5; ctx.stroke();
+            for (let i = 0; i < 3; i++) {
+              const a = t * b.w + i * TAU / 3;
+              line(b.x, hy, b.x + Math.cos(a) * b.h * 0.4, hy + Math.sin(a) * b.h * 0.4); ctx.strokeStyle = rgba(C.warm, 0.34 * k); ctx.lineWidth = 1.6; ctx.stroke();
+            }
+            ctx.beginPath(); ctx.arc(b.x, hy, 2.6, 0, TAU); ctx.fillStyle = rgba(C.warm, 0.5 * k); ctx.fill();
+          });
+          ctx.lineWidth = 1.1;
+          parts.forEach((p) => {
+            const a = field(p.x, p.y, t);
+            p.x += Math.cos(a) * p.v * dt; p.y += Math.sin(a) * p.v * dt; p.life += dt;
+            p.tr.push(p.x, p.y); if (p.tr.length > 40) p.tr.splice(0, 2);
+            if (p.x > x1 + 10 || p.y < y0 - 20 || p.y > y1 + 20) { spawn(p, false); return; }
+            if (p.tr.length < 4) return;
+            ctx.beginPath(); ctx.moveTo(p.tr[0], p.tr[1]);
+            for (let i = 2; i < p.tr.length; i += 2) ctx.lineTo(p.tr[i], p.tr[i + 1]);
+            const al = Math.min(1, p.life) * k;
+            ctx.strokeStyle = p.hot ? rgba(C.hot, 0.55 * al) : rgba(C.ink, 0.17 * al); ctx.stroke();
+          });
+        };
+      },
+
+      // Six airports and the flights between them; monthly passenger bars underneath, the last year as a forecast.
+      'airport-forecasting'(A, R) {
+        const { x0, y0, w, h, k } = A, ap = [];
+        for (let guard = 0; ap.length < 6 && guard < 800; guard++) {
+          const p = { x: x0 + w * (0.06 + R() * 0.88), y: y0 + h * (0.04 + R() * 0.56) };
+          if (ap.every((q) => Math.hypot(q.x - p.x, q.y - p.y) > Math.min(w, h) * 0.26)) ap.push(p);
+        }
+        const routes = [];
+        for (let i = 0; i < ap.length; i++) for (let j = i + 1; j < ap.length; j++) if (R() < 0.55) {
+          const a = ap[i], b = ap[j], bend = (R() < 0.5 ? -1 : 1) * (0.18 + R() * 0.12);
+          routes.push({ a, b, cx: (a.x + b.x) / 2 - (b.y - a.y) * bend, cy: (a.y + b.y) / 2 + (b.x - a.x) * bend, per: 5 + R() * 5, off: R() * 10 });
+        }
+        const at = (r, u) => { const v = 1 - u; return [v * v * r.a.x + 2 * v * u * r.cx + u * u * r.b.x, v * v * r.a.y + 2 * v * u * r.cy + u * u * r.b.y]; };
+        const M = 36, bw = w / M, by = A.y1, bh = h * 0.22;
+        return (t) => {
+          routes.forEach((r) => {
+            ctx.beginPath(); ctx.moveTo(r.a.x, r.a.y); ctx.quadraticCurveTo(r.cx, r.cy, r.b.x, r.b.y);
+            ctx.strokeStyle = rgba(C.ink, 0.09 * k); ctx.lineWidth = 1; ctx.stroke();
+            const u = mod(t + r.off, r.per) / r.per;
+            ctx.beginPath();
+            for (let s = 0; s <= 8; s++) { const [x, y] = at(r, Math.max(0, u - 0.08 + s * 0.01)); if (s) ctx.lineTo(x, y); else ctx.moveTo(x, y); }
+            ctx.strokeStyle = rgba(C.hot, 0.5 * k); ctx.lineWidth = 1.4; ctx.stroke();
+            const [x, y] = at(r, u);
+            ctx.beginPath(); ctx.arc(x, y, 2, 0, TAU); ctx.fillStyle = rgba(C.hot, 0.95 * k); ctx.fill();
+          });
+          ap.forEach((a, i) => {
+            const v = mod(t * 0.5 + i * 0.3, 1);
+            ctx.beginPath(); ctx.arc(a.x, a.y, 3 + v * 12, 0, TAU); ctx.strokeStyle = rgba(C.warm, 0.38 * (1 - v) * k); ctx.lineWidth = 1; ctx.stroke();
+            ctx.beginPath(); ctx.arc(a.x, a.y, 3, 0, TAU); ctx.fillStyle = rgba(C.warm, 0.75 * k); ctx.fill();
+          });
+          for (let m = 0; m < M; m++) {
+            const v = 0.5 + 0.3 * Math.sin(((m % 12) / 12) * TAU - 1.6) + m * 0.005, bhm = v * bh, x = x0 + m * bw;
+            box(x + 1, by - bhm, bw - 3, bhm, 2);
+            if (m >= M - 12) {
+              ctx.fillStyle = rgba(C.hot, (0.09 + 0.06 * Math.sin(t * 2 + m * 0.5)) * k); ctx.fill();
+              ctx.setLineDash([2, 3]); ctx.strokeStyle = rgba(C.hot, 0.55 * k); ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
+            } else { ctx.fillStyle = rgba(C.ink, 0.1 * k); ctx.fill(); }
+          }
+        };
+      },
+
+      // A detector's view: boxes snap onto things, hold, then let go; a scan line sweeps the frame.
+      'live-object-detector'(A) {
+        const { x0: fx, y0: fy, w: fw, h: fh, k } = A;
+        const LAB = FR ? ['personne', 'tasse', 'ordinateur', 'chaise', 'bouteille', 'livre', 'téléphone'] : ['person', 'cup', 'laptop', 'chair', 'bottle', 'book', 'phone'];
+        const slots = [0, 1, 2].map((i) => ({ per: 4.2 + i * 0.9, off: i * 1.7, seed: i * 101 + 7 }));
+        const corners = (x, y, w, h, l) => {
+          ctx.beginPath();
+          ctx.moveTo(x, y + l); ctx.lineTo(x, y); ctx.lineTo(x + l, y);
+          ctx.moveTo(x + w - l, y); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y + l);
+          ctx.moveTo(x + w, y + h - l); ctx.lineTo(x + w, y + h); ctx.lineTo(x + w - l, y + h);
+          ctx.moveTo(x + l, y + h); ctx.lineTo(x, y + h); ctx.lineTo(x, y + h - l);
+        };
+        return (t) => {
+          ctx.lineWidth = 1; ctx.strokeStyle = rgba(C.ink, 0.045 * k); ctx.beginPath();
+          for (let x = fx + 44; x < fx + fw; x += 44) { ctx.moveTo(x, fy); ctx.lineTo(x, fy + fh); }
+          for (let y = fy + 44; y < fy + fh; y += 44) { ctx.moveTo(fx, y); ctx.lineTo(fx + fw, y); }
+          ctx.stroke();
+          corners(fx, fy, fw, fh, 24); ctx.strokeStyle = rgba(C.ink, 0.3 * k); ctx.lineWidth = 1.4; ctx.stroke();
+          const sy = fy + mod(t * 0.16, 1) * fh, band = ctx.createLinearGradient(0, sy - 46, 0, sy);
+          band.addColorStop(0, rgba(C.hot, 0)); band.addColorStop(1, rgba(C.hot, 0.1 * k));
+          ctx.fillStyle = band; ctx.fillRect(fx, Math.max(fy, sy - 46), fw, Math.min(46, sy - fy));
+          line(fx, sy, fx + fw, sy); ctx.strokeStyle = rgba(C.hot, 0.32 * k); ctx.lineWidth = 1; ctx.stroke();
+          font(10.5); ctx.textBaseline = 'middle';
+          slots.forEach((sl) => {
+            const cyc = Math.floor((t + sl.off) / sl.per), p = mod(t + sl.off, sl.per) / sl.per, r = rng(sl.seed + cyc * 31);
+            const bw = fw * (0.2 + r() * 0.2), bh = fh * (0.24 + r() * 0.3), lab = LAB[Math.floor(r() * LAB.length)];
+            const bx0 = fx + 10 + r() * (fw - bw - 20), by0 = fy + 28 + r() * (fh - bh - 38);
+            const a = ramp(p, 0, 0.08) * (1 - ramp(p, 0.78, 0.92)) * k, sc = 1 + 0.12 * (1 - ramp(p, 0, 0.14));
+            if (a <= 0) return;
+            const w = bw * sc, h = bh * sc, x = bx0 + (bw - w) / 2, y = by0 + (bh - h) / 2;
+            ctx.strokeStyle = rgba(C.hot, 0.25 * a); ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+            corners(x, y, w, h, 12); ctx.strokeStyle = rgba(C.hot, 0.9 * a); ctx.lineWidth = 2; ctx.stroke();
+            const tw = ctx.measureText(lab).width + 12;
+            box(x, y - 19, tw, 16, 3); ctx.fillStyle = rgba(C.hot, 0.85 * a); ctx.fill();
+            ctx.fillStyle = rgba('12,7,5', a); ctx.fillText(lab, x + 6, y - 10.5);
+          });
+        };
+      },
+
+      // A workflow: trigger, LLM step, a person approves, Notion. Every job waits at the approval step.
+      'opspilot'(A) {
+        const { x0, y0, w, h, k } = A;
+        const L = FR ? ['déclencheur', 'étape LLM', 'validation', 'Notion'] : ['trigger', 'LLM step', 'approval', 'Notion'];
+        const nw = Math.min(104, (w - 60) / 4), nh = 38, gap = (w - nw * 4) / 3;
+        const lanes = [y0 + h * 0.28, y0 + h * 0.66].map((y) => L.map((lab, i) => ({ x: x0 + i * (nw + gap), y: y - nh / 2, lab })));
+        const T = [1.1, 1.1, 1.8, 1.1, 0.9], per = T.reduce((a, b) => a + b);
+        const jobs = [[0, 0], [0, per / 2], [1, per / 3], [1, per * 0.83]];
+        return (t) => {
+          lanes.forEach((ns, li) => {
+            const f = li ? 0.6 : 1;
+            for (let i = 0; i < 3; i++) {
+              const a = ns[i], b = ns[i + 1], ax = a.x + nw + 4, bx = b.x - 6, y = a.y + nh / 2;
+              line(ax, y, bx, y); ctx.strokeStyle = rgba(C.ink, 0.18 * f * k); ctx.lineWidth = 1; ctx.stroke();
+              ctx.beginPath(); ctx.moveTo(bx - 5, y - 4); ctx.lineTo(bx, y); ctx.lineTo(bx - 5, y + 4); ctx.stroke();
+            }
+            font(10.5); ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
+            ns.forEach((n, i) => {
+              box(n.x, n.y, nw, nh, 10); ctx.fillStyle = rgba('3,5,10', 0.75); ctx.fill();
+              ctx.strokeStyle = i === 2 ? rgba(C.hot, 0.55 * f * k) : rgba(C.ink, 0.2 * f * k); ctx.lineWidth = 1.1; ctx.stroke();
+              ctx.fillStyle = rgba(i === 2 ? C.hot : C.ink, (i === 2 ? 0.85 : 0.55) * f * k); ctx.fillText(n.lab, n.x + nw / 2, n.y + nh / 2 + 0.5);
+            });
+            ctx.textAlign = 'start';
+          });
+          jobs.forEach(([li, off]) => {
+            const ns = lanes[li], f = li ? 0.6 : 1, y = ns[0].y + nh / 2;
+            const seg = (i, u) => ns[i].x + nw + (ns[i + 1].x - ns[i].x - nw) * ease(u);
+            let tt = mod(t + off, per), x;
+            if (tt < T[0]) x = seg(0, tt / T[0]);
+            else if ((tt -= T[0]) < T[1]) x = seg(1, tt / T[1]);
+            else if ((tt -= T[1]) < T[2]) {
+              x = ns[2].x;
+              const v = mod(tt * 1.4, 1);
+              box(ns[2].x - 4 - v * 6, ns[2].y - 4 - v * 6, nw + 8 + v * 12, nh + 8 + v * 12, 14);
+              ctx.strokeStyle = rgba(C.hot, 0.45 * (1 - v) * f * k); ctx.lineWidth = 1; ctx.stroke();
+            } else if ((tt -= T[2]) < T[3]) {
+              x = seg(2, tt / T[3]);
+              const a = (1 - ramp(tt / T[3], 0.5, 1)) * f * k, cx = ns[2].x + nw / 2, cy = ns[2].y - 14;
+              ctx.beginPath(); ctx.moveTo(cx - 6, cy); ctx.lineTo(cx - 1.5, cy + 4.5); ctx.lineTo(cx + 7, cy - 5);
+              ctx.strokeStyle = rgba(C.hot, 0.95 * a); ctx.lineWidth = 2; ctx.stroke();
+            } else return;
+            ctx.beginPath(); ctx.arc(x, y, 3, 0, TAU); ctx.fillStyle = rgba(C.hot, 0.95 * f * k); ctx.fill();
+          });
+        };
+      }
+    };
+
+    // The free area: right of the text column and above the demo block on wide screens; behind the title, fainter, on phones.
+    function area() {
+      const c = canvas.getBoundingClientRect(), wide = W >= 900;
+      const head = $('.g-head', page).getBoundingClientRect(), demo = $('.demo', page);
+      const dr = demo && demo.offsetParent ? demo.getBoundingClientRect() : null;
+      const textR = Math.max(...$$('.g-head > :not(.g-row)', page).map((n) => n.getBoundingClientRect().right)) - c.left;
+      let x0 = Math.max(W * 0.5, textR + 56), x1 = W - 32, y0 = 92, y1, k = 1;
+      if (dr && dr.top - c.top > 380 && dr.left - c.left > W * 0.4) y1 = dr.top - c.top - 22;
+      else y1 = Math.min(head.bottom - c.top - 40, H * 0.62);
+      if (!wide || x1 - x0 < 320) { x0 = wide ? W * 0.42 : 16; x1 = W - 16; y0 = 76; y1 = Math.min(H * 0.55, 520); k = wide ? 0.6 : 0.3; }
+      if (y1 - y0 < 240) y1 = y0 + 240;
+      return { x0, y0, x1, y1, w: x1 - x0, h: y1 - y0, k, wide };
+    }
+    function build() {
+      const r = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const s = getComputedStyle(document.documentElement);
+      C.hot = s.getPropertyValue('--hot').trim() || C.hot;
+      C.warm = s.getPropertyValue('--warm-rgb').trim() || C.warm;
+      C.mono = s.getPropertyValue('--f-mono').trim() || C.mono;
+      let seed = 7;
+      for (const ch of slug) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+      draw = SCENES[slug] ? SCENES[slug](area(), rng(seed)) : null;
+    }
+    function paint(dt) { ctx.clearRect(0, 0, W, H); if (draw) draw(t, dt); }
+    const live = () => slug && onScreen && !document.hidden && !reduce;
+    function loop(now) {
+      raf = 0;
+      const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
+      last = now; t += dt;
+      paint(dt);
+      if (live()) raf = requestAnimationFrame(loop);
+    }
+    function kick() { if (!raf && live()) { last = 0; raf = requestAnimationFrame(loop); } }
+    // reduced motion: run the scene for two seconds off screen, then keep that one frame
+    function still() { t = 2; for (let i = 0; i < 40; i++) { t += 0.05; paint(0.05); } }
+    function set(s) {
+      slug = s; t = 0;
+      build();
+      canvas.classList.remove('on'); void canvas.offsetWidth; canvas.classList.add('on');
+      if (reduce) still(); else kick();
+    }
+    function stop() {
+      slug = null; draw = null;
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      ctx.clearRect(0, 0, W, H);
+      canvas.classList.remove('on');
+    }
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { onScreen = e[e.length - 1].isIntersecting; kick(); }).observe(canvas);
+    document.addEventListener('visibilitychange', kick);
+    let rt = 0;
+    window.addEventListener('resize', () => {
+      if (!slug) return;
+      clearTimeout(rt);
+      rt = setTimeout(() => { if (!slug) return; build(); if (reduce) still(); }, 150);
+    });
+    // the plain / technical switch rewrites the lede, which can change the free area
+    new MutationObserver(() => { if (slug) { build(); if (reduce) still(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-mode'] });
+    return { set, stop };
   })();
 
   route();
