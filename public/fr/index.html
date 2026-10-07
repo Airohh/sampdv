@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sam Pondevie · Ingénieur Data &amp; IA</title>
-<meta name="description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout et menés jusqu’en production.">
+<meta name="description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout. Les démos tournent en local.">
 <!-- Not indexed while the site still holds drafts; remove this line for the final version. -->
 <meta name="theme-color" content="#0F1211">
 <meta property="og:title" content="Sam Pondevie · Ingénieur Data &amp; IA">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout et menés jusqu’en production.">
+<meta property="og:description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout. Les démos tournent en local.">
 <meta property="og:url" content="https://sampdv.com/fr/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sampdv">
@@ -1132,7 +1132,7 @@ a.a-egg{color:inherit;text-decoration:none}
         <h1 class="a-title a-name">
           <span class="a-l"><span class="w" style="--i:0">Sam</span> <span class="w" style="--i:1">Pondevie</span></span>
         </h1>
-        <p class="a-tagline rise" style="--d:650ms">Ingénieur Data &amp; IA. Des données aux systèmes d’IA <em class="acc">fiables</em>.</p>
+        <p class="a-tagline rise" style="--d:650ms">Ingénieur Data &amp; IA · Paris</p>
         <div class="a-searchwrap rise" style="--d:750ms">
           <form class="a-search glass" role="search" autocomplete="off">
             <label class="sr" for="q">Rechercher dans mes projets et mon parcours</label>
@@ -1150,7 +1150,7 @@ a.a-egg{color:inherit;text-decoration:none}
           <button class="a-chip glass" type="button" data-q="agents">Agents</button>
           <button class="a-chip glass" type="button" data-q="prévision">Prévision</button>
         </div>
-        <p class="a-sub rise" style="--d:1050ms"><span class="t-tech">Je construis des pipelines de données et des systèmes de ML, et je les mène jusqu’en production : recherche documentaire, MLOps, prévision.</span><span class="t-plain">Je construis des logiciels qui apprennent à partir des données, et je veille à ce qu’ils fonctionnent encore une fois entre les mains de vrais utilisateurs.</span></p>
+        <p class="a-sub rise" style="--d:1050ms"><span class="t-tech">Je construis des pipelines de données et des systèmes de ML de bout en bout : recherche documentaire, MLOps, prévision.</span><span class="t-plain">Je construis des logiciels qui apprennent à partir des données, et je veille à ce qu’ils fonctionnent encore une fois entre les mains de vrais utilisateurs.</span></p>
         <button class="plain-cta rise" style="--d:1120ms" type="button" data-mode-toggle><span class="t-tech">Pas technique ? Lisez la version simple →</span><span class="t-plain">Revenir à la version technique →</span></button>
         <div class="a-social rise" style="--d:1200ms">
           <a class="a-ic glass" href="https://github.com/Airohh" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
@@ -1256,7 +1256,7 @@ a.a-egg{color:inherit;text-decoration:none}
           <p class="pc-kind"><span class="t-tech">MLOps</span><span class="t-plain">Une IA qui s’entretient seule</span></p>
           <h3 class="pc-name">Proths</h3>
           <p class="pc-q"><span class="pc-lab">Problème</span>Quand les données changent, un modèle se dégrade en silence, et un réentraînement à l’aveugle peut en livrer un pire.</p>
-          <p class="pc-line"><span class="pc-lab">La solution</span><span class="t-tech">Il détecte la dérive (PSI, KS), réentraîne sur les nouveaux labels, et ne promeut un modèle que s’il bat l’actuel sur un holdout fixe.</span><span class="t-plain">Il remarque quand les données entrantes changent, se réentraîne, et ne passe au nouveau modèle que s’il est vraiment meilleur.</span></p>
+          <p class="pc-line"><span class="pc-lab">La solution</span><span class="t-tech">Un décalage du mélange des classes prédites (PSI) lève une alerte et ne réentraîne pas. Une chute de précision live, si. La promotion exige +0.02 de F1 macro sur un holdout fixe.</span><span class="t-plain">Un changement dans le mélange des articles lève une alerte. Il ne se réentraîne que si la précision en conditions réelles baisse, et ne change de modèle que si le nouveau est nettement meilleur.</span></p>
           <div class="pc-diagram" data-mini="proths"></div>
           <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Réentraîner, c’est facile. Savoir si c’est mieux, c’est le vrai sujet.</span></p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1282,7 +1282,7 @@ a.a-egg{color:inherit;text-decoration:none}
             <span class="mp-k"><span class="t-tech">Prévision · séries temporelles</span><span class="t-plain">Prévision</span></span>
             <b class="mp-name">sdwpf</b>
             <span class="mp-q">La météo seule peut-elle prévoir une éolienne à un jour ?</span>
-            <span class="mp-line"><span class="t-tech">Un XGBoost par éolienne face à une moyenne naïve, à 24 h. Réponse mesurée : pas mieux.</span><span class="t-plain">Il essaie de prévoir la production éolienne à un jour, et dit honnêtement qu’une simple moyenne fait aussi bien.</span></span>
+            <span class="mp-line"><span class="t-tech">Un XGBoost par éolienne face à une moyenne naïve, à 24 h. Réponse v0.1 : pas mieux, à régénérer.</span><span class="t-plain">Il essaie de prévoir la production éolienne à un jour. Sur les chiffres v0.1, une simple moyenne fait aussi bien, et ces chiffres sont à régénérer.</span></span>
             <span class="mp-foot"><span class="mp-tags">XGBoost · ERA5</span><span class="mp-cta">Découvrir →</span></span>
           </a>
           <a class="mp-card" id="tile-airport" href="#airport-forecasting">
@@ -1290,7 +1290,7 @@ a.a-egg{color:inherit;text-decoration:none}
             <span class="mp-k"><span class="t-tech">Prévision · séries temporelles</span><span class="t-plain">Prévision</span></span>
             <b class="mp-name">airport-forecasting</b>
             <span class="mp-q">Prévoir les passagers du mois suivant pour 6 aéroports, sans regarder le futur.</span>
-            <span class="mp-line"><span class="t-tech">Un seul LightGBM : 3.5 % de MAPE à M+1 contre 5.7 % pour SARIMA, avec des intervalles à 80 % qui tiennent par aéroport.</span><span class="t-plain">Des prévisions mensuelles de passagers pour 6 aéroports européens, avec une marge d’erreur honnête.</span></span>
+            <span class="mp-line"><span class="t-tech">Un seul LightGBM : 3.5 % de MAPE à M+1, MASE 1.13, contre 5.7 % pour SARIMA. Les intervalles à 80 % tiennent sur chaque aéroport.</span><span class="t-plain">Des prévisions mensuelles de passagers pour 6 aéroports européens, avec une marge d’erreur honnête.</span></span>
             <span class="mp-foot"><span class="mp-tags">LightGBM · SARIMA</span><span class="mp-cta">Découvrir →</span></span>
           </a>
           <a class="mp-card" id="tile-detector" href="#live-object-detector">
@@ -1298,7 +1298,7 @@ a.a-egg{color:inherit;text-decoration:none}
             <span class="mp-k"><span class="t-tech">Vision en temps réel</span><span class="t-plain">Vision par ordinateur</span></span>
             <b class="mp-name">live-object-detector</b>
             <span class="mp-q">De la détection d’objets en direct, sans envoyer une seule image.</span>
-            <span class="mp-line"><span class="t-tech">Tourne dans le navigateur, sur téléphone ou webcam : COCO-SSD sur TensorFlow.js.</span><span class="t-plain">Il reconnaît des objets sur une webcam, en direct, dans votre navigateur.</span></span>
+            <span class="mp-line"><span class="t-tech">Tourne dans le navigateur, sur téléphone ou webcam : COCO-SSD sur TensorFlow.js, chargé depuis un CDN. L’image reste sur l’appareil.</span><span class="t-plain">Il reconnaît des objets sur une webcam, en direct, dans votre navigateur. Le runtime vient d’un CDN et l’image reste sur l’appareil.</span></span>
             <span class="mp-foot"><span class="mp-tags">TensorFlow.js · COCO-SSD</span><span class="mp-cta">Découvrir →</span></span>
           </a>
           <a class="mp-card" id="tile-opspilot" href="#opspilot">
@@ -1416,7 +1416,7 @@ a.a-egg{color:inherit;text-decoration:none}
           <h3>policybench-fr</h3>
           <p class="nx-q">Un chatbot sait-il calculer les aides au logement, la prime d’activité, le RSA ou l’impôt sur le revenu d’un foyer donné ?</p>
           <ol class="nx-steps" aria-label="Avancement">
-            <li class="done"><span class="sr">Fait : </span>Référence · 45 foyers</li>
+            <li class="done"><span class="sr">Fait : </span>Référence · 45 foyers · jeu-g3 stratifié</li>
             <li class="now"><span class="sr">En cours : </span>Contrôle avec le simulateur de la CAF</li>
             <li><span class="sr">À venir : </span>Tests des chatbots</li>
             <li><span class="sr">À venir : </span>Rapport public</li>
@@ -1430,7 +1430,6 @@ a.a-egg{color:inherit;text-decoration:none}
       <div class="nx-foot">
         <div style="display:grid;gap:6px">
           <p class="sec-note">Même règle pour les trois : mesurer, pas militer. Tous les résultats sont publiés, y compris « aucune différence ».</p>
-          <p class="nx-when">Premier rapport public : bientôt</p>
         </div>
         <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>À chaque fois la même question : le chatbot sait-il, ou devine-t-il ?</span></p>
       </div>
@@ -1448,7 +1447,7 @@ a.a-egg{color:inherit;text-decoration:none}
       </header>
       <div class="tk-wrap" id="tk" data-where="{&quot;syro&quot;: [&quot;Syro&quot;, &quot;syro&quot;], &quot;mcp&quot;: [&quot;insight-mcp&quot;, &quot;insight-mcp&quot;], &quot;proths&quot;: [&quot;Proths&quot;, &quot;proths&quot;], &quot;pointnet&quot;: [&quot;pointnet-3d-classifier&quot;, &quot;pointnet-3d-classifier&quot;], &quot;sdwpf&quot;: [&quot;sdwpf&quot;, &quot;sdwpf&quot;], &quot;airport&quot;: [&quot;airport-forecasting&quot;, &quot;airport-forecasting&quot;], &quot;detector&quot;: [&quot;live-object-detector&quot;, &quot;live-object-detector&quot;], &quot;opspilot&quot;: [&quot;opspilot&quot;, &quot;opspilot&quot;], &quot;akabi&quot;: [&quot;Accor (Akabi)&quot;, &quot;tl-akabi&quot;], &quot;sap&quot;: [&quot;SAP&quot;, &quot;tl-sap&quot;]}">
         <div class="tk-flow"><div class="tk-stage"><p class="tk-h"><b>01</b>Collecter et déplacer</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Snowflake" data-w="akabi">Snowflake <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="ETL et orchestration maison" data-w="akabi">ETL et orchestration maison <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Accor Data Hub" data-w="akabi">Accor Data Hub <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="n8n" data-w="opspilot">n8n <i>1</i></button></div></div><div class="tk-stage"><p class="tk-h"><b>02</b>Modéliser et suivre</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="scikit-learn" data-w="proths">scikit-learn <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="PyTorch" data-w="pointnet">PyTorch <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="XGBoost" data-w="sdwpf">XGBoost <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="LightGBM" data-w="airport">LightGBM <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="SARIMA" data-w="airport">SARIMA <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="K-means" data-w="sap">K-means <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="MLflow" data-w="proths,pointnet">MLflow <i>2</i></button></div></div><div class="tk-stage"><p class="tk-h"><b>03</b>Servir</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="FastAPI" data-w="syro,proths,pointnet,airport,opspilot">FastAPI <i>5</i></button><button class="tk" type="button" aria-pressed="false" data-n="ONNX Runtime" data-w="pointnet">ONNX Runtime <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="TensorFlow.js" data-w="detector">TensorFlow.js <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Celery" data-w="syro">Celery <i>1</i></button></div></div><div class="tk-stage"><p class="tk-h"><b>04</b>Surveiller</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Prometheus" data-w="proths,mcp">Prometheus <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="Grafana" data-w="proths">Grafana <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Contrôles de dérive PSI" data-w="proths,airport">Contrôles de dérive PSI <i>2</i></button></div></div></div>
-        <p class="tk-loop">↺ La surveillance reboucle sur le modèle : la dérive déclenche un réentraînement, comme dans Proths.</p>
+        <p class="tk-loop">↺ La surveillance reboucle sur le modèle : un décalage de mélange ne fait qu’alerter. Une chute de précision live déclenche un réentraînement, comme dans Proths.</p>
         <div class="tk-band"><p class="tk-h">Recherche et LLM</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="BM25" data-w="syro,mcp">BM25 <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="Embeddings denses" data-w="syro,mcp">Embeddings denses <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="RRF" data-w="syro,mcp">RRF <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="Qdrant" data-w="syro">Qdrant <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Reranking cross-encoder" data-w="syro">Reranking cross-encoder <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Ollama" data-w="syro">Ollama <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="MCP" data-w="mcp">MCP <i>1</i></button></div></div><div class="tk-band"><p class="tk-h">Déployer et automatiser · sous tout le reste</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Docker" data-w="syro,mcp,proths,pointnet,sdwpf,opspilot">Docker <i>6</i></button><button class="tk" type="button" aria-pressed="false" data-n="Terraform" data-w="akabi">Terraform <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="GitLab CI/CD" data-w="akabi">GitLab CI/CD <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="GitHub Actions" data-w="mcp,proths,pointnet,sdwpf,opspilot">GitHub Actions <i>5</i></button></div></div><div class="tk-band"><p class="tk-h">Langages</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Python" data-w="syro,mcp,proths,pointnet,sdwpf,airport,opspilot,sap">Python <i>8</i></button><button class="tk" type="button" aria-pressed="false" data-n="SQL" data-w="akabi,sap">SQL <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="TypeScript" data-w="syro">TypeScript <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="JavaScript" data-w="detector">JavaScript <i>1</i></button></div></div>
         <p class="tk-out" id="tk-out" aria-live="polite" data-used="utilisé dans">Cliquez sur un outil pour voir où je l’ai utilisé.</p>
       </div>
@@ -1478,7 +1477,6 @@ a.a-egg{color:inherit;text-decoration:none}
         <article class="by-card">
           <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M4 18 3 8l5 4 4-7 4 7 5-4-1 10"/></svg>Grande stratégie</h3>
           <p>Total War d’abord, et les jeux Paradox comme Crusader Kings III.</p>
-          <p class="soon">Campagne préférée · bientôt</p>
         </article>
       </div>
     </div>
@@ -1518,13 +1516,7 @@ a.a-egg{color:inherit;text-decoration:none}
           </div>
         </div>
       </header>
-      <figure class="demo" aria-label="Vidéo de démo, bientôt">
-        <div class="demo-in">
-          <span class="demo-play glass" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg></span>
-          <b>Vidéo de démo · bientôt</b>
-          <span>Une courte capture d’écran du projet en action.</span>
-        </div>
-      </figure>
+      <figure class="demo" hidden></figure>
     </div>
     <div data-f="secs"></div>
     <footer class="g-next">
@@ -1647,7 +1639,7 @@ a.a-egg{color:inherit;text-decoration:none}
   };
   try { history.scrollRestoration = 'manual'; } catch (e) { /* not supported */ }
 
-  /* ---------- Content, checked against the repos on 2 Oct 2026 (Airohh/Syro, Proths, insight-mcp).
+  /* ---------- Content, checked against the repos on 7 Oct 2026 (Airohh/Syro, Proths, insight-mcp).
      Wording is still a draft; facts and numbers come from the READMEs, configs and code. ---------- */
   const GH = 'https://github.com/Airohh/';
   const PROJECTS = {
@@ -1657,10 +1649,10 @@ a.a-egg{color:inherit;text-decoration:none}
       lede: 'Plateforme RAG multi-domaines : recherche hybride (Qdrant + BM25, fusionnés par RRF), reranker cross-encoder avec seuil d’abstention, réponses qui citent leurs sources, ingestion asynchrone avec Celery.',
       pageLede: 'Une plateforme RAG multi-domaines. Recherche hybride, reranker cross-encoder, et des réponses qui citent <b>[Source N]</b>, <b>ou disent « je ne trouve pas » quand rien dans vos documents n’est pertinent.</b>',
       stack: ['Python', 'FastAPI', 'Qdrant', 'BM25', 'bge-reranker-v2-m3', 'Ollama', 'Celery + Redis', 'React', 'Docker'],
-      metrics: [['Recall@10', '0.978', '', false, 'BM25 seul · corpus démo de 19 docs'], ['nDCG@10', '0.909', '', false, 'BM25 seul · corpus démo'], ['nDCG@10 · stack complète', 'X', '', true, 'dense + BM25 + reranker'], ['Tests', '147', '', false, 'unitaires + intégration']],
+      metrics: [['Recall@10', '0.978', '', false, 'BM25 seul · corpus démo de 19 docs'], ['nDCG@10', '0.909', '', false, 'BM25 seul · corpus démo de 19 docs'], ['nDCG@10 · stack complète', 'X', '', true, 'dense + BM25 + reranker'], ['Tests', '147', '', false, 'unitaires + intégration']],
       cue: 'Faites défiler pour suivre un document à l’entrée, puis une question à la sortie',
       problem: 'Un LLM seul invente quand il ne sait pas, et il ne connaît pas vos documents. Syro répond uniquement à partir de vos sources, les cite, et le dit quand elles ne contiennent pas la réponse.',
-      results: `<div class="tbl-wrap"><table class="tbl"><caption>Mesuré en CI sur le corpus démo de 19 documents</caption><thead><tr><th>Métrique</th><th>BM25 seul</th><th>Stack complète</th></tr></thead><tbody><tr><td>Recall@10</td><td>0.978</td><td class="tbd">À mesurer</td></tr><tr><td>nDCG@10</td><td>0.909</td><td class="tbd">À mesurer</td></tr><tr><td>MRR</td><td>0.888</td><td class="tbd">À mesurer</td></tr></tbody></table></div>
+      results: `<div class="tbl-wrap"><table class="tbl"><caption>Mesuré en CI, BM25 seul, sur le corpus démo de 19 documents</caption><thead><tr><th>Métrique</th><th>BM25 seul</th><th>Stack complète</th></tr></thead><tbody><tr><td>Recall@10</td><td>0.978</td><td class="tbd">À mesurer</td></tr><tr><td>nDCG@10</td><td>0.909</td><td class="tbd">À mesurer</td></tr><tr><td>MRR</td><td>0.888</td><td class="tbd">À mesurer</td></tr></tbody></table></div>
         <p>Le jeu de référence compte 100 questions réparties en quatre intentions : 56 factuelles, 28 identifiants exacts, 8 multi-sauts et 8 hors corpus. La stack complète se mesure avec <code>make eval-retrieval</code>, y compris la part de questions hors corpus correctement refusées.</p>
         <p class="pg-aside">Le corpus démo est petit, donc les scores sont élevés. Comparer deux configurations équitablement demande des documents distracteurs proches du sujet.</p>`
     },
@@ -1670,23 +1662,23 @@ a.a-egg{color:inherit;text-decoration:none}
       lede: 'Serveur MCP autonome qui expose une recherche documentaire hybride (BM25 + dense, fusionnés par RRF) comme outils pour agents IA. Recherche seule, métriques Prometheus, auth bearer, Docker, CI/CD.',
       pageLede: 'Un serveur MCP qui donne aux agents IA la recherche documentaire sous forme d’outils. <b>Il ne fait que la recherche :</b> il renvoie passages, scores et sources, et c’est le LLM du client qui rédige la réponse citée.',
       stack: ['Python', 'FastMCP', 'BM25', 'fastembed (ONNX)', 'RRF', 'SQLite', 'Prometheus', 'Docker', 'GitHub Actions'],
-      metrics: [['Outils MCP', '3', '', false, 'search · get · list'], ['Transports', '2', '', false, 'stdio · Streamable HTTP'], ['Clés API sur le serveur', '0', '', false, 'c’est le client qui génère'], ['Latence p95 par outil', 'X', 'ms', true, 'depuis /metrics']],
+      metrics: [['Recall@5 · BM25', '1.00', '', false, '20/20 · corpus démo de 5 documents · hybride non mesuré'], ['Outils MCP', '3', '', false, 'search · get · list'], ['Transports', '2', '', false, 'stdio · Streamable HTTP'], ['Clés API sur le serveur', '0', '', false, 'c’est le client qui génère'], ['Latence p95 par outil', 'X', 'ms', true, 'depuis /metrics']],
       cue: 'Faites défiler pour suivre un appel d’outil, de l’agent jusqu’au retour',
       problem: 'Un agent a besoin de passages fiables tirés d’un corpus, avec des sources qu’il peut citer. insight-mcp lui donne la recherche sous forme d’outils MCP et laisse la rédaction au client : le serveur n’a besoin ni de modèle ni de clé API.',
-      results: `<p>Sur le corpus démo, pour « zero trust identity strategy », les deux modes classent en premier la publication Continuous Identity. Le mode hybride fait aussi remonter la publication sur les portefeuilles numériques et l’IAM, qui ne partage aucun mot avec la requête.</p>`,
-      resultsTodo: 'À venir : latence par outil (p95) et qualité de recherche sur un jeu de questions annoté.'
+      results: `<div class="tbl-wrap"><table class="tbl"><caption>Recall@5 · corpus de démo, pas un fonds réel · 20 questions écrites à la main, 5 documents</caption><thead><tr><th>Mode</th><th>Recall@5</th></tr></thead><tbody><tr><td>BM25</td><td>1.00 (20/20)</td></tr><tr><td>Hybride</td><td class="tbd">non mesuré</td></tr></tbody></table></div>
+        <p>Le corpus compte 5 documents, donc le top 5 couvre tout l’index. Le test exige aussi un score BM25 strictement positif sur le document attendu. L’hybride n’est pas mesuré : cela téléchargerait un modèle fastembed.</p>`,
     },
     'proths': {
       title: 'Proths', kind: 'MLOps', target: 'card-proths', story: true, repo: GH + 'Proths', shot: ['/img/proj/proths-grafana.webp', 'Tableau de bord Grafana de Proths pendant une dérive', 'Grafana pendant la dérive de démo : PSI à 0.776, un réentraînement promu, un rejeté · tiré du dépôt', true],
-      kindPlain: 'IA qui s’entretient seule', plain: 'Un système qui classe des articles de presse par thème et s’entretient tout seul. Il surveille si les articles entrants commencent à changer, se réentraîne quand c’est le cas, et ne bascule sur le nouveau modèle que s’il fait mieux sur le même test fixe.',
-      lede: 'Boucle MLOps complète sur un classifieur d’actualités (AG News) : service FastAPI, journal des prédictions SQLite, détection de dérive par PSI et KS, réentraînement sur les labels de feedback, promotion champion/challenger sur un holdout fixe. MLflow, Prometheus, Grafana.',
-      pageLede: 'Un classifieur d’actualités (AG News, 4 classes) servi par une API, surveillé en continu et réentraîné seul quand le trafic change. <b>Un nouveau modèle n’arrive en production que s’il bat l’actuel sur un holdout fixe.</b>',
+      kindPlain: 'IA qui s’entretient seule', plain: 'Un système qui classe des articles de presse par thème et s’entretient tout seul. Un changement dans le mélange des articles entrants lève une alerte. Il ne se réentraîne que si la précision live baisse, et ne bascule que si le nouveau modèle gagne au moins 0.02 de F1 macro sur le même test fixe.',
+      lede: 'Boucle MLOps complète sur un classifieur d’actualités (AG News) : service FastAPI, journal des prédictions SQLite, PSI sur le mélange des classes prédites comme alerte, réentraînement sur les labels de feedback quand la précision live baisse, promotion champion/challenger sur un holdout fixe. MLflow, Prometheus, Grafana.',
+      pageLede: 'Un classifieur d’actualités (AG News, 4 classes) servi par une API et surveillé en continu. <b>Un décalage de mélange lève une alerte. Un nouveau modèle n’arrive en production que s’il gagne au moins 0.02 de F1 macro sur un holdout fixe.</b>',
       stack: ['scikit-learn', 'MLflow', 'FastAPI', 'SQLite', 'Prometheus', 'Grafana', 'Docker Compose', 'GitHub Actions'],
-      metrics: [['F1 macro · holdout', '0.923', '', false, 'régression logistique'], ['Inférence', '0.09', 'ms/doc', false, 'même pipeline qu’à l’entraînement'], ['Seuil de promotion', '+0.002', 'F1', false, 'sur un holdout fixe'], ['Étapes manuelles dans la boucle', '0', '', false, 'dérive → réentraînement → duel → promotion']],
+      metrics: [['F1 macro · holdout', '0.923', '', false, 'régression logistique'], ['Inférence', '0.09', 'ms/doc', false, 'même pipeline qu’à l’entraînement'], ['Seuil de promotion', '+0.02', 'F1', false, 'F1 macro sur un holdout fixe'], ['Étapes manuelles dans la boucle', '0', '', false, 'chute de précision → réentraînement → duel → promotion']],
       cue: 'Faites défiler pour suivre la boucle, de l’entraînement à la promotion',
       problem: 'Réentraîner automatiquement, c’est la partie facile. Savoir si le nouveau modèle est vraiment meilleur, c’est la partie difficile : la précision mesurée en production dépend du mélange du trafic, elle ne peut donc pas servir de juge.',
       results: `<div class="tbl-wrap"><table class="tbl"><caption>Choix du modèle · même jeu d’entraînement (120 000 articles), même holdout (3 800)</caption><thead><tr><th>Modèle</th><th>Accuracy</th><th>F1 macro</th><th>Entraînement</th><th>Inférence</th></tr></thead><tbody><tr class="hl"><td>Régression logistique (SGD) · retenue</td><td>0.923</td><td>0.923</td><td>23 s</td><td>0.09 ms/doc</td></tr><tr><td>LinearSVC calibré</td><td>0.923</td><td>0.923</td><td>28 s</td><td>0.09 ms/doc</td></tr><tr><td>Complement Naive Bayes</td><td>0.912</td><td>0.912</td><td>17 s</td><td>0.09 ms/doc</td></tr><tr><td>Random Forest · ancienne baseline</td><td>0.804</td><td>0.802</td><td>18 s</td><td>0.10 ms/doc</td></tr></tbody></table></div>
-        <p>Dans la démo de la boucle, le trafic passe à 70 % de Sports à l’étape 6 et le PSI dépasse 0.2 à l’étape 8. Le moniteur réentraîne sur les données de base plus les labels de feedback : v2 et v4 sont promues, cinq candidates sont rejetées pour un gain de F1 inférieur à 0.002.</p>
+        <p>Dans la démo de la boucle, le trafic passe à 70 % de Sports à l’étape 6 et le PSI dépasse 0.2 à l’étape 8 : une alerte de mélange. Cette alerte ne réentraîne pas. Le réentraînement automatique ne part que sur une chute de précision live, avec assez de nouveaux labels et le délai de carence écoulé. Le flag de démo <code>--retrain-on-mix</code> est ce qui réentraîne encore sur le mélange. La promotion exige au moins +0.02 de F1 macro sur le holdout fixe d’environ 3 800 lignes.</p>
         <p class="pg-aside">La précision en direct est <b>montée</b> de 87 % à 95 % pendant la dérive, avec le même modèle, parce que Sports est la classe la plus facile. C’est pour ça que la promotion se décide sur un holdout fixe, jamais sur la précision en direct.</p>`
     },
     'pointnet-3d-classifier': {
@@ -1706,15 +1698,15 @@ a.a-egg{color:inherit;text-decoration:none}
       results: `<div class="tbl-wrap"><table class="tbl"><caption>Précision test sous contrainte · ModelNet10, 908 maillages</caption><thead><tr><th>Condition</th><th>Précision</th></tr></thead><tbody><tr class="hl"><td>Jeu de test propre</td><td>0.872</td></tr><tr><td>Bruit σ = 0.04 / 0.10</td><td>0.846 / 0.66</td></tr><tr><td>20 % / 50 % des points retirés</td><td>0.78 / 0.38</td></tr><tr><td>Rotation 3D aléatoire</td><td>0.19</td></tr></tbody></table></div>
         <p>L’effondrement sous rotation est la limite connue de PointNet : ce modèle a été entraîné avec une augmentation en lacet seulement. Le réentraîner avec une augmentation SO(3) complète fait passer la précision sous rotation de 0.19 à 0.59, avec un coût : la précision sur le test propre tombe à 0.64. Le lacet seul convient aux pièces qui arrivent droites, SO(3) à une pose libre.</p>
         <p class="pg-aside">Retirer le T-Net de features ou l’augmentation <b>augmente</b> légèrement la précision sur le test propre (0.891 et 0.889, contre 0.865 pour le modèle complet). Jugés sur ce seul test, les deux seraient supprimés ; leur intérêt se voit sous rotation et sous bruit.</p>`,
-      limits: `<ul class="pg-list"><li>Entraîné sur ModelNet10, qui ne contient que des meubles. Une forme hors de ce jeu reçoit quand même une étiquette sûre d’elle : un tore sort en baignoire à 0.76. En production, il faut un seuil d’abstention ou une classe « inconnu ».</li><li>Les classes faibles sont des sosies : bureau et table, table de nuit et commode (0.66).</li><li>ONNX sert la portabilité, pas la vitesse : environ 3 ms avec PyTorch et 4 ms avec ONNX Runtime en batch 1 sur ce petit modèle.</li><li>La chaîne n’est pas liée aux meubles : une équerre mécanique synthétique la traverse sans changement. Des étiquettes industrielles demanderaient un catalogue de pièces et un réentraînement.</li></ul>`
+      limits: `<ul class="pg-list"><li>Entraîné sur ModelNet10, qui ne contient que des meubles. Le tore enregistré sort en baignoire à 0.7566. L’API sert le checkpoint yaw-only <code>pointnet.pt</code> et répond <code>unknown</code> à ce score ou en dessous ; le top-k reste. Si le fichier manque, <code>/predict</code> répond 503 et n’entraîne pas.</li><li>Les classes faibles sont des sosies : bureau et table, table de nuit et commode (0.66).</li><li>ONNX sert la portabilité, pas la vitesse : environ 3 ms avec PyTorch et 4 ms avec ONNX Runtime en batch 1 sur ce petit modèle.</li><li>La chaîne n’est pas liée aux meubles : une équerre mécanique synthétique la traverse sans changement. Des étiquettes industrielles demanderaient un catalogue de pièces et un réentraînement.</li></ul>`
     },
     'sdwpf': {
       title: 'sdwpf', kind: 'Prévision', target: 'tile-sdwpf', repo: GH + 'sdwpf-ml-time-serie', shot: ['/img/proj/sdwpf-forecast.webp', 'Puissance éolienne mesurée face à la prévision XGBoost', 'Jeu de test, moyenne de 100 éoliennes : puissance mesurée (noir) face à la prévision XGBoost (rouge) · tiré du dépôt'],
-      kindPlain: 'Prévision', plain: 'Essaie de prévoir la production d’une éolienne un jour à l’avance à partir de la météo seule, et la compare honnêtement à une simple moyenne. Réponse : pas mieux, et la page explique pourquoi.',
+      kindPlain: 'Prévision', plain: 'Essaie de prévoir la production d’une éolienne un jour à l’avance à partir de la météo seule, et la compare honnêtement à une simple moyenne. En v0.1, pas mieux. Ces chiffres sont à régénérer.',
       lede: 'Prévision de production éolienne sur SDWPF (parc chinois, SCADA toutes les 10 minutes et météo ERA5) : un XGBoost par éolienne, à 24 h, face à une moyenne naïve, avec un split temporel et des vérifications walk-forward.',
-      pageLede: 'Peut-on prévoir la production d’une éolienne un jour à l’avance avec la météo réanalysée et le calendrier seulement ? <b>Réponse mesurée : pas mieux qu’une moyenne.</b>',
+      pageLede: 'Peut-on prévoir la production d’une éolienne un jour à l’avance avec la météo réanalysée et le calendrier seulement ? <b>Réponse mesurée en v0.1 : pas mieux qu’une moyenne.</b> Ces chiffres sont à régénérer.',
       stack: ['XGBoost', 'pandas', 'ERA5', 'Python', 'pytest', 'Docker', 'GitHub Actions'],
-      metrics: [['Horizon', '24', 'h', false, '144 pas de 10 minutes'], ['MAE · 100 éoliennes', '354.0', 'kW', false, 'moyenne naïve : 346.2 kW'], ['Bat la moyenne sur', '13/20', 'éoliennes', false, 'mais perd plus qu’il ne gagne'], ['Mieux qu’une moyenne ?', 'Non', '', false, 'publié tel que mesuré']],
+      metrics: [['Horizon', '24', 'h', false, '144 pas de 10 minutes'], ['MAE · 100 éoliennes', '354.0', 'kW', false, 'v0.1 · moyenne naïve : 346.2 kW'], ['Écart · 20 éoliennes', '−0.5', '%', false, 'v0.1 · XGBoost face à la moyenne'], ['Mieux qu’une moyenne ?', 'Non', '', false, 'v0.1, à régénérer']],
       problem: 'La question : avec la météo réanalysée (ERA5) et le calendrier seulement, sans la puissance récente ni le vent mesuré par l’éolienne, peut-on prévoir sa production 24 heures à l’avance ?',
       approach: `<ol class="pg-flow">
         <li><b>Données.</b> SDWPF, un parc éolien en Chine : SCADA toutes les 10 minutes et météo ERA5. Cible : la puissance active (kW) 144 pas plus tard, soit 24 h.</li>
@@ -1722,10 +1714,10 @@ a.a-egg{color:inherit;text-decoration:none}
         <li><b>Baseline.</b> La prévision naïve est la moyenne de la cible sur l’entraînement. La persistance est écartée exprès : elle utiliserait la puissance actuelle, que le modèle n’a pas.</li>
         <li><b>Vérifications.</b> Un benchmark multi-horizon et des plis walk-forward en fin de série ; des tests en CI et une image Docker.</li>
       </ol>`,
-      results: `<div class="tbl-wrap"><table class="tbl"><caption>MAE sur le test, kW · plus bas = mieux</caption><thead><tr><th>Éoliennes</th><th>Moyenne naïve</th><th>XGBoost</th><th>Écart</th></tr></thead><tbody><tr><td>1</td><td>434.1</td><td>530.6</td><td>−22.2 %</td></tr><tr><td>20</td><td>378.5</td><td>380.6</td><td>−0.5 %</td></tr><tr class="hl"><td>100</td><td>346.2</td><td>354.0</td><td>−2.2 %</td></tr></tbody></table></div>
-        <p>Sur 20 éoliennes, XGBoost bat la moyenne sur 13, mais ses pertes (jusqu’à −22 %) pèsent plus que ses gains (au plus +10 %). La prévision reste entre 300 et 600 kW pendant que la production dépasse 1 000 kW : le modèle apprend le niveau moyen, pas les épisodes de vent.</p>
+      results: `<div class="tbl-wrap"><table class="tbl"><caption>MAE sur le test (v0.1, à régénérer), kW · plus bas = mieux</caption><thead><tr><th>Éoliennes</th><th>Moyenne naïve</th><th>XGBoost</th><th>Écart</th></tr></thead><tbody><tr><td>1</td><td>434.1</td><td>530.6</td><td>−22.2 %</td></tr><tr><td>20</td><td>378.5</td><td>380.6</td><td>−0.5 %</td></tr><tr class="hl"><td>100</td><td>346.2</td><td>354.0</td><td>−2.2 %</td></tr></tbody></table></div>
+        <p>En v0.1, la prévision reste entre 300 et 600 kW pendant que la production dépasse 1 000 kW : le modèle apprend le niveau moyen, pas les épisodes de vent.</p>
         <p class="pg-aside">Ce que j’en retiens : à 24 heures et au pas de 10 minutes, la météo réanalysée ne porte pas assez d’information locale. Le gain viendrait de la puissance récente, du vent mesuré par l’éolienne ou de vraies prévisions météo à l’échéance.</p>`,
-      limits: `<ul class="pg-list"><li>Un seul parc et un seul découpage 70/30 pour ces chiffres ; le script walk-forward vérifie d’autres fenêtres.</li><li>ERA5 est une réanalyse, pas une prévision : en production, il faudrait la météo prévue à l’échéance.</li><li>Suite : réintroduire le vent mesuré et la puissance récente là où c’est permis, puis prévoir des quantiles plutôt qu’une seule valeur.</li></ul>`
+      limits: `<ul class="pg-list"><li>Un seul parc. Ces MAE sont celles de la v0.1 ; les chiffres v0.2 ne sont pas encore produits sur les vraies données. Le script walk-forward vérifie d’autres fenêtres.</li><li>ERA5 est une réanalyse, pas une prévision : en production, il faudrait la météo prévue à l’échéance.</li><li>Suite : réintroduire le vent mesuré et la puissance récente là où c’est permis, puis prévoir des quantiles plutôt qu’une seule valeur.</li></ul>`
     },
     'airport-forecasting': {
       title: 'airport-forecasting', kind: 'Prévision', target: 'tile-airport', repo: GH + 'airport-forecasting', shot: ['/img/proj/airport-pax.webp', 'Passagers mensuels par aéroport, de 1998 à 2025', 'Passagers mensuels Eurostat, 1998–2025, avec la chute du COVID · vue d’ensemble des données du dépôt'],
@@ -1733,7 +1725,7 @@ a.a-egg{color:inherit;text-decoration:none}
       lede: 'Prévision mensuelle des passagers de 6 aéroports (données Eurostat) : LightGBM face à SARIMA et à une baseline naïve, évaluation récursive, intervalles conformes, dérive suivie par PSI.',
       pageLede: 'Un seul LightGBM pour 6 aéroports européens, qui prévoit les passagers mensuels sans lire le futur. <b>Jugé sur une évaluation récursive, avec des intervalles à 80 % qui tiennent sur chaque aéroport.</b>',
       stack: ['LightGBM', 'SARIMA', 'statsmodels', 'Prédiction conforme', 'PSI', 'FastAPI', 'Streamlit'],
-      metrics: [['MAPE · M+1', '3.5', '%', false, 'SARIMA 5.7 % · naïf 6.2 %'], ['MAPE · M+12', '3.3', '%', false, '4 aéroports · SARIMA 4.6 %'], ['Couverture intervalle 80 %', '88', '%', false, 'au moins 80 % par aéroport'], ['Aéroports', '6', '', false, 'un modèle pour tous']],
+      metrics: [['MAPE · M+1', '3.5', '%', false, 'SARIMA 5.7 % · naïf 6.2 %'], ['MASE · M+1', '1.13', '', false, 'face au naïf · M+3 : 1.22'], ['MAPE · M+12', '3.3', '%', false, '4 aéroports · SARIMA 4.6 %'], ['Couverture intervalle 80 %', '88', '%', false, 'au moins 80 % par aéroport'], ['Aéroports', '6', '', false, 'un modèle pour tous']],
       problem: 'Un seul modèle peut-il prévoir les passagers de six aéroports de tailles très différentes, sans rien utiliser qu’on ne connaîtrait pas au moment de la prévision ? Le score qui compte est le récursif, où la prévision de chaque mois nourrit la suivante, pas le score à un pas, plus facile.',
       approach: `<ol class="pg-flow">
         <li><b>Données.</b> Trafic aéroportuaire Eurostat (passagers et mouvements), plus chômage et PIB, prix du pétrole (FRED), taux de change BCE et jours fériés.</li>
@@ -1752,10 +1744,10 @@ a.a-egg{color:inherit;text-decoration:none}
     'live-object-detector': {
       title: 'live-object-detector', kind: 'Vision', target: 'tile-detector', repo: GH + 'live-object-detector',
       kindPlain: 'Vision par ordinateur', plain: 'Pointez un téléphone ou une webcam vers une scène et il reconnaît les objets, en direct, sans envoyer la moindre image à un serveur.',
-      lede: 'Détection d’objets en temps réel dans le navigateur, sur téléphone ou webcam : COCO-SSD (MobileNet v2) sur TensorFlow.js. Aucune image ne quitte l’appareil.',
-      pageLede: 'Pointez un téléphone ou une webcam vers le monde et obtenez des boîtes et des étiquettes en direct. <b>Le modèle tourne sur l’appareil : aucune image ne quitte le navigateur.</b>',
+      lede: 'Détection d’objets en temps réel dans le navigateur, sur téléphone ou webcam : COCO-SSD (MobileNet v2) sur TensorFlow.js, chargé depuis un CDN. Aucune image ne quitte l’appareil.',
+      pageLede: 'Pointez un téléphone ou une webcam vers le monde et obtenez des boîtes et des étiquettes en direct. <b>TensorFlow.js est chargé depuis un CDN ; l’image reste sur l’appareil.</b>',
       stack: ['TensorFlow.js', 'COCO-SSD', 'MobileNet v2', 'WebGL', 'JavaScript', 'GitHub Pages'],
-      metrics: [['Classes d’objets', '80', '', false, 'COCO'], ['Images envoyées à un serveur', '0', '', false, 'inférence dans le navigateur'], ['Backend', 'Aucun', '', false, 'un seul index.html statique']],
+      metrics: [['Classes d’objets', '80', '', false, 'COCO'], ['Images envoyées à un serveur', '0', '', false, 'inférence dans le navigateur'], ['Backend', 'Aucun', '', false, 'TensorFlow.js chargé depuis un CDN']],
       problem: 'La détection d’objets passe en général par un serveur qui reçoit les images de la caméra. Je voulais qu’elle tourne là où est la caméra : ouvrir une page, autoriser la caméra, et voir les détections en direct, sans rien envoyer.',
       approach: `<ol class="pg-flow">
         <li><b>Modèle.</b> COCO-SSD, en version lite MobileNet v2 : 80 classes d’objets du quotidien.</li>
@@ -1764,7 +1756,6 @@ a.a-egg{color:inherit;text-decoration:none}
         <li><b>Hébergement.</b> GitHub Pages, car les navigateurs ne donnent accès à la caméra qu’en HTTPS.</li>
       </ol>`,
       results: `<p>La démo est en ligne : ouvrez-la sur un téléphone ou un ordinateur, autorisez la caméra, et les boîtes suivent les objets en temps réel.</p>`,
-      resultsTodo: 'Le nombre d’images par seconde selon l’appareil n’est pas encore mesuré.',
       links: [['Démo en ligne ↗', 'https://airohh.github.io/live-object-detector/']], live: true
     },
     'opspilot': {
@@ -1779,12 +1770,12 @@ a.a-egg{color:inherit;text-decoration:none}
         <li><b>Réception.</b> Un webhook vérifie son jeton d’en-tête, FastAPI attribue un identifiant à la demande, et une page Notion s’ouvre au statut Processing.</li>
         <li><b>Contexte.</b> FastAPI retrouve le fournisseur cité dans la demande et charge sa fiche et la politique de délais de paiement. Un fournisseur inconnu, ou deux dans la même demande, arrête le traitement avant l’appel au modèle.</li>
         <li><b>Proposition.</b> Un seul appel au modèle, sans outils, renvoie une proposition qui doit respecter un schéma JSON. Sinon, une règle fixe construit la proposition à partir des fiches chargées, et ce repli est compté.</li>
-        <li><b>Validation.</b> n8n attend qu’une personne réponde approved ou rejected, avec un jeton de validation distinct. Sans réponse sous 24 heures, la demande est rejetée.</li>
+        <li><b>Validation.</b> n8n attend toujours sur le chemin webhook. FastAPI sert aussi <code>/approval/demo</code> : la demande, le fournisseur, une section de politique, la proposition, puis Approuver ou Refuser. Le jeton part dans un en-tête. Le nom saisi est stocké dans <code>approved_by</code>. Sans réponse sous 24 heures, la demande est rejetée.</li>
         <li><b>Trace.</b> La validation termine la page Notion, le rejet ne change rien. Un journal d’audit, des compteurs mesurés et une simulation de ROI bouclent le circuit.</li>
       </ol>`,
       results: `<p>Cinq scénarios sont décrits dans le dépôt : une demande normale, un rejet, une validation, l’API qui tombe (nouvelles tentatives, puis Failed, jamais Completed) et un fournisseur inconnu (le modèle n’est pas appelé). Les tests automatisés tournent en CI sur SQLite et PostgreSQL.</p>
         <p class="pg-aside">Le ROI est une simulation à partir d’hypothèses configurables, et l’API l’étiquette ainsi. Les compteurs mesurés ne sont jamais mélangés aux montants en euros.</p>`,
-      limits: `<ul class="pg-list"><li>L’étape de validation est un webhook Wait de n8n, pas une interface produit.</li><li>L’action validée met à jour Notion ; elle n’appelle pas d’ERP.</li><li>L’accès repose sur des jetons d’en-tête partagés, pas sur des comptes utilisateurs.</li><li>La recherche dans la politique se fait par mots-clés, pas par embeddings.</li><li>Les fiches fournisseurs et la politique sont des données de démonstration fictives.</li></ul>`
+      limits: `<ul class="pg-list"><li>Le chemin webhook attend toujours sur un nœud Wait de n8n. FastAPI sert aussi <code>/approval/demo</code>, une page locale pour une demande. <code>approved_by</code> reste le nom saisi : le jeton est un secret partagé, pas une identité.</li><li>L’action validée met à jour Notion ; elle n’appelle pas d’ERP.</li><li>L’accès repose sur des jetons d’en-tête partagés, pas sur des comptes utilisateurs.</li><li>La recherche dans la politique se fait par mots-clés, pas par embeddings.</li><li>Les fiches fournisseurs et la politique sont des données de démonstration fictives.</li></ul>`
     }
   };
   const NEXT = {
@@ -1877,7 +1868,7 @@ a.a-egg{color:inherit;text-decoration:none}
         nodes: [['sv', 16, 24, 104, 'Serve', 'FastAPI', '1'], ['lg', 148, 24, 104, 'Log', 'SQLite', '2'], ['mo', 280, 24, 104, 'Monitor', 'PSI · KS', '3'], ['rt', 280, 168, 104, 'Retrain', '+ feedback', '0,4,5'], ['du', 148, 168, 104, 'Duel', 'holdout', '6'], ['pr', 16, 168, 104, 'Promote', '@champion', '0,6']],
         edges: [['M120 48 H148', 2], ['M252 48 H280', 3], ['M332 72 V168', 4], ['M280 192 H252', 6], ['M148 192 H120', 6], ['M68 168 V72', 6, 'loop']],
         flows: [['M120 48 H148 M252 48 H280 M332 72 V168 M280 192 H252 M148 192 H120 M68 168 V72', 6]],
-        front: '<text class="d-note" x="78" y="124">si ΔF1 ≥ 0.002</text>'
+        front: '<text class="d-note" x="78" y="124">si ΔF1 ≥ 0.02</text>'
       },
       detailed: {
         view: '0 0 592 360',
@@ -1892,7 +1883,7 @@ a.a-egg{color:inherit;text-decoration:none}
           ['M58 176 V112 H190 V64', 6, 'loop'], ['M580 40 H588 V280 H338 V300', 3, 'dot'], ['M400 324 H426', 3]
         ],
         flows: [['M104 40 H130 M250 40 H276 M400 40 H426 M503 64 V176 M426 200 H400 M276 200 H250 M130 200 H104 M58 176 V112 H190 V64', 6]],
-        front: '<text class="d-note" x="12" y="84">POST /predict · /feedback</text><text class="d-note" x="66" y="130">alias poll · reload</text><text class="d-note" x="130" y="242">promu si ΔF1 ≥ +0.002</text>'
+        front: '<text class="d-note" x="12" y="84">POST /predict · /feedback</text><text class="d-note" x="66" y="130">alias poll · reload</text><text class="d-note" x="130" y="242">promu si ΔF1 ≥ +0.02</text>'
       }
     }
   };
@@ -1949,12 +1940,12 @@ a.a-egg{color:inherit;text-decoration:none}
           spec: [['Journal', 'SQLite, mode WAL'], ['Ligne', 'texte, classe, confiance, version du modèle'], ['Labels', 'POST /feedback {prediction_id, label}']] },
         { k: 'Suivi · PSI + KS', h: 'La dérive, mesurée sans labels', body: 'Le moniteur compare les 500 dernières prédictions au profil de référence de la version en service : PSI sur le mélange des classes prédites, KS sur la confiance. <b>Continuez à défiler pour pousser le PSI au-delà de 0.2.</b>',
           spec: [['Fenêtre', '500 dernières prédictions de cette version'], ['Dérive', 'PSI > 0.2 sur le mélange des classes, KS > 0.15 sur la confiance'], ['Surveillance', 'Prometheus + Grafana, 6 alertes']], gauge: true },
-        { k: 'Déclencheur · trois conditions', h: 'Pas de réentraînement sur un coup de tête', body: 'Un réentraînement demande un signal (dérive ou baisse de précision), au moins 200 nouveaux labels, et un délai de carence écoulé.',
-          spec: [['Signal', 'dérive, ou précision en direct < F1 holdout − 0.05'], ['Labels', '≥ 200 nouveaux depuis le dernier entraînement'], ['Carence', '600 s par défaut']] },
+        { k: 'Déclencheur · trois conditions', h: 'Pas de réentraînement sur un coup de tête', body: 'Un PSI au-dessus de 0.2 sur le mélange des classes prédites enregistre une alerte et ne réentraîne pas. Le réentraînement automatique part sur une chute de précision live, avec au moins 200 nouveaux labels et le délai de carence écoulé. <code>--retrain-on-mix</code> est le flag de démo.',
+          spec: [['Signal', 'précision live < accuracy holdout − 0.05'], ['PSI de mélange', 'alerte seulement, sauf --retrain-on-mix'], ['Labels', '≥ 200 nouveaux depuis le dernier entraînement'], ['Carence', '600 s par défaut']] },
         { k: 'Réentraînement · vrais labels', h: 'Entraîné sur la vérité', body: 'Le nouveau candidat apprend sur le jeu de base plus les vrais labels renvoyés par le feedback, jamais sur les propres prédictions du modèle.',
           spec: [['Jeu d’entraînement', 'données de base + labels de feedback'], ['Jamais', 'les propres prédictions du modèle'], ['Enregistré', 'déclencheur : dérive / performance / manuel']] },
-        { k: 'Duel · holdout fixe', h: 'Promu seulement s’il est meilleur', body: 'Champion et challenger sont notés sur le même holdout fixe, dans le même run MLflow. L’alias ne bouge que si le F1 macro gagne au moins 0.002 ; sinon le candidat est étiqueté avec la raison de sa défaite.',
-          spec: [['Juge', 'holdout fixe, séparé du flux de trafic'], ['Même run', 'champion et challenger notés ensemble'], ['Promu si', 'ΔF1 macro ≥ 0.002, puis /model/reload']] }
+        { k: 'Duel · holdout fixe', h: 'Promu seulement s’il est meilleur', body: 'Champion et challenger sont notés sur le même holdout fixe, dans le même run MLflow. L’alias ne bouge que si le F1 macro gagne au moins 0.02 ; sinon le candidat est étiqueté avec la raison de sa défaite.',
+          spec: [['Juge', 'holdout fixe, séparé du flux de trafic'], ['Même run', 'champion et challenger notés ensemble'], ['Promu si', 'ΔF1 macro ≥ 0.02, puis /model/reload']] }
       ]
     }
   };
@@ -2435,11 +2426,6 @@ void main(){
   /* ---------- Project page, filled from PROJECTS (+ DIAGRAMS and STORIES for the flagships) ---------- */
   const projView = $('#view-project');
   const F = (k) => $('[data-f="' + k + '"]', projView);
-  function todo(text) {
-    const box = el('div', 'todo');
-    box.append(el('span', 'todo-tag', 'Bientôt'), el('p', null, text));
-    return box;
-  }
   function section(kicker, title, body, draft) {
     const s = el('section', 'pg-sec');
     const head = el('div', 'pg-sh');
@@ -2464,15 +2450,18 @@ void main(){
     title.textContent = P.title;
     title.classList.toggle('is-long', P.title.length > 12);
     F('repo').href = P.repo;
-    // a real figure from the repository fills the demo frame until the video exists
+    // a repository figure fills this frame; no shot means no placeholder
     const demoFig = $('.demo', projView);
-    if (!demoFig.dataset.ph) demoFig.dataset.ph = demoFig.innerHTML;
     demoFig.classList.toggle('has-shot', !!P.shot);
     demoFig.classList.toggle('is-dark', !!(P.shot && P.shot[3]));
     if (P.shot) {
+      demoFig.hidden = false;
       demoFig.innerHTML = '<img src="' + P.shot[0] + '" alt="' + P.shot[1] + '" width="1280" height="720">';
       demoFig.append(el('figcaption', null, P.shot[2]));
-    } else demoFig.innerHTML = demoFig.dataset.ph;
+    } else {
+      demoFig.hidden = true;
+      demoFig.replaceChildren();
+    }
 
     const metrics = F('metrics');
     metrics.replaceChildren();
@@ -2491,9 +2480,7 @@ void main(){
 
     const secs = F('secs');
     secs.replaceChildren();
-    secs.append(P.problem
-      ? section('Problème', 'Pourquoi ce projet', el('p', null, P.problem), true)
-      : section('Problème', 'Pourquoi ce projet', todo('L’histoire de ce projet arrive bientôt. En attendant, le code et son README sont sur GitHub.')));
+    if (P.problem) secs.append(section('Problème', 'Pourquoi ce projet', el('p', null, P.problem), true));
     if (P.story) {
       const st = el('section', 'pj-story');
       const head = el('div', 'pj-storyhead');
@@ -2505,21 +2492,15 @@ void main(){
       bindToggle(stage, 'sampdv.dg.story', (v) => { stage.dataset.dg = v; });
       secs.append(st);
     } else {
-      secs.append(section('Approche et architecture', 'Comment ça marche', P.approach || todo('Une présentation étape par étape arrive bientôt.')));
+      if (P.approach) secs.append(section('Approche et architecture', 'Comment ça marche', P.approach));
     }
-    const results = [];
-    if (P.results) results.push(P.results);
-    if (P.resultsTodo || !P.results) results.push(todo(P.resultsTodo || 'Les résultats mesurés arrivent bientôt.'));
-    secs.append(section('Résultats', 'Ce que ça donne', results));
+    if (P.results) secs.append(section('Résultats', 'Ce que ça donne', P.results));
     if (P.limits) secs.append(section('Limites', 'Ce que ça ne fait pas', P.limits));
     const links = el('div', 'pg-links');
     const gh = el('a', 'pill glass', 'Dépôt GitHub ↗');
     gh.href = P.repo; gh.target = '_blank'; gh.rel = 'noopener';
-    const demo = el('span', 'pill glass is-off', 'Vidéo de démo (bientôt)');
-    demo.setAttribute('aria-disabled', 'true');
     const more = (P.links || []).map(([label, href]) => { const a = el('a', 'pill glass', label); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; });
     links.append(gh, ...more);
-    if (!P.live) links.append(demo);
     secs.append(section('Liens', 'Code et démo', links));
 
     const next = F('next');
