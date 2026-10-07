@@ -1034,6 +1034,27 @@ a.a-egg{color:inherit;text-decoration:none}
 @keyframes ct-nudge{0%,60%,100%{transform:none}75%{transform:translateX(4px)}}
 @media (max-width:700px){.ct-note{right:auto;left:50%;bottom:calc(100% + 4px);transform:translateX(-50%) rotate(-4deg);font-size:1.45rem}.ct-note svg{display:none}}
 @media (prefers-reduced-motion:reduce){.contact .cta,.contact .cta-arrow svg,.ct-note path{animation:none}}
+
+/* ---------- v20: tools as a lifecycle; click a tool to see where it was used ---------- */
+.tk-flow{display:grid;gap:12px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.tk-stage{position:relative;display:grid;align-content:start;gap:12px;padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(var(--card-rgb),.7)}
+.tk-stage:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:22px;z-index:1;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--bg);color:var(--warm);font:600 13px/1 var(--f-sans)}
+.tk-h{display:flex;align-items:baseline;gap:8px;margin:0;font:500 11px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.tk-h b{color:var(--warm);font-weight:500}
+.tk-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tk{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--fg);font:500 13.5px/1 var(--f-sans);cursor:pointer;transition:border-color .2s,background .2s}
+.tk i{font:500 10px/1 var(--f-mono);font-style:normal;color:var(--faint)}
+.tk:hover{border-color:rgba(var(--warm-rgb),.55)}
+.tk[aria-pressed="true"]{background:rgba(var(--hot),.22);border-color:rgba(var(--hot),.7)}
+.tk:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.tk-loop{margin:10px 0 0;font:500 12px/1.5 var(--f-mono);color:var(--warm)}
+.tk-band{display:grid;gap:10px;margin-top:12px;padding:16px 18px;border:1px dashed var(--line);border-radius:18px}
+@media (min-width:900px){.tk-band{grid-template-columns:230px minmax(0,1fr);align-items:center}}
+.tk-out{min-height:52px;margin:18px 0 0;padding:14px 18px;border-radius:14px;background:rgba(var(--card-rgb),.9);border:1px solid var(--line);font-size:15px;color:var(--muted)}
+.tk-out b{color:var(--fg)}
+.tk-out a{color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(var(--warm-rgb),.35)}
+.tk-out a:hover{border-color:var(--warm)}
+@media (max-width:899.98px){.tk-flow{grid-template-columns:1fr}.tk-stage:not(:last-child)::after{content:"↓";right:auto;left:22px;top:auto;bottom:-12px}}
 </style>
 </head>
 <body>
@@ -1395,15 +1416,14 @@ a.a-egg{color:inherit;text-decoration:none}
           <p class="eyebrow">04 — Outils</p>
           <h2 class="h2" id="sk-h">Mes outils, et <em class="acc">où je les ai utilisés.</em></h2>
         </div>
-        <p class="sec-note"><span class="t-tech">Chaque outil listé ici apparaît dans un projet ou un stage. La colonne de droite dit où.</span><span class="t-plain">Les noms d’outils, pour qui vérifie les mots-clés. La colonne de droite dit où je les ai utilisés.</span></p>
+        <p class="sec-note"><span class="t-tech">De la donnée au modèle en production, et retour. Cliquez sur un outil pour voir où je l’ai utilisé.</span><span class="t-plain">Les outils que j’utilise, de la donnée brute au modèle qui tourne et qu’on surveille. Cliquez sur l’un d’eux pour voir où je l’ai utilisé.</span></p>
       </header>
-      <dl class="sk">
-        <div class="sk-row"><dt><span class="t-tech">Recherche et LLM</span><span class="t-plain">Assistants IA et recherche</span></dt><dd class="sk-items"><ul><li>BM25</li><li>Embeddings denses</li><li>RRF</li><li>Qdrant</li><li>Reranking cross-encoder</li><li>Ollama</li><li>MCP</li></ul></dd><dd class="sk-used">Syro · insight-mcp</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">MLOps et mise en service</span><span class="t-plain">Faire tourner l’IA</span></dt><dd class="sk-items"><ul><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>Celery</li><li>Prometheus</li><li>Grafana</li><li>ONNX</li></ul></dd><dd class="sk-used">Proths · Syro · insight-mcp · pointnet</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Data engineering</span><span class="t-plain">Pipelines de données</span></dt><dd class="sk-items"><ul><li>Snowflake</li><li>ETL et orchestration</li><li>Terraform</li><li>GitLab CI/CD</li><li>SAP Data Hub</li><li>n8n</li></ul></dd><dd class="sk-used">Accor (Akabi) · SAP · opspilot</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Modélisation</span><span class="t-plain">Machine learning</span></dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>TensorFlow.js</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>Contrôles de dérive PSI</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · detector · SAP</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Langages</span><span class="t-plain">Programmation</span></dt><dd class="sk-items"><ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></dd><dd class="sk-used">tous les projets · Akabi · SAP · Syro UI · detector</dd></div>
-      </dl>
+      <div class="tk-wrap" id="tk" data-where="{&quot;syro&quot;: [&quot;Syro&quot;, &quot;syro&quot;], &quot;mcp&quot;: [&quot;insight-mcp&quot;, &quot;insight-mcp&quot;], &quot;proths&quot;: [&quot;Proths&quot;, &quot;proths&quot;], &quot;pointnet&quot;: [&quot;pointnet-3d-classifier&quot;, &quot;pointnet-3d-classifier&quot;], &quot;sdwpf&quot;: [&quot;sdwpf&quot;, &quot;sdwpf&quot;], &quot;airport&quot;: [&quot;airport-forecasting&quot;, &quot;airport-forecasting&quot;], &quot;detector&quot;: [&quot;live-object-detector&quot;, &quot;live-object-detector&quot;], &quot;opspilot&quot;: [&quot;opspilot&quot;, &quot;opspilot&quot;], &quot;akabi&quot;: [&quot;Accor (Akabi)&quot;, &quot;tl-akabi&quot;], &quot;sap&quot;: [&quot;SAP&quot;, &quot;tl-sap&quot;]}">
+        <div class="tk-flow"><div class="tk-stage"><p class="tk-h"><b>01</b>Collecter et déplacer</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Snowflake" data-w="akabi">Snowflake <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="ETL et orchestration maison" data-w="akabi">ETL et orchestration maison <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="SAP Data Hub" data-w="sap">SAP Data Hub <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="n8n" data-w="opspilot">n8n <i>1</i></button></div></div><div class="tk-stage"><p class="tk-h"><b>02</b>Modéliser et suivre</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="scikit-learn" data-w="proths">scikit-learn <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="PyTorch" data-w="pointnet">PyTorch <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="XGBoost" data-w="sdwpf">XGBoost <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="LightGBM" data-w="airport">LightGBM <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="SARIMA" data-w="airport">SARIMA <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="K-means" data-w="sap">K-means <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="MLflow" data-w="proths,pointnet">MLflow <i>2</i></button></div></div><div class="tk-stage"><p class="tk-h"><b>03</b>Servir</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="FastAPI" data-w="syro,proths,pointnet,airport,opspilot">FastAPI <i>5</i></button><button class="tk" type="button" aria-pressed="false" data-n="ONNX Runtime" data-w="pointnet">ONNX Runtime <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="TensorFlow.js" data-w="detector">TensorFlow.js <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Celery" data-w="syro">Celery <i>1</i></button></div></div><div class="tk-stage"><p class="tk-h"><b>04</b>Surveiller</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Prometheus" data-w="proths,mcp">Prometheus <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="Grafana" data-w="proths">Grafana <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Contrôles de dérive PSI" data-w="proths,airport">Contrôles de dérive PSI <i>2</i></button></div></div></div>
+        <p class="tk-loop">↺ La surveillance reboucle sur le modèle : la dérive déclenche un réentraînement, comme dans Proths.</p>
+        <div class="tk-band"><p class="tk-h">Recherche et LLM</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="BM25" data-w="syro,mcp">BM25 <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="Embeddings denses" data-w="syro,mcp">Embeddings denses <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="RRF" data-w="syro,mcp">RRF <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="Qdrant" data-w="syro">Qdrant <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Reranking cross-encoder" data-w="syro">Reranking cross-encoder <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="Ollama" data-w="syro">Ollama <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="MCP" data-w="mcp">MCP <i>1</i></button></div></div><div class="tk-band"><p class="tk-h">Déployer et automatiser · sous tout le reste</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Docker" data-w="syro,mcp,proths,pointnet,sdwpf,opspilot">Docker <i>6</i></button><button class="tk" type="button" aria-pressed="false" data-n="Terraform" data-w="akabi">Terraform <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="GitLab CI/CD" data-w="akabi">GitLab CI/CD <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="GitHub Actions" data-w="mcp,proths,pointnet,sdwpf,opspilot">GitHub Actions <i>5</i></button></div></div><div class="tk-band"><p class="tk-h">Langages</p><div class="tk-chips"><button class="tk" type="button" aria-pressed="false" data-n="Python" data-w="syro,mcp,proths,pointnet,sdwpf,airport,opspilot,sap">Python <i>8</i></button><button class="tk" type="button" aria-pressed="false" data-n="SQL" data-w="akabi,sap">SQL <i>2</i></button><button class="tk" type="button" aria-pressed="false" data-n="TypeScript" data-w="syro">TypeScript <i>1</i></button><button class="tk" type="button" aria-pressed="false" data-n="JavaScript" data-w="detector">JavaScript <i>1</i></button></div></div>
+        <p class="tk-out" id="tk-out" aria-live="polite" data-used="utilisé dans">Cliquez sur un outil pour voir où je l’ai utilisé.</p>
+      </div>
     </div>
   </section>
 
@@ -3108,6 +3128,28 @@ void main(){
     // the plain / technical switch rewrites the lede, which can change the free area
     new MutationObserver(() => { if (slug) { build(); if (reduce) still(); } }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-mode'] });
     return { set, stop };
+  })();
+
+  /* ---------- Tools: click one to see where I used it ---------- */
+  (function tools() {
+    const box = $('#tk'), out = $('#tk-out');
+    if (!box || !out) return;
+    const W = JSON.parse(box.dataset.where), def = out.innerHTML;
+    box.addEventListener('click', (e) => {
+      const b = e.target.closest('.tk');
+      if (!b) return;
+      const on = b.getAttribute('aria-pressed') !== 'true';
+      $$('.tk', box).forEach((x) => x.setAttribute('aria-pressed', 'false'));
+      if (!on) { out.innerHTML = def; return; }
+      b.setAttribute('aria-pressed', 'true');
+      out.replaceChildren(el('b', null, b.dataset.n), ' ' + out.dataset.used + ' ');
+      b.dataset.w.split(',').forEach((k, i) => {
+        if (i) out.append(' · ');
+        const a = el('a', null, W[k][0]);
+        a.href = '#' + W[k][1];
+        out.append(a);
+      });
+    });
   })();
 
   route();
