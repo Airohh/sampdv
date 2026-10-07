@@ -1062,6 +1062,20 @@ a.a-egg{color:inherit;text-decoration:none}
 .g-node rect{stroke:rgba(var(--hot),.42)}
 @keyframes m-pulse{0%,55%,100%{stroke:rgba(var(--hot),.55);fill:var(--g-node)}14%{stroke:var(--warm);fill:var(--g-node-hot)}}
 @keyframes m-light{0%,100%{stroke:rgba(var(--hot),.55);fill:var(--g-node)}9%,74%{stroke:var(--warm);fill:var(--hot-ink)}}
+
+/* ---------- v22: a colour per stage in the tools, stronger frames; a quiet "made with" line in the footer ---------- */
+.tk-stage{border-color:rgba(241,242,238,.2);border-top:3px solid var(--tc);background:rgba(var(--card-rgb),.95)}
+.tk-stage:nth-child(1){--tc:#E8A33D}.tk-stage:nth-child(2){--tc:#7FB58A}.tk-stage:nth-child(3){--tc:#5FA8D3}.tk-stage:nth-child(4){--tc:#E8774F}
+#tk > div:nth-of-type(2){--tc:#A98BE0}#tk > div:nth-of-type(3){--tc:#8FA3B5}#tk > div:nth-of-type(4){--tc:#D9C27A}
+.tk-band{border:1px solid rgba(241,242,238,.18);border-left:3px solid var(--tc);background:rgba(var(--card-rgb),.6)}
+.tk-h b,.tk-band .tk-h{color:var(--tc)}
+.tk{border-color:color-mix(in srgb,var(--tc) 40%,transparent);background:color-mix(in srgb,var(--tc) 9%,transparent)}
+.tk i{color:var(--tc)}
+.tk:hover{border-color:var(--tc)}
+.tk[aria-pressed="true"]{background:color-mix(in srgb,var(--tc) 30%,transparent);border-color:var(--tc)}
+.foot-made{flex-basis:100%;margin:0;font-size:12.5px;color:var(--faint)}
+.foot-made a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.foot-made a:hover{color:var(--fg);border-color:var(--fg)}
 </style>
 </head>
 <body>
@@ -1207,7 +1221,7 @@ a.a-egg{color:inherit;text-decoration:none}
       <header class="sec-head">
         <div>
           <p class="eyebrow">01 — Projets</p>
-          <h2 class="h2" id="work-h">Des problèmes <em class="acc">résolus.</em></h2>
+          <h2 class="h2" id="work-h">Mes <em class="acc">projets.</em></h2>
         </div>
         <div class="sec-side"><p class="sec-note"><span class="t-tech">Chaque carte part du problème, puis dessine la vraie architecture qui le règle, vérifiée dans son dépôt.</span><span class="t-plain">Trois projets d’IA. Chacun part d’un problème concret et montre, étape par étape, comment le système le règle.</span></p><div class="dg-toggle" role="group" aria-label="Niveau de détail du schéma"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Détaillé</button></div></div>
       </header>
@@ -1451,15 +1465,13 @@ a.a-egg{color:inherit;text-decoration:none}
           <p class="by-hint">Psst : tapez son nom dans la recherche en haut.</p>
         </article>
         <article class="by-card">
-          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M4 18 3 8l5 4 4-7 4 7 5-4-1 10"/></svg>Grande stratégie</h3>
-          <p>Les jeux Paradox comme Crusader Kings III, et Total War.</p>
-          <p class="soon">Campagne préférée · bientôt</p>
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h10v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M15 9h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2"/><path d="M5 9h10"/></svg>Bar entre amis</h3>
+          <p>Un verre entre amis, la meilleure façon de finir la semaine.</p>
         </article>
         <article class="by-card">
-          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Avant la data</h3>
-          <p><span class="t-tech">DUT GMP à l’IUT Paris 13, 2018–2020 : conception mécanique et productique.</span><span class="t-plain">Diplôme de génie mécanique en deux ans à l’IUT Paris 13, 2018–2020 : concevoir des pièces et organiser leur fabrication.</span></p>
-          <p class="soon">Ce que ça change encore dans ma façon de travailler · bientôt</p>
-          <div class="by-ph">Pièce CAO ou croquis · bientôt</div>
+          <h3><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M4 18 3 8l5 4 4-7 4 7 5-4-1 10"/></svg>Grande stratégie</h3>
+          <p>Total War d’abord, et les jeux Paradox comme Crusader Kings III.</p>
+          <p class="soon">Campagne préférée · bientôt</p>
         </article>
       </div>
     </div>
@@ -1523,6 +1535,7 @@ a.a-egg{color:inherit;text-decoration:none}
         <a href="https://www.linkedin.com/in/sampdv" target="_blank" rel="noopener">LinkedIn</a>
         <a href="#home">Haut de page ↑</a>
       </nav>
+      <p class="foot-made">Construit avec Claude Code · <a href="https://github.com/Airohh/sampdv" target="_blank" rel="noopener">Le code est libre sur GitHub</a> · Envie d’un site comme celui-ci ? <a href="mailto:sam.pondevie@gmail.com?subject=Un%20site%20comme%20sampdv">Écrivez-moi</a></p>
       <p class="foot-small">En construction · les valeurs marquées X ne sont pas encore mesurées.</p>
   </div>
 </footer>
@@ -2013,11 +2026,11 @@ a.a-egg{color:inherit;text-decoration:none}
   /* ---------- Easter eggs: a few off-screen words get their own card in the search ---------- */
   const BALL = '<svg class="a-egg-ball" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#d6ec3c"/><path d="M5 6.5c5.5 4.5 5.5 14.5 0 19M27 6.5c-5.5 4.5-5.5 14.5 0 19" fill="none" stroke="#fffbe6" stroke-width="2.2" stroke-linecap="round"/></svg>';
   const EGGS = [
-    { re: /\b(meilleur maitre de stage|meilleure? (tuteur|tutrice|maitre de stage)|maitre de stage|best (internship )?(supervisor|mentor|tutor|manager)|nicolas montrieux|montrieux)\b/, title: 'Nicolas Montrieux', text: 'Meilleur maître de stage. Sans discussion.', href: 'https://www.linkedin.com/in/nicolas-montrieux/', jump: 'LinkedIn ↗' },
+    { re: /\b(meilleur maitre de stage|meilleure? (tuteur|tutrice|maitre de stage)|maitre de stage|best (internship )?(supervisor|mentor|tutor|manager)|nicolas montrieux|montrieux)\b/, title: 'Nicolas Montrieux', text: 'Meilleur maître de stage.', href: 'https://www.linkedin.com/in/nicolas-montrieux/', jump: 'LinkedIn ↗' },
     { re: /\b(federer|roger|goat|wimbledon)\b/, title: 'Roger Federer. Le GOAT.', text: '20 titres du Grand Chelem, 8 Wimbledon et ce revers à une main. Vous venez de marquer de gros points.', ball: true },
     { re: /\b(nadal|rafa|djokovic|novak|alcaraz|sinner)\b/, title: 'Respect. Mais le GOAT est suisse.', text: 'Un seul nom rapporte gros ici. Essayez.', ball: true },
     { re: /\b(tennis|atp|backhand|forehand|revers|coup droit)\b/, title: 'Le tennis, toujours.', text: 'Alors, qui est le GOAT ? Un seul nom rapporte gros.', ball: true },
-    { re: /\b(paradox|ck ?3|crusader|europa universalis|eu ?4|hearts of iron|hoi ?4|stellaris|victoria|grand strategy|grande strategie|total ?war|4x)\b/, title: 'Encore un tour.', text: 'Les jeux Paradox comme Crusader Kings III, et Total War. Partant pour comparer nos campagnes.' }
+    { re: /\b(paradox|ck ?3|crusader|europa universalis|eu ?4|hearts of iron|hoi ?4|stellaris|victoria|grand strategy|grande strategie|total ?war|4x)\b/, title: 'Encore un tour.', text: 'Total War d’abord, et les jeux Paradox comme Crusader Kings III. Partant pour comparer nos campagnes.' }
   ];
   function easterEgg(q, onPick) {
     const s = q.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
