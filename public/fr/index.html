@@ -7,7 +7,7 @@
 <meta name="description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout et menés jusqu’en production.">
 <!-- Not indexed while the site still holds drafts; remove this line for the final version. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#131715">
+<meta name="theme-color" content="#0F1211">
 <meta property="og:title" content="Sam Pondevie · Ingénieur Data &amp; IA">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout et menés jusqu’en production.">
@@ -975,7 +975,7 @@ a.a-egg{color:inherit;text-decoration:none}
 
 /* ---------- v18: lighter. A softer graphite-green night for the showcase (hero, projects, contact), and one ivory
    drafting-paper panel from the experience to "outside of work", like the About. Real figures from the repositories. ---------- */
-:root{--bg:#131715;--bg-rgb:19,23,21;--card-rgb:27,32,29;--panel-rgb:25,30,27;--g-node:#212723;--g-grid:rgba(241,242,238,.035);--glow-rgb:46,84,66;
+:root{--bg:#0F1211;--bg-rgb:15,18,17;--card-rgb:23,27,25;--panel-rgb:21,25,23;--g-node:#212723;--g-grid:rgba(241,242,238,.035);--glow-rgb:46,84,66;
   --fg:#F1F2EE;--muted:rgba(241,242,238,.7);--faint:rgba(241,242,238,.52);--line:rgba(241,242,238,.13);
   --paper:#F4F1E8;--ink:#23231F;--ink-muted:rgba(35,35,31,.68);--ink-faint:rgba(35,35,31,.5);--ink-line:rgba(35,35,31,.14);--ink-warm:#2F6B5A;
   --draft-rgb:47,107,90;--hilite:242,211,91}
@@ -1015,7 +1015,7 @@ a.a-egg{color:inherit;text-decoration:none}
 /* ---------- v19 ---------- */
 /* the experience fades in from the night and back out, on a softer ivory; tools stay at night */
 #experience{--bg:#ECE8DD;--bg-rgb:236,232,221;background-color:#ECE8DD;margin-inline:0;border-radius:0;padding-top:230px;padding-bottom:220px;
-  background-image:linear-gradient(#131715,rgba(19,23,21,0) 190px),linear-gradient(0deg,#131715,rgba(19,23,21,0) 180px),linear-gradient(rgba(var(--draft-rgb),.07) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--draft-rgb),.07) 1px,transparent 1px),linear-gradient(rgba(var(--draft-rgb),.035) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--draft-rgb),.035) 1px,transparent 1px);
+  background-image:linear-gradient(#0F1211,rgba(15,18,17,0) 190px),linear-gradient(0deg,#0F1211,rgba(15,18,17,0) 180px),linear-gradient(rgba(var(--draft-rgb),.07) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--draft-rgb),.07) 1px,transparent 1px),linear-gradient(rgba(var(--draft-rgb),.035) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--draft-rgb),.035) 1px,transparent 1px);
   background-size:100% 100%,100% 100%,100px 100px,100px 100px,20px 20px,20px 20px;background-position:0 0,0 0,0 -1px,0 -1px,0 -1px,0 -1px}
 @media (min-width:900px){#experience{margin-inline:0;border-radius:0}}
 /* the five other projects: a small picto for the domain */
@@ -1055,6 +1055,13 @@ a.a-egg{color:inherit;text-decoration:none}
 .tk-out a{color:var(--warm);text-decoration:none;border-bottom:1px solid rgba(var(--warm-rgb),.35)}
 .tk-out a:hover{border-color:var(--warm)}
 @media (max-width:899.98px){.tk-flow{grid-template-columns:1fr}.tk-stage:not(:last-child)::after{content:"↓";right:auto;left:22px;top:auto;bottom:-12px}}
+
+/* ---------- v21: diagram nodes in soft ember again, and a little more contrast ---------- */
+:root{--line:rgba(241,242,238,.15);--muted:rgba(241,242,238,.74);--faint:rgba(241,242,238,.56);--g-node:#16120f;--g-node-hot:#2a190f}
+.m-node rect{stroke:rgba(var(--hot),.55)}
+.g-node rect{stroke:rgba(var(--hot),.42)}
+@keyframes m-pulse{0%,55%,100%{stroke:rgba(var(--hot),.55);fill:var(--g-node)}14%{stroke:var(--warm);fill:var(--g-node-hot)}}
+@keyframes m-light{0%,100%{stroke:rgba(var(--hot),.55);fill:var(--g-node)}9%,74%{stroke:var(--warm);fill:var(--hot-ink)}}
 </style>
 </head>
 <body>
