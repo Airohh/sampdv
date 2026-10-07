@@ -7,7 +7,7 @@
 <meta name="description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout et menés jusqu’en production.">
 <!-- Not indexed while the site still holds drafts; remove this line for the final version. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#03050a">
+<meta name="theme-color" content="#131715">
 <meta property="og:title" content="Sam Pondevie · Ingénieur Data &amp; IA">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:description" content="Sam Pondevie, ingénieur Data & IA à Paris. Systèmes de recherche documentaire, pipelines MLOps et prévision, construits de bout en bout et menés jusqu’en production.">
@@ -27,8 +27,8 @@
 :root{
   color-scheme:dark;
   /* brief tokens */
-  --bg:#03050a; --fg:#f4f5f8; --muted:rgba(244,245,248,.68); --faint:rgba(244,245,248,.5);
-  --warm:#f3d6c1; --panel:rgba(7,10,18,.76); --ok:#7ee2b8; --alert:#ffb547; --line:rgba(244,245,248,.12);
+  --bg:#03050a; --bg-rgb:3,5,10; --card-rgb:5,8,15; --panel-rgb:7,10,18; --fg:#f4f5f8; --muted:rgba(244,245,248,.68); --faint:rgba(244,245,248,.5);
+  --warm:#f3d6c1; --panel:rgba(var(--panel-rgb),.76); --ok:#7ee2b8; --alert:#ffb547; --line:rgba(244,245,248,.12);
   /* light About panel (cool, not cream) */
   --paper:#e6e9f0; --ink:#0a0d14; --ink-muted:rgba(10,13,20,.66); --ink-faint:rgba(10,13,20,.46); --ink-line:rgba(10,13,20,.13); --ink-warm:#8a4f2c;
   --f-serif:'Instrument Serif','Iowan Old Style','Times New Roman',serif;
@@ -42,7 +42,7 @@
   /* aliases used by the code carried over from the brief annexes */
   --a-bg:var(--bg); --a-fg:var(--fg); --a-muted:var(--muted); --a-faint:var(--faint); --a-warm:var(--warm); --a-panel:var(--panel); --a-ok:var(--ok);
   --e-ok:#7adcc0;
-  --g-line:var(--line); --g-stage:#05080f; --g-grid:rgba(244,245,248,.03); --g-node:#0b0f18; --g-node-hot:#1a1612;
+  --g-line:var(--line); --g-stage:rgb(var(--card-rgb)); --g-grid:rgba(244,245,248,.03); --g-node:#0b0f18; --g-node-hot:#1a1612;
   --g-hot-soft:rgba(var(--warm-rgb),.07); --g-ok-soft:rgba(126,226,184,.38); --g-alert:var(--alert);
   --g-ink-dim:rgba(244,245,248,.55); --g-ink-off:rgba(244,245,248,.25);
 }
@@ -91,7 +91,7 @@ svg.i.sm{width:16px;height:16px}
 /* ---------- nav ---------- */
 .nav-shell{position:fixed;inset:0 0 auto;z-index:50;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 0;pointer-events:none}
 .nav{pointer-events:auto;max-width:64rem;margin:0 auto;border-radius:999px;padding:8px 8px 8px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .35s ease}
-.nav-shell.is-solid .nav{background:rgba(7,10,18,.74);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
+.nav-shell.is-solid .nav{background:rgba(var(--panel-rgb),.74);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%)}
 .nav-left{display:flex;align-items:center;gap:32px}
 .logo{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.01em}
 .mark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:500 10px/1 var(--f-mono);letter-spacing:.02em;border:1px solid rgba(255,255,255,.35)}
@@ -107,7 +107,7 @@ svg.i.sm{width:16px;height:16px}
 .nav-menu i:first-of-type{top:18px}.nav-menu i:last-of-type{top:25px}
 .nav-menu[aria-expanded="true"] i:first-of-type{transform:translateY(3.5px) rotate(45deg)}
 .nav-menu[aria-expanded="true"] i:last-of-type{transform:translateY(-3.5px) rotate(-45deg)}
-.nav-panel{pointer-events:auto;max-width:64rem;margin:8px auto 0;padding:10px;border-radius:24px;display:grid;background:rgba(7,10,18,.9);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.nav-panel{pointer-events:auto;max-width:64rem;margin:8px auto 0;padding:10px;border-radius:24px;display:grid;background:rgba(var(--panel-rgb),.9);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
 .nav-panel a{display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:0 14px;border-radius:14px;color:var(--fg);text-decoration:none;font-family:var(--f-serif);font-size:28px;animation:up .5s var(--ease-out) both;animation-delay:calc(var(--i) * 50ms)}
 .nav-panel a:hover{background:rgba(255,255,255,.05)}
 .nav-panel a small{font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
@@ -119,10 +119,10 @@ svg.i.sm{width:16px;height:16px}
 /* ---------- hero (brief §5 Hero A, annexes A–C) ---------- */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column}
 .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:var(--bg)}
-.no-gl .hero-bg{background:radial-gradient(90% 45% at 50% 100%,#10295a 0%,rgba(3,5,10,0) 70%),var(--bg)}
+.no-gl .hero-bg{background:radial-gradient(90% 45% at 50% 100%,rgb(var(--glow-rgb)) 0%,rgba(var(--bg-rgb),0) 70%),var(--bg)}
 .a-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.4s ease}
 .hero.gl-on .a-canvas{opacity:1}
-.a-shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(55% 40% at 50% 44%,rgba(3,5,10,.55),rgba(3,5,10,0) 72%),linear-gradient(rgba(3,5,10,0) 78%,var(--bg))}
+.a-shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(55% 40% at 50% 44%,rgba(var(--bg-rgb),.55),rgba(var(--bg-rgb),0) 72%),linear-gradient(rgba(var(--bg-rgb),0) 78%,var(--bg))}
 .hero-inner{position:relative;flex:1;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + var(--nav-h) + 32px) 16px 76px}
 .hero-center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-block:16px 48px}
 .a-status{display:inline-flex;align-items:center;gap:8px;margin:0 0 28px;padding:7px 14px 7px 12px;border-radius:999px;font-size:13px;color:var(--muted)}
@@ -201,7 +201,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
    from the same data as the scroll story on its page. ---------- */
 .pcards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
 .pc{position:relative;display:grid;grid-template-rows:auto auto auto 1fr auto auto;gap:12px;min-width:0;padding:22px 22px 18px;border:1px solid var(--line);border-radius:22px;color:var(--fg);text-decoration:none;
-  background:radial-gradient(90% 55% at 50% 0%,rgba(16,41,90,.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,rgba(5,8,15,var(--card-a,.8));
+  background:radial-gradient(90% 55% at 50% 0%,rgba(var(--glow-rgb),.3),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/32px 32px,rgba(var(--card-rgb),var(--card-a,.8));
   -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);
   transition:border-color .3s ease}
 .pc:hover,.pc:focus-visible{border-color:rgba(var(--warm-rgb),.38)}
@@ -285,7 +285,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 @media (min-width:820px){.sk-used{text-align:right}}
 
 /* ---------- contact ---------- */
-.contact{padding:120px 16px 104px;background:radial-gradient(60% 70% at 50% 118%,rgba(16,41,90,.62),rgba(3,5,10,0) 70%),var(--bg)}
+.contact{padding:120px 16px 104px;background:radial-gradient(60% 70% at 50% 118%,rgba(var(--glow-rgb),.62),rgba(var(--bg-rgb),0) 70%),var(--bg)}
 .contact-card{max-width:58rem;margin:0 auto;display:grid;justify-items:center;gap:22px;text-align:center}
 .contact-title{margin:0;font-family:var(--f-serif);font-weight:400;font-size:calc(clamp(2.6rem,6.6vw,5.6rem) * var(--d-size));line-height:1;letter-spacing:-.025em;text-wrap:balance}
 .contact-sub{margin:0;max-width:34rem;text-wrap:balance;font-size:16px;line-height:1.6;color:var(--muted)}
@@ -358,7 +358,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .g-stagewrap{position:sticky;top:0;z-index:2;order:-1;height:calc(52svh + var(--nav-h) + 20px);padding:calc(env(safe-area-inset-top,0px) + var(--nav-h) + 20px) 0 8px;background:var(--bg)}
 @media (min-width:900px){.g-stagewrap{order:0;top:calc(var(--nav-h) + 32px);height:calc(100vh - var(--nav-h) - 48px);height:calc(100dvh - var(--nav-h) - 48px);padding:0;background:none}}
 .g-stage{height:100%;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:22px;overflow:hidden;
-  background:radial-gradient(80% 60% at 72% 28%,rgba(16,41,90,.32),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,var(--g-stage)}
+  background:radial-gradient(80% 60% at 72% 28%,rgba(var(--glow-rgb),.32),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,var(--g-stage)}
 .g-svg{flex:1;min-height:0;width:100%;display:block}
 .g-hud{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
 .g-hud b{font-weight:500;color:var(--fg)}
@@ -454,7 +454,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 /* standard project page (non-story) */
 .demo{position:relative;margin:0;aspect-ratio:16/9;max-width:100%;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid;place-items:center;
-  background:radial-gradient(70% 70% at 50% 110%,rgba(16,41,90,.5),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,var(--g-stage)}
+  background:radial-gradient(70% 70% at 50% 110%,rgba(var(--glow-rgb),.5),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,var(--g-stage)}
 .demo-in{display:grid;justify-items:center;gap:14px;padding:16px;text-align:center}
 .demo-play{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:var(--faint)}
 .demo-in b{font:500 12px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--fg)}
@@ -524,7 +524,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .g-alert .n-mo .st{fill:var(--alert)}
 
 /* Simple / Detailed toggle */
-.dg-toggle{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(3,5,10,.6)}
+.dg-toggle{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:rgba(var(--bg-rgb),.6)}
 .dg-toggle button{min-height:34px;padding:0 14px;border:0;border-radius:999px;background:none;color:var(--muted);font:500 12px/1 var(--f-mono);letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s}
 .dg-toggle button:hover{color:var(--fg)}
 .dg-toggle button[aria-pressed="true"]{background:rgba(255,255,255,.12);color:var(--fg)}
@@ -626,8 +626,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 @media (min-width:900px){.about-photo{min-height:0;border-radius:36px}}
 .about-photo .ph-head{position:absolute;left:50%;top:18%;width:38%;max-width:180px;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);background:rgba(12,8,7,.5)}
 .about-photo .ph-body{position:absolute;left:50%;bottom:-6%;width:82%;height:44%;border-radius:48% 48% 0 0;transform:translateX(-50%);background:rgba(12,8,7,.5)}
-.about-photo .ph-tag{position:absolute;top:18px;left:18px;right:18px;width:max-content;max-width:calc(100% - 36px);padding:6px 10px;border-radius:999px;background:rgba(3,5,10,.55);color:#f3d6c1;font:500 11px/1.3 var(--f-mono);letter-spacing:.06em}
-.about-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 20px;background:linear-gradient(rgba(3,5,10,0),rgba(3,5,10,.78));display:grid;gap:6px}
+.about-photo .ph-tag{position:absolute;top:18px;left:18px;right:18px;width:max-content;max-width:calc(100% - 36px);padding:6px 10px;border-radius:999px;background:rgba(var(--bg-rgb),.55);color:#f3d6c1;font:500 11px/1.3 var(--f-mono);letter-spacing:.06em}
+.about-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 20px;background:linear-gradient(rgba(var(--bg-rgb),0),rgba(var(--bg-rgb),.78));display:grid;gap:6px}
 .about-photo figcaption b{font-family:var(--f-serif);font-weight:600;font-size:24px;color:#f4f5f8}
 .about-photo figcaption span{font:500 11px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:rgba(244,245,248,.72)}
 .about-sign{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:40px;padding-top:24px;border-top:1px solid var(--ink-line)}
@@ -653,7 +653,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 /* Beyond the projects (3C) */
 .by-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.by-card{display:flex;flex-direction:column;gap:14px;padding:26px;border:1px solid var(--line);border-radius:22px;background:#05080f}
+.by-card{display:flex;flex-direction:column;gap:14px;padding:26px;border:1px solid var(--line);border-radius:22px;background:rgb(var(--card-rgb))}
 .by-card.warm{background:radial-gradient(90% 60% at 80% 110%,rgba(var(--hot),.35),rgba(var(--hot),0) 70%),var(--hot-bg);border-color:rgba(var(--hot),.22)}
 .by-card h3{display:flex;align-items:center;gap:10px;margin:0;font-family:var(--f-serif);font-weight:600;font-size:calc(1.65rem * var(--d-size));line-height:1.1}
 .by-card h3 svg{width:22px;height:22px}
@@ -712,8 +712,14 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   .pj-bg{-webkit-mask-image:linear-gradient(#000 42%,transparent 96%),linear-gradient(90deg,rgba(0,0,0,.2) 34%,#000 58%);-webkit-mask-composite:source-in;
     mask-image:linear-gradient(#000 42%,transparent 96%),linear-gradient(90deg,rgba(0,0,0,.2) 34%,#000 58%);mask-composite:intersect}
 }
-.g-metric{background:rgba(3,5,10,.88)}
-.pj-head .demo{background:radial-gradient(70% 70% at 50% 110%,rgba(16,41,90,.45),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,rgba(5,8,15,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.g-metric{background:rgba(var(--bg-rgb),.88)}
+.pj-head .demo{background:radial-gradient(70% 70% at 50% 110%,rgba(var(--glow-rgb),.45),transparent 70%),linear-gradient(var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--g-grid) 1px,transparent 1px) 0 0/40px 40px,rgba(var(--card-rgb),.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+
+
+/* v17: each project card leads with the problem, then the fix */
+.pc-lab{display:block;margin:0 0 8px;font:500 10.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.pc-line .pc-lab{margin-bottom:6px;color:var(--warm)}
+a.a-egg{color:inherit;text-decoration:none}
 
 /* ---------- warmth v2 ---------- */
 /* hand-drawn underline: the default accent on key words, plus .ul on phrases in the text */
@@ -766,7 +772,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 
 /* on the bench: work in progress drawn on graph paper, dashed like a draft */
 .nx-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.nx-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:24px;border:1px dashed rgba(var(--warm-rgb),.3);border-radius:22px;background:linear-gradient(rgba(var(--warm-rgb),.05) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(var(--warm-rgb),.05) 1px,transparent 1px) 0 0/22px 22px,#05080f}
+.nx-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:24px;border:1px dashed rgba(var(--warm-rgb),.3);border-radius:22px;background:linear-gradient(rgba(var(--warm-rgb),.05) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(var(--warm-rgb),.05) 1px,transparent 1px) 0 0/22px 22px,rgb(var(--card-rgb))}
 .nx-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 10px;font:500 10.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .nx-status{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid rgba(255,181,71,.35);border-radius:999px;color:var(--alert)}
 .nx-status i{width:6px;height:6px;border-radius:50%;background:var(--alert);animation:nx-pulse 2.2s ease-in-out infinite}
@@ -811,7 +817,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .view-tog:hover,.view-tog[aria-expanded="true"]{background:color-mix(in srgb,var(--fg) 10%,transparent)}
 .view-tog svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
 .view-anchor{position:relative;max-width:64rem;margin:0 auto;height:0;pointer-events:none}
-.view-panel{position:absolute;right:8px;top:10px;z-index:60;pointer-events:auto;width:min(290px,calc(100vw - 32px));display:grid;gap:12px;padding:16px;border:1px solid var(--line);border-radius:20px;background:#080b13;box-shadow:0 24px 60px rgba(0,0,0,.45);text-align:left}
+.view-panel{position:absolute;right:8px;top:10px;z-index:60;pointer-events:auto;width:min(290px,calc(100vw - 32px));display:grid;gap:12px;padding:16px;border:1px solid var(--line);border-radius:20px;background:rgb(var(--panel-rgb));box-shadow:0 24px 60px rgba(0,0,0,.45);text-align:left}
 .vp-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
 .vp-k{font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .view-panel .lang-tog{display:grid}
@@ -828,7 +834,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .mp-head .eyebrow{margin:0}
 .mp-note{margin:0;font-size:14px;color:var(--muted)}
 .mp-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
-.mp-card{position:relative;display:flex;flex-direction:column;gap:9px;padding:14px 14px 16px;border:1px solid var(--line);border-radius:20px;background:rgba(5,8,15,var(--card-a,.8));-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);color:var(--fg);text-decoration:none;transition:border-color .3s ease,transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
+.mp-card{position:relative;display:flex;flex-direction:column;gap:9px;padding:14px 14px 16px;border:1px solid var(--line);border-radius:20px;background:rgba(var(--card-rgb),var(--card-a,.8));-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);color:var(--fg);text-decoration:none;transition:border-color .3s ease,transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
 .mp-card:hover,.mp-card:focus-visible{border-color:rgba(var(--warm-rgb),.5);transform:translateY(-3px);box-shadow:0 22px 50px -24px rgba(var(--hot),.5)}
 .mp-card:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 .mp-vis{display:block;height:128px;margin-bottom:4px;border-radius:12px;background:#0a0f1d;overflow:hidden}
@@ -897,7 +903,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .hide-ph .pj-head{grid-template-columns:minmax(0,1fr)}
 
 /* ---------- prototype controls (not part of the site) ---------- */
-.proto{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:min(300px,calc(100vw - 32px));border:1px solid var(--line);border-radius:18px;background:rgba(7,10,18,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.5);font-size:13px}
+.proto{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:min(300px,calc(100vw - 32px));border:1px solid var(--line);border-radius:18px;background:rgba(var(--panel-rgb),.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 20px 50px rgba(0,0,0,.5);font-size:13px}
 .proto.is-min{width:auto}
 .proto-tog{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:0 14px;border:0;background:none;color:var(--fg);font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .proto-tog::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--alert);flex:none}
@@ -918,7 +924,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .proto-links a:hover{text-decoration:underline}
 .proto-hint{margin:0;color:var(--faint);font-size:11.5px;line-height:1.45}
 
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;max-width:calc(100vw - 32px);padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(7,10,18,.94);color:var(--fg);font-size:14px;box-shadow:0 16px 40px rgba(0,0,0,.5);transform:translateX(-50%)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;max-width:calc(100vw - 32px);padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(var(--panel-rgb),.94);color:var(--fg);font-size:14px;box-shadow:0 16px 40px rgba(0,0,0,.5);transform:translateX(-50%)}
 .toast.show{animation:toast .35s var(--ease-out)}
 @keyframes toast{from{opacity:0;transform:translate(-50%,8px)}to{opacity:1;transform:translate(-50%,0)}}
 
@@ -966,6 +972,45 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .seg.wrap{flex-wrap:wrap}.seg.wrap label{flex:1 0 30%}
 .seg.col{flex-direction:column}.seg.col label{justify-items:start;padding:0 10px;text-align:left}
 .sw{display:inline-block;width:9px;height:9px;margin-right:6px;border-radius:50%;vertical-align:-1px}
+
+/* ---------- v18: lighter. A softer graphite-green night for the showcase (hero, projects, contact), and one ivory
+   drafting-paper panel from the experience to "outside of work", like the About. Real figures from the repositories. ---------- */
+:root{--bg:#131715;--bg-rgb:19,23,21;--card-rgb:27,32,29;--panel-rgb:25,30,27;--g-node:#212723;--g-grid:rgba(241,242,238,.035);--glow-rgb:46,84,66;
+  --fg:#F1F2EE;--muted:rgba(241,242,238,.7);--faint:rgba(241,242,238,.52);--line:rgba(241,242,238,.13);
+  --paper:#F4F1E8;--ink:#23231F;--ink-muted:rgba(35,35,31,.68);--ink-faint:rgba(35,35,31,.5);--ink-line:rgba(35,35,31,.14);--ink-warm:#2F6B5A;
+  --draft-rgb:47,107,90;--hilite:242,211,91}
+/* the hero shader paints on near-black: the page colour shows through it */
+.a-canvas{mix-blend-mode:lighten}
+[data-theme="day"] .a-canvas{filter:invert(1) saturate(.85) hue-rotate(180deg);mix-blend-mode:normal}
+/* drafting paper: a 20 px grid with a stronger line every 100 px */
+.about-panel,:is(#experience,#skills){background-image:linear-gradient(rgba(var(--draft-rgb),.07) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--draft-rgb),.07) 1px,transparent 1px),linear-gradient(rgba(var(--draft-rgb),.035) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--draft-rgb),.035) 1px,transparent 1px);background-size:100px 100px,100px 100px,20px 20px,20px 20px;background-position:0 -1px}
+.about-panel{--hot:var(--hilite)}
+/* experience and tools sit on light panels, like the About; what's next and outside of work stay at night, so light and dark alternate */
+:is(#experience,#skills){--fg:var(--ink);--muted:var(--ink-muted);--faint:var(--ink-faint);--line:var(--ink-line);--warm:#2F6B5A;--warm-rgb:47,107,90;--ok:#2F6B5A;--alert:#8A5A00;--hot:var(--hilite);--bg:#F4F1E8;--bg-rgb:244,241,232;--card-rgb:251,250,246;--hot-bg:#FBF3D6;color-scheme:light;background-color:#F4F1E8;color:var(--fg);margin-inline:16px}
+#experience,#skills{border-radius:28px}
+@media (min-width:900px){
+  :is(#experience,#skills){margin-inline:24px}
+  #experience,#skills{border-radius:36px}
+}
+/* experience: FIG. 1, a real CAD part sampled by the pointnet pipeline */
+.exp-fig{margin:28px 0 0;max-width:340px;padding:10px;border:1px solid rgba(35,35,31,.3);background:#FBFAF6}
+.exp-fig .fig-k{display:flex;justify-content:space-between;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--line);font:500 10px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.exp-fig img{display:block;width:100%;height:auto;margin:6px 0;mix-blend-mode:multiply}
+.exp-fig figcaption{padding-top:8px;border-top:1px solid var(--line);font:400 11px/1.45 var(--f-mono);color:var(--muted)}
+.exp-fig .hand{display:block;margin-top:12px;font-size:1.5rem;transform:rotate(-2deg);transform-origin:left center}
+/* tiles with a real figure from the repository */
+.mp-vis{background:#1d2320}
+.mp-vis .c{fill:#bcd0c2}
+.mp-vis .l{stroke:#bcd0c2}
+.mp-vis.mp-shot{background:#fff}
+.mp-shot img{display:block;width:100%;height:100%;object-fit:cover}
+/* project pages: a real figure in the demo frame until the video exists */
+.demo.has-shot{display:block;background:#fff}
+.demo.has-shot.is-dark{background:#181b1f}
+.demo.has-shot img{display:block;width:100%;height:100%;object-fit:contain}
+.demo.has-shot.is-dark img{object-fit:cover;object-position:top}
+.demo.has-shot figcaption{position:absolute;left:10px;right:10px;bottom:10px;padding:7px 10px;border-radius:9px;background:rgba(var(--bg-rgb),.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--fg);font:500 11px/1.4 var(--f-mono)}
+@media (max-width:600px){.demo.has-shot figcaption{left:6px;right:6px;bottom:6px;padding:4px 7px;font-size:9.5px;line-height:1.35}}
 </style>
 </head>
 <body>
@@ -976,8 +1021,9 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="nav-links"><a href="#work">Projets</a><a href="#experience">Parcours</a></div>
     </div>
     <div class="nav-right">
+      <button class="theme-tog" type="button" aria-pressed="false" aria-label="Passer au thème jour"><svg class="i i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
       <div class="view-wrap">
-        <button class="view-tog" type="button" aria-expanded="false" aria-controls="view-panel" aria-label="Options d’affichage : langue, niveau de détail, thème"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="view-lang">FR</span></button>
+        <button class="view-tog" type="button" aria-expanded="false" aria-controls="view-panel" aria-label="Options d’affichage : langue et niveau de détail"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="view-lang">FR</span></button>
       </div>
       <a class="pill glass" href="#contact">Me contacter</a>
       <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="sr">Menu</span><i></i><i></i></button>
@@ -990,9 +1036,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       </div>
       <div class="vp-row"><span class="vp-k">Détail</span>
     <button class="mode-tog" type="button" aria-pressed="false" aria-label="Mots simples au lieu du détail technique" title="Basculer entre détail technique et mots simples"><span class="m-tech">Tech</span><span class="m-plain">Simple</span></button>
-      </div>
-      <div class="vp-row"><span class="vp-k">Thème</span>
-    <button class="theme-tog" type="button" aria-pressed="false" aria-label="Passer au thème jour"><svg class="i i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="i i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
       </div>
     </div>
   </div>
@@ -1113,17 +1156,17 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <header class="sec-head">
         <div>
           <p class="eyebrow">01 — Projets</p>
-          <h2 class="h2" id="work-h">Ce que je <em class="acc">construis.</em></h2>
+          <h2 class="h2" id="work-h">Des problèmes <em class="acc">résolus.</em></h2>
         </div>
-        <div class="sec-side"><p class="sec-note"><span class="t-tech">Recherche, agents et MLOps. Chaque carte dessine la vraie architecture du système, vérifiée dans son dépôt.</span><span class="t-plain">Trois projets d’IA. Chaque carte montre comment le système fonctionne, étape par étape.</span></p><div class="dg-toggle" role="group" aria-label="Niveau de détail du schéma"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Détaillé</button></div></div>
+        <div class="sec-side"><p class="sec-note"><span class="t-tech">Chaque carte part du problème, puis dessine la vraie architecture qui le règle, vérifiée dans son dépôt.</span><span class="t-plain">Trois projets d’IA. Chacun part d’un problème concret et montre, étape par étape, comment le système le règle.</span></p><div class="dg-toggle" role="group" aria-label="Niveau de détail du schéma"><button type="button" data-dg="simple" aria-pressed="true">Simple</button><button type="button" data-dg="detailed" aria-pressed="false">Détaillé</button></div></div>
       </header>
 
       <div class="pcards">
         <a class="pc" id="card-syro" href="#syro">
           <p class="pc-kind"><span class="t-tech">LLM et recherche</span><span class="t-plain">Assistant IA</span></p>
           <h3 class="pc-name">Syro</h3>
-          <p class="pc-q">Un assistant qui montre d’où vient sa réponse.</p>
-          <p class="pc-line"><span class="t-tech">Recherche hybride, reranker, et des réponses qui citent [Source N], ou disent qu’elles ne trouvent pas.</span><span class="t-plain">Il répond à partir de vos propres documents, avec la source derrière chaque réponse, ou dit qu’il ne sait pas.</span></p>
+          <p class="pc-q"><span class="pc-lab">Problème</span>Les chatbots répondent sans source, et devinent quand ils ne savent pas.</p>
+          <p class="pc-line"><span class="pc-lab">La solution</span><span class="t-tech">Recherche hybride et reranker sur vos documents : chaque réponse cite [Source N], ou dit « je ne trouve pas ».</span><span class="t-plain">Il répond à partir de vos propres documents, montre le passage derrière chaque réponse, et dit quand il ne sait pas.</span></p>
           <div class="pc-diagram" data-mini="syro"></div>
           <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Parce qu’une réponse sans source, c’est une supposition.</span></p>
           <div class="pc-foot"><p class="pc-stack">Qdrant · BM25 · bge-reranker · Ollama</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1131,8 +1174,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <a class="pc" id="card-mcp" href="#insight-mcp">
           <p class="pc-kind"><span class="t-tech">Agents et recherche</span><span class="t-plain">Outil pour assistants IA</span></p>
           <h3 class="pc-name">insight-mcp</h3>
-          <p class="pc-q">Une recherche que les agents IA appellent seuls.</p>
-          <p class="pc-line"><span class="t-tech">Une recherche documentaire exposée comme outils MCP ; c’est le modèle de l’agent qui rédige la réponse.</span><span class="t-plain">Un moteur de recherche pour assistants IA, pour qu’ils puissent chercher dans vos documents.</span></p>
+          <p class="pc-q"><span class="pc-lab">Problème</span>Les agents IA ont besoin de sources à citer, pas de suppositions.</p>
+          <p class="pc-line"><span class="pc-lab">La solution</span><span class="t-tech">Un serveur MCP que n’importe quel agent peut appeler : 3 outils de recherche (BM25 + dense, fusion RRF) ; le modèle de l’agent rédige la réponse citée.</span><span class="t-plain">Un outil de recherche que les assistants IA branchent, pour citer vos documents au lieu de deviner.</span></p>
           <div class="pc-diagram" data-mini="insight-mcp"></div>
           <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Je voulais que les agents cherchent, pas qu’ils inventent.</span></p>
           <div class="pc-foot"><p class="pc-stack">FastMCP · BM25 · fastembed · RRF</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1140,8 +1183,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <a class="pc" id="card-proths" href="#proths">
           <p class="pc-kind"><span class="t-tech">MLOps</span><span class="t-plain">Une IA qui s’entretient seule</span></p>
           <h3 class="pc-name">Proths</h3>
-          <p class="pc-q">Que se passe-t-il quand les données changent ?</p>
-          <p class="pc-line"><span class="t-tech">Il se réentraîne quand le trafic dérive, et ne met en production qu’un modèle qui bat l’actuel.</span><span class="t-plain">Il repère quand les données réelles changent, réapprend, et ne se remplace que si la nouvelle version est meilleure.</span></p>
+          <p class="pc-q"><span class="pc-lab">Problème</span>Quand les données changent, un modèle se dégrade en silence, et un réentraînement à l’aveugle peut en livrer un pire.</p>
+          <p class="pc-line"><span class="pc-lab">La solution</span><span class="t-tech">Il détecte la dérive (PSI, KS), réentraîne sur les nouveaux labels, et ne promeut un modèle que s’il bat l’actuel sur un holdout fixe.</span><span class="t-plain">Il remarque quand les données entrantes changent, se réentraîne, et ne passe au nouveau modèle que s’il est vraiment meilleur.</span></p>
           <div class="pc-diagram" data-mini="proths"></div>
           <p class="pc-note"><svg viewBox="0 0 34 30" aria-hidden="true"><path d="M30 26 C 18 24, 8 18, 6 4"/><path d="M1 9 L6 3 L11 9"/></svg><span>Réentraîner, c’est facile. Savoir si c’est mieux, c’est le vrai sujet.</span></p>
           <div class="pc-foot"><p class="pc-stack">scikit-learn · MLflow · FastAPI · Prometheus</p><span class="pc-cta">Étude de cas <svg class="i sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></div>
@@ -1155,15 +1198,15 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         </header>
         <div class="mp-grid">
           <a class="mp-card" id="tile-pointnet" href="#pointnet-3d-classifier">
-            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="xMidYMid meet"><g class="c"><circle cx="62" cy="34" r="2.1"/><circle cx="74" cy="31" r="2.1"/><circle cx="86" cy="29" r="2.1"/><circle cx="98" cy="28" r="2.1"/><circle cx="110" cy="28" r="2.1"/><circle cx="122" cy="28" r="2.1"/><circle cx="134" cy="29" r="2.1"/><circle cx="146" cy="31" r="2.1"/><circle cx="158" cy="34" r="2.1"/><circle cx="62" cy="47" r="2.1"/><circle cx="62" cy="60" r="2.1"/><circle cx="62" cy="73" r="2.1"/><circle cx="62" cy="86" r="2.1"/><circle cx="158" cy="47" r="2.1"/><circle cx="158" cy="60" r="2.1"/><circle cx="158" cy="73" r="2.1"/><circle cx="158" cy="86" r="2.1"/><circle cx="72" cy="96" r="2.1"/><circle cx="85" cy="98" r="2.1"/><circle cx="98" cy="99" r="2.1"/><circle cx="110" cy="100" r="2.1"/><circle cx="122" cy="99" r="2.1"/><circle cx="135" cy="98" r="2.1"/><circle cx="148" cy="96" r="2.1"/></g><g class="c" opacity=".55"><circle cx="110" cy="54" r="2"/><circle cx="110" cy="72" r="2"/><circle cx="101" cy="63" r="2"/><circle cx="119" cy="63" r="2"/></g><circle class="w d" cx="110" cy="63" r="15"/></svg></span>
+            <span class="mp-vis mp-shot" aria-hidden="true"><img src="/img/proj/pointnet-tile.webp" alt="" width="440" height="256" loading="lazy"></span>
             <span class="mp-k"><span class="t-tech">Vision 3D · PointNet</span><span class="t-plain">Vision par ordinateur</span></span>
             <b class="mp-name">pointnet-3d-classifier</b>
-            <span class="mp-q">Un modèle peut-il reconnaître une pièce à sa seule forme ?</span>
-            <span class="mp-line"><span class="t-tech">PointNet sur des maillages CAO 3D, testé face au bruit, à l’occlusion et aux rotations ; export ONNX, service FastAPI.</span><span class="t-plain">Il reconnaît des pièces 3D à leur forme, et vérifie si ça tient.</span></span>
+            <span class="mp-q">Reconnaître une pièce 3D à sa seule forme, même depuis un scan bruité ou tourné.</span>
+            <span class="mp-line"><span class="t-tech">PointNet derrière une API FastAPI ; robustesse mesurée, précision sous rotation passée de 0.19 à 0.59.</span><span class="t-plain">Il reconnaît des pièces 3D à leur forme, et montre où ça casse.</span></span>
             <span class="mp-foot"><span class="mp-tags">PyTorch · ONNX · FastAPI</span><span class="mp-cta">Découvrir →</span></span>
           </a>
           <a class="mp-card" id="tile-sdwpf" href="#sdwpf">
-            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="none"><path class="g" d="M10 104 H210"/><path class="g" d="M140 14 V112"/><path class="l" d="M10 92 C 30 60, 46 72, 62 52 S 94 84, 116 58 S 132 40, 140 46"/><path class="w d" d="M140 46 C 158 34, 174 36, 186 48 S 204 70, 210 64"/></svg></span>
+            <span class="mp-vis mp-shot" aria-hidden="true"><img src="/img/proj/sdwpf-tile.webp" alt="" width="440" height="256" loading="lazy"></span>
             <span class="mp-k"><span class="t-tech">Prévision · séries temporelles</span><span class="t-plain">Prévision</span></span>
             <b class="mp-name">sdwpf</b>
             <span class="mp-q">La météo seule peut-elle prévoir une éolienne à un jour ?</span>
@@ -1171,11 +1214,11 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="mp-foot"><span class="mp-tags">XGBoost · ERA5</span><span class="mp-cta">Découvrir →</span></span>
           </a>
           <a class="mp-card" id="tile-airport" href="#airport-forecasting">
-            <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="none"><path class="g" d="M10 108 H210"/><path class="wf" d="M142 60 L164 48 L186 56 L210 42 L210 76 L186 90 L164 84 L142 78 Z"/><path class="l" d="M10 94 L26 82 L42 86 L58 72 L74 80 L90 66 L106 74 L122 60 L142 69"/><path class="w d" d="M142 69 L164 66 L186 73 L210 59"/></svg></span>
+            <span class="mp-vis mp-shot" aria-hidden="true"><img src="/img/proj/airport-tile.webp" alt="" width="440" height="256" loading="lazy"></span>
             <span class="mp-k"><span class="t-tech">Prévision · séries temporelles</span><span class="t-plain">Prévision</span></span>
             <b class="mp-name">airport-forecasting</b>
-            <span class="mp-q">Peut-on prévoir les passagers du mois prochain ?</span>
-            <span class="mp-line"><span class="t-tech">6 aéroports, données Eurostat : LightGBM face à SARIMA, évaluation récursive, dérive suivie par PSI.</span><span class="t-plain">Prévisions mensuelles de passagers pour 6 aéroports européens.</span></span>
+            <span class="mp-q">Prévoir les passagers du mois suivant pour 6 aéroports, sans regarder le futur.</span>
+            <span class="mp-line"><span class="t-tech">Un seul LightGBM : 3.5 % de MAPE à M+1 contre 5.7 % pour SARIMA, avec des intervalles à 80 % qui tiennent par aéroport.</span><span class="t-plain">Des prévisions mensuelles de passagers pour 6 aéroports européens, avec une marge d’erreur honnête.</span></span>
             <span class="mp-foot"><span class="mp-tags">LightGBM · SARIMA</span><span class="mp-cta">Découvrir →</span></span>
           </a>
           <a class="mp-card" id="tile-detector" href="#live-object-detector">
@@ -1190,8 +1233,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="xMidYMid meet"><rect class="l" x="10" y="51" width="40" height="26" rx="6"/><rect class="l" x="64" y="51" width="40" height="26" rx="6"/><circle class="w" cx="136" cy="64" r="15"/><path class="w" d="M129 64 L134 69 L143 59"/><rect class="l" x="168" y="51" width="40" height="26" rx="6"/><path class="g" d="M50 64 H64 M104 64 H121 M151 64 H168"/></svg></span>
             <span class="mp-k"><span class="t-tech">Automatisation · n8n</span><span class="t-plain">Automatisation de bureau</span></span>
             <b class="mp-name">opspilot</b>
-            <span class="mp-q">Une automatisation qui attend le feu vert d’un humain.</span>
-            <span class="mp-line"><span class="t-tech">Workflow n8n en local avec une étape LLM, une validation humaine et Notion ; le ROI est une simulation clairement signalée.</span><span class="t-plain">Il automatise les tâches courantes, mais une personne valide chaque action avant.</span></span>
+            <span class="mp-q">Automatiser une demande d’exploitation sans laisser l’IA écrire quoi que ce soit sans validation.</span>
+            <span class="mp-line"><span class="t-tech">Un seul appel LLM vérifié par schéma, une validation humaine et un journal d’audit ; le ROI est une simulation signalée.</span><span class="t-plain">Il automatise les tâches courantes, mais une personne valide chaque action avant.</span></span>
             <span class="mp-foot"><span class="mp-tags">n8n · LLM · Notion</span><span class="mp-cta">Découvrir →</span></span>
           </a>
         </div>
@@ -1206,6 +1249,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <p class="eyebrow">02 — Parcours</p>
         <h2 class="h2" id="exp-h">Comment j’en suis <em class="acc">arrivé là.</em></h2>
         <p class="exp-lead">Des plans de CAO aux pipelines de production : le génie mécanique d’abord, puis la data, puis l’IA qui tourne en production.</p>
+        <figure class="exp-fig"><div class="fig-k"><span>Fig. 1</span><span>CAO → nuage de points</span></div><img src="/img/proj/bracket-fig.webp" alt="Une équerre mécanique dessinée en 1 024 points" width="660" height="460" loading="lazy"><figcaption>Une équerre CAO synthétique, échantillonnée en 1 024 points par ma chaîne pointnet. Sortie réelle du dépôt.</figcaption><span class="hand">Même rigueur, nouveaux outils.</span></figure>
       </header>
       <div class="tl" id="tl">
         <div class="tl-track" aria-hidden="true"><i></i></div>
@@ -1562,7 +1606,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       resultsTodo: 'À venir : latence par outil (p95) et qualité de recherche sur un jeu de questions annoté.'
     },
     'proths': {
-      title: 'Proths', kind: 'MLOps', target: 'card-proths', story: true, repo: GH + 'Proths',
+      title: 'Proths', kind: 'MLOps', target: 'card-proths', story: true, repo: GH + 'Proths', shot: ['/img/proj/proths-grafana.webp', 'Tableau de bord Grafana de Proths pendant une dérive', 'Grafana pendant la dérive de démo : PSI à 0.776, un réentraînement promu, un rejeté · tiré du dépôt', true],
       kindPlain: 'IA qui s’entretient seule', plain: 'Un système qui classe des articles de presse par thème et s’entretient tout seul. Il surveille si les articles entrants commencent à changer, se réentraîne quand c’est le cas, et ne bascule sur le nouveau modèle que s’il fait mieux sur le même test fixe.',
       lede: 'Boucle MLOps complète sur un classifieur d’actualités (AG News) : service FastAPI, journal des prédictions SQLite, détection de dérive par PSI et KS, réentraînement sur les labels de feedback, promotion champion/challenger sur un holdout fixe. MLflow, Prometheus, Grafana.',
       pageLede: 'Un classifieur d’actualités (AG News, 4 classes) servi par une API, surveillé en continu et réentraîné seul quand le trafic change. <b>Un nouveau modèle n’arrive en production que s’il bat l’actuel sur un holdout fixe.</b>',
@@ -1575,7 +1619,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <p class="pg-aside">La précision en direct est <b>montée</b> de 87 % à 95 % pendant la dérive, avec le même modèle, parce que Sports est la classe la plus facile. C’est pour ça que la promotion se décide sur un holdout fixe, jamais sur la précision en direct.</p>`
     },
     'pointnet-3d-classifier': {
-      title: 'pointnet-3d-classifier', kind: 'Vision', target: 'tile-pointnet', repo: GH + 'pointnet-3d-classifier',
+      title: 'pointnet-3d-classifier', kind: 'Vision', target: 'tile-pointnet', repo: GH + 'pointnet-3d-classifier', shot: ['/img/proj/pointnet-chair.webp', 'Une chaise en nuage de points, classée par PointNet', 'Une chaise ModelNet10 jamais vue, telle que le réseau la voit (1 024 points), classée chaise à 98.4 % · tirée du dépôt'],
       kindPlain: 'Vision par ordinateur', plain: 'Reconnaît ce qu’est une pièce 3D à partir de sa seule forme, et vérifie si ça tient quand la forme est bruitée, partiellement cachée ou tournée.',
       lede: 'Classe des maillages CAO 3D à partir de leur seule géométrie avec PointNet, avec une analyse de robustesse (bruit, occlusion, rotations SO(3)), un export ONNX et un service FastAPI.',
       pageLede: 'Classe des maillages CAO 3D à partir de leur seule géométrie avec PointNet, puis cherche où ça casse : bruit, scans partiels, rotation quelconque. <b>Servi par une API FastAPI, exporté en ONNX.</b>',
@@ -1594,7 +1638,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       limits: `<ul class="pg-list"><li>Entraîné sur ModelNet10, qui ne contient que des meubles. Une forme hors de ce jeu reçoit quand même une étiquette sûre d’elle : un tore sort en baignoire à 0.76. En production, il faut un seuil d’abstention ou une classe « inconnu ».</li><li>Les classes faibles sont des sosies : bureau et table, table de nuit et commode (0.66).</li><li>ONNX sert la portabilité, pas la vitesse : environ 3 ms avec PyTorch et 4 ms avec ONNX Runtime en batch 1 sur ce petit modèle.</li><li>La chaîne n’est pas liée aux meubles : une équerre mécanique synthétique la traverse sans changement. Des étiquettes industrielles demanderaient un catalogue de pièces et un réentraînement.</li></ul>`
     },
     'sdwpf': {
-      title: 'sdwpf', kind: 'Prévision', target: 'tile-sdwpf', repo: GH + 'sdwpf-ml-time-serie',
+      title: 'sdwpf', kind: 'Prévision', target: 'tile-sdwpf', repo: GH + 'sdwpf-ml-time-serie', shot: ['/img/proj/sdwpf-forecast.webp', 'Puissance éolienne mesurée face à la prévision XGBoost', 'Jeu de test, moyenne de 100 éoliennes : puissance mesurée (noir) face à la prévision XGBoost (rouge) · tiré du dépôt'],
       kindPlain: 'Prévision', plain: 'Essaie de prévoir la production d’une éolienne un jour à l’avance à partir de la météo seule, et la compare honnêtement à une simple moyenne. Réponse : pas mieux, et la page explique pourquoi.',
       lede: 'Prévision de production éolienne sur SDWPF (parc chinois, SCADA toutes les 10 minutes et météo ERA5) : un XGBoost par éolienne, à 24 h, face à une moyenne naïve, avec un split temporel et des vérifications walk-forward.',
       pageLede: 'Peut-on prévoir la production d’une éolienne un jour à l’avance avec la météo réanalysée et le calendrier seulement ? <b>Réponse mesurée : pas mieux qu’une moyenne.</b>',
@@ -1613,7 +1657,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       limits: `<ul class="pg-list"><li>Un seul parc et un seul découpage 70/30 pour ces chiffres ; le script walk-forward vérifie d’autres fenêtres.</li><li>ERA5 est une réanalyse, pas une prévision : en production, il faudrait la météo prévue à l’échéance.</li><li>Suite : réintroduire le vent mesuré et la puissance récente là où c’est permis, puis prévoir des quantiles plutôt qu’une seule valeur.</li></ul>`
     },
     'airport-forecasting': {
-      title: 'airport-forecasting', kind: 'Prévision', target: 'tile-airport', repo: GH + 'airport-forecasting',
+      title: 'airport-forecasting', kind: 'Prévision', target: 'tile-airport', repo: GH + 'airport-forecasting', shot: ['/img/proj/airport-pax.webp', 'Passagers mensuels par aéroport, de 1998 à 2025', 'Passagers mensuels Eurostat, 1998–2025, avec la chute du COVID · vue d’ensemble des données du dépôt'],
       kindPlain: 'Prévision', plain: 'Prévoit le nombre mensuel de passagers de 6 aéroports européens, en comparant un modèle de machine learning à un modèle statistique classique.',
       lede: 'Prévision mensuelle des passagers de 6 aéroports (données Eurostat) : LightGBM face à SARIMA et à une baseline naïve, évaluation récursive, intervalles conformes, dérive suivie par PSI.',
       pageLede: 'Un seul LightGBM pour 6 aéroports européens, qui prévoit les passagers mensuels sans lire le futur. <b>Jugé sur une évaluation récursive, avec des intervalles à 80 % qui tiennent sur chaque aéroport.</b>',
@@ -1918,6 +1962,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   /* ---------- Easter eggs: a few off-screen words get their own card in the search ---------- */
   const BALL = '<svg class="a-egg-ball" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#d6ec3c"/><path d="M5 6.5c5.5 4.5 5.5 14.5 0 19M27 6.5c-5.5 4.5-5.5 14.5 0 19" fill="none" stroke="#fffbe6" stroke-width="2.2" stroke-linecap="round"/></svg>';
   const EGGS = [
+    { re: /\b(meilleur maitre de stage|meilleure? (tuteur|tutrice|maitre de stage)|maitre de stage|best (internship )?(supervisor|mentor|tutor|manager)|nicolas montrieux|montrieux)\b/, title: 'Nicolas Montrieux', text: 'Meilleur maître de stage. Sans discussion.', href: 'https://www.linkedin.com/in/nicolas-montrieux/', jump: 'LinkedIn ↗' },
     { re: /\b(federer|roger|goat|wimbledon)\b/, title: 'Roger Federer. Le GOAT.', text: '20 titres du Grand Chelem, 8 Wimbledon et ce revers à une main. Vous venez de marquer de gros points.', ball: true },
     { re: /\b(nadal|rafa|djokovic|novak|alcaraz|sinner)\b/, title: 'Respect. Mais le GOAT est suisse.', text: 'Un seul nom rapporte gros ici. Essayez.', ball: true },
     { re: /\b(tennis|atp|backhand|forehand|revers|coup droit)\b/, title: 'Le tennis, toujours.', text: 'Alors, qui est le GOAT ? Un seul nom rapporte gros.', ball: true },
@@ -1927,13 +1972,13 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
     const s = q.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const e = EGGS.find((x) => x.re.test(s));
     if (!e) return null;
-    const card = el('button', 'a-egg');
-    card.type = 'button';
+    const card = el(e.href ? 'a' : 'button', 'a-egg');
+    if (e.href) { card.href = e.href; card.target = '_blank'; card.rel = 'noopener'; } else card.type = 'button';
     const top = el('div', 'a-rtop');
-    top.append(el('span', 'a-egg-k', 'Easter egg trouvé'), el('span', 'a-rjump', 'Hors écran →'));
+    top.append(el('span', 'a-egg-k', 'Easter egg trouvé'), el('span', 'a-rjump', e.jump || 'Hors écran →'));
     card.append(top, el('p', 'a-egg-t', e.title), el('p', 'a-rtext', e.text));
     if (e.ball) card.insertAdjacentHTML('beforeend', BALL);
-    card.addEventListener('click', onPick);
+    if (!e.href) card.addEventListener('click', onPick);
     return card;
   }
 
@@ -2047,8 +2092,8 @@ void main(){
   float t = uTime;
   vec2 q = vec2(fbm(p * 1.3 + vec2(0.0, t * 0.03)), fbm(p * 1.3 + vec2(4.1, 2.3) - t * 0.025));
   float haze = fbm(p * 1.7 + 1.9 * q + vec2(t * 0.02, 0.0));
-  vec3 col = vec3(0.010, 0.016, 0.034);
-  col += vec3(0.05, 0.10, 0.22) * smoothstep(0.38, 0.86, haze) * (1.15 - uv.y);
+  vec3 col = vec3(0.012, 0.016, 0.014);
+  col += vec3(0.07, 0.12, 0.09) * smoothstep(0.38, 0.86, haze) * (1.15 - uv.y);
   for (int i = 0; i < 3; i++){
     float fi = float(i);
     float base = -0.20 - fi * 0.065;
@@ -2057,7 +2102,7 @@ void main(){
     float d = p.y - (base + wave);
     float soft = exp(-d * d * (55.0 + fi * 35.0));
     float core = exp(-d * d * (2600.0 + fi * 900.0));
-    vec3 tint = mix(vec3(0.22, 0.42, 1.0), vec3(0.30, 0.86, 0.95), fi * 0.5);
+    vec3 tint = mix(vec3(0.42, 0.74, 0.55), vec3(0.95, 0.80, 0.42), fi * 0.5);
     float hx = p.x - 0.6 * sin(t * 0.06 + fi * 1.9);
     float hot = exp(-hx * hx * 2.5);
     col += tint * soft * (0.30 - fi * 0.06) * (0.6 + 0.6 * haze);
@@ -2348,6 +2393,15 @@ void main(){
     title.textContent = P.title;
     title.classList.toggle('is-long', P.title.length > 12);
     F('repo').href = P.repo;
+    // a real figure from the repository fills the demo frame until the video exists
+    const demoFig = $('.demo', projView);
+    if (!demoFig.dataset.ph) demoFig.dataset.ph = demoFig.innerHTML;
+    demoFig.classList.toggle('has-shot', !!P.shot);
+    demoFig.classList.toggle('is-dark', !!(P.shot && P.shot[3]));
+    if (P.shot) {
+      demoFig.innerHTML = '<img src="' + P.shot[0] + '" alt="' + P.shot[1] + '" width="1280" height="720">';
+      demoFig.append(el('figcaption', null, P.shot[2]));
+    } else demoFig.innerHTML = demoFig.dataset.ph;
 
     const metrics = F('metrics');
     metrics.replaceChildren();
