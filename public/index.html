@@ -483,6 +483,12 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
 .todo-tag{padding:4px 8px;border-radius:999px;background:rgba(255,181,71,.12);color:var(--alert);font:500 10px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
 .todo p{margin:0;font-size:14.5px;line-height:1.55;color:var(--faint)}
 .pg-links{display:flex;flex-wrap:wrap;gap:10px}
+.pg-flow{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:st}
+.pg-flow li{position:relative;padding-left:44px;font-size:16px;line-height:1.6;color:var(--muted);counter-increment:st}
+.pg-flow li::before{content:counter(st,decimal-leading-zero);position:absolute;left:0;top:.2em;font:500 12px/1.6 var(--f-mono);letter-spacing:.06em;color:var(--warm)}
+.pg-flow b,.pg-list b{color:var(--fg);font-weight:600}
+.pg-list{margin:0;padding-left:1.1em;display:grid;gap:10px;font-size:16px;line-height:1.6;color:var(--muted)}
+.pg-list li::marker{color:var(--warm)}
 
 /* ---------- diagrams v2: shared by cards and stories (geometry in DIAGRAMS) ---------- */
 .mk{fill:rgba(244,245,248,.34)}
@@ -966,13 +972,13 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
   <nav class="nav glass" aria-label="Main">
     <div class="nav-left">
       <a class="logo" href="#home"><span class="mark" aria-hidden="true">SP</span>sampdv</a>
-      <div class="nav-links"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div>
+      <div class="nav-links"><a href="#work">Work</a><a href="#experience">Experience</a></div>
     </div>
     <div class="nav-right">
       <div class="view-wrap">
         <button class="view-tog" type="button" aria-expanded="false" aria-controls="view-panel" aria-label="Display options: language, detail, theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="view-lang">EN</span></button>
       </div>
-      <button class="pill glass" type="button" data-todo="Placeholder: the CV PDF isn't added yet.">Download CV</button>
+      <a class="pill glass" href="#contact">Get in touch</a>
       <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="sr">Menu</span><i></i><i></i></button>
     </div>
   </nav>
@@ -1159,9 +1165,9 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="none"><path class="g" d="M10 104 H210"/><path class="g" d="M140 14 V112"/><path class="l" d="M10 92 C 30 60, 46 72, 62 52 S 94 84, 116 58 S 132 40, 140 46"/><path class="w d" d="M140 46 C 158 34, 174 36, 186 48 S 204 70, 210 64"/></svg></span>
             <span class="mp-k"><span class="t-tech">Forecasting · time series</span><span class="t-plain">Forecasting</span></span>
             <b class="mp-name">sdwpf</b>
-            <span class="mp-q">How much power will the wind farm produce?</span>
-            <span class="mp-line"><span class="t-tech">XGBoost against naive and persistence baselines, multi-horizon, validated walk-forward.</span><span class="t-plain">It forecasts wind power ahead of time, and checks that it beats simple rules.</span></span>
-            <span class="mp-foot"><span class="mp-tags">XGBoost · pandas</span><span class="mp-cta">Explore →</span></span>
+            <span class="mp-q">Can weather alone forecast a wind turbine a day ahead?</span>
+            <span class="mp-line"><span class="t-tech">One XGBoost per turbine against a naive mean, 24 h ahead. Measured answer: no better.</span><span class="t-plain">It tries to forecast wind power a day ahead, and says honestly that a plain average does as well.</span></span>
+            <span class="mp-foot"><span class="mp-tags">XGBoost · ERA5</span><span class="mp-cta">Explore →</span></span>
           </a>
           <a class="mp-card" id="tile-airport" href="#airport-forecasting">
             <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="none"><path class="g" d="M10 108 H210"/><path class="wf" d="M142 60 L164 48 L186 56 L210 42 L210 76 L186 90 L164 84 L142 78 Z"/><path class="l" d="M10 94 L26 82 L42 86 L58 72 L74 80 L90 66 L106 74 L122 60 L142 69"/><path class="w d" d="M142 69 L164 66 L186 73 L210 59"/></svg></span>
@@ -1176,8 +1182,8 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
             <span class="mp-k"><span class="t-tech">Real-time vision</span><span class="t-plain">Computer vision</span></span>
             <b class="mp-name">live-object-detector</b>
             <span class="mp-q">Live object detection, without sending a single frame away.</span>
-            <span class="mp-line"><span class="t-tech">Runs entirely in the browser on the webcam, with ONNX Runtime Web.</span><span class="t-plain">It recognises objects on a webcam, live, right in your browser.</span></span>
-            <span class="mp-foot"><span class="mp-tags">ONNX Runtime Web · JS</span><span class="mp-cta">Explore →</span></span>
+            <span class="mp-line"><span class="t-tech">Runs in the browser on a phone or a webcam: COCO-SSD on TensorFlow.js.</span><span class="t-plain">It recognises objects on a webcam, live, right in your browser.</span></span>
+            <span class="mp-foot"><span class="mp-tags">TensorFlow.js · COCO-SSD</span><span class="mp-cta">Explore →</span></span>
           </a>
           <a class="mp-card" id="tile-opspilot" href="#opspilot">
             <span class="mp-vis" aria-hidden="true"><svg viewBox="0 0 220 128" preserveAspectRatio="xMidYMid meet"><rect class="l" x="10" y="51" width="40" height="26" rx="6"/><rect class="l" x="64" y="51" width="40" height="26" rx="6"/><circle class="w" cx="136" cy="64" r="15"/><path class="w" d="M129 64 L134 69 L143 59"/><rect class="l" x="168" y="51" width="40" height="26" rx="6"/><path class="g" d="M50 64 H64 M104 64 H121 M151 64 H168"/></svg></span>
@@ -1327,7 +1333,7 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
         <div class="sk-row"><dt><span class="t-tech">Retrieval &amp; LLMs</span><span class="t-plain">AI assistants &amp; search</span></dt><dd class="sk-items"><ul><li>BM25</li><li>Dense embeddings</li><li>RRF</li><li>Qdrant</li><li>Cross-encoder reranking</li><li>Ollama</li><li>MCP</li></ul></dd><dd class="sk-used">Syro · insight-mcp</dd></div>
         <div class="sk-row"><dt><span class="t-tech">MLOps &amp; serving</span><span class="t-plain">Keeping AI running</span></dt><dd class="sk-items"><ul><li>MLflow</li><li>FastAPI</li><li>Docker</li><li>Celery</li><li>Prometheus</li><li>Grafana</li><li>ONNX</li></ul></dd><dd class="sk-used">Proths · Syro · insight-mcp · pointnet</dd></div>
         <div class="sk-row"><dt><span class="t-tech">Data engineering</span><span class="t-plain">Data pipelines</span></dt><dd class="sk-items"><ul><li>Snowflake</li><li>ETL &amp; orchestration</li><li>Terraform</li><li>GitLab CI/CD</li><li>SAP Data Hub</li><li>n8n</li></ul></dd><dd class="sk-used">Accor (Akabi) · SAP · opspilot</dd></div>
-        <div class="sk-row"><dt><span class="t-tech">Modeling</span><span class="t-plain">Machine learning</span></dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>PSI drift checks</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · SAP</dd></div>
+        <div class="sk-row"><dt><span class="t-tech">Modeling</span><span class="t-plain">Machine learning</span></dt><dd class="sk-items"><ul><li>scikit-learn</li><li>PyTorch</li><li>PointNet</li><li>TensorFlow.js</li><li>XGBoost</li><li>LightGBM</li><li>SARIMA</li><li>K-means</li><li>PSI drift checks</li></ul></dd><dd class="sk-used">Proths · pointnet · sdwpf · airport · detector · SAP</dd></div>
         <div class="sk-row"><dt><span class="t-tech">Languages</span><span class="t-plain">Programming</span></dt><dd class="sk-items"><ul><li>Python</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li></ul></dd><dd class="sk-used">all projects · Akabi · SAP · Syro UI · detector</dd></div>
       </dl>
     </div>
@@ -1374,7 +1380,6 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       <div class="contact-actions">
         <a class="cta" href="mailto:sam.pondevie@gmail.com"><span class="cta-fill" aria-hidden="true"></span><span>Email me</span><span class="cta-arrow" aria-hidden="true"><svg class="i sm" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a>
         <a class="pill glass" href="https://www.linkedin.com/in/sampdv" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <button class="pill glass" type="button" data-todo="Placeholder: the CV PDF isn't added yet.">Download CV</button>
       </div>
     </div>
   </section>
@@ -1572,31 +1577,98 @@ button.a-ritem:hover{background:rgba(255,255,255,.06)}
       title: 'pointnet-3d-classifier', kind: 'Vision', target: 'tile-pointnet', repo: GH + 'pointnet-3d-classifier',
       kindPlain: 'Computer vision', plain: 'Recognises what a 3D part is from its shape alone, and checks how well that holds up when the shape is noisy, partly hidden or rotated.',
       lede: 'Classifies 3D CAD meshes from geometry alone with PointNet, with a robustness analysis (noise, occlusion, SO(3) rotations), ONNX export and FastAPI serving.',
-      stack: ['PyTorch', 'PointNet', 'ONNX', 'FastAPI']
+      pageLede: 'Classifies 3D CAD meshes from their geometry alone with PointNet, then checks where it breaks: noise, partial scans, arbitrary rotation. <b>Served by a FastAPI endpoint, exported to ONNX.</b>',
+      stack: ['PyTorch', 'PointNet', 'trimesh', 'MLflow', 'FastAPI', 'ONNX Runtime', 'Docker', 'GitHub Actions'],
+      metrics: [['Test accuracy · ModelNet10', '0.872', '', false, '908 meshes, 10 classes'], ['Under random rotation', '0.59', '', false, 'from 0.19, after SO(3) retraining'], ['CPU latency', '~3', 'ms', false, 'one mesh, batch 1'], ['Model size', '3.46', 'M params', false, '13.9 MB, no GPU needed']],
+      problem: 'A 3D part arrives as a mesh or a scan: points in space, with no grid like an image, and every order of those points must give the same answer. I wanted the full path from raw geometry to a model behind an API, and to know where the model breaks before a real scan shows it.',
+      approach: `<ol class="pg-flow">
+        <li><b>Sample.</b> Each mesh (.off, .ply, .stl, .obj) becomes 1,024 surface points, centred and scaled to a unit sphere. The API applies the same transform, so training and serving see the same input.</li>
+        <li><b>Learn.</b> PointNet: a shared network on each point, then a max-pool that ignores point order (a test checks it), and two small T-Nets that learn to re-pose the object.</li>
+        <li><b>Stress.</b> Sweeps for sensor noise, partial scans and arbitrary 3D rotation, an ablation of each component, and a probe with shapes that are not in the dataset.</li>
+        <li><b>Ship.</b> MLflow for every run, a FastAPI service, an ONNX export checked against PyTorch, a Docker image, and CI with ruff and pytest that runs without the 450 MB dataset.</li>
+      </ol>`,
+      results: `<div class="tbl-wrap"><table class="tbl"><caption>Test accuracy under stress · ModelNet10, 908 meshes</caption><thead><tr><th>Condition</th><th>Accuracy</th></tr></thead><tbody><tr class="hl"><td>Clean test set</td><td>0.872</td></tr><tr><td>Noise σ = 0.04 / 0.10</td><td>0.846 / 0.66</td></tr><tr><td>20 % / 50 % of the points removed</td><td>0.78 / 0.38</td></tr><tr><td>Random 3D rotation</td><td>0.19</td></tr></tbody></table></div>
+        <p>The rotation collapse is PointNet’s known limit: this model was trained with yaw-only augmentation. Retraining with full SO(3) augmentation brings rotated accuracy from 0.19 to 0.59, at a cost: clean accuracy drops to 0.64. Yaw-only fits parts that arrive upright, SO(3) fits any pose.</p>
+        <p class="pg-aside">Removing the feature T-Net or the augmentation slightly <b>raises</b> clean accuracy (0.891 and 0.889, against 0.865 for the full model). Judged on the clean test alone, both would be deleted; their value shows under rotation and noise.</p>`,
+      limits: `<ul class="pg-list"><li>Trained on ModelNet10, which is furniture. Shapes outside it still get a confident label: a torus comes out as a bathtub at 0.76. In production it needs an abstain threshold or an “unknown” class.</li><li>The weak classes are look-alikes: desk and table, night stand and dresser (0.66).</li><li>ONNX is for portability, not speed: about 3 ms with PyTorch and 4 ms with ONNX Runtime at batch 1 on this small model.</li><li>The pipeline is not tied to furniture: a synthetic mechanical bracket goes through it unchanged. Industrial labels would need a parts catalogue and a retrain.</li></ul>`
     },
     'sdwpf': {
       title: 'sdwpf', kind: 'Forecasting', target: 'tile-sdwpf', repo: GH + 'sdwpf-ml-time-serie',
-      kindPlain: 'Forecasting', plain: 'Predicts how much electricity a wind farm will produce ahead of time, and compares the model with simple rules of thumb to check that it actually helps.',
-      lede: 'Wind power forecasting on the SDWPF dataset: XGBoost against naive and persistence baselines, multi-horizon benchmark, walk-forward validation.',
-      stack: ['XGBoost', 'pandas', 'Python']
+      kindPlain: 'Forecasting', plain: 'Tries to predict a wind turbine’s output one day ahead from weather data only, and compares it honestly with a plain average. The answer is no better, and the page explains why.',
+      lede: 'Wind power forecasting on SDWPF (a Chinese wind farm, SCADA every 10 minutes and ERA5 weather): one XGBoost per turbine, 24 h ahead, against a naive mean, on a time split with walk-forward checks.',
+      pageLede: 'Can a turbine’s output be forecast one day ahead from reanalysis weather and the calendar alone? <b>Measured answer: no better than a mean.</b>',
+      stack: ['XGBoost', 'pandas', 'ERA5', 'Python', 'pytest', 'Docker', 'GitHub Actions'],
+      metrics: [['Horizon', '24', 'h', false, '144 steps of 10 minutes'], ['MAE · 100 turbines', '354.0', 'kW', false, 'naive mean: 346.2 kW'], ['Beats the mean on', '13/20', 'turbines', false, 'but loses more than it gains'], ['Better than a mean?', 'No', '', false, 'reported as measured']],
+      problem: 'The question: with reanalysis weather (ERA5) and the calendar only, without the turbine’s recent power or its measured wind, can its output be forecast 24 hours ahead?',
+      approach: `<ol class="pg-flow">
+        <li><b>Data.</b> SDWPF, a wind farm in China: SCADA every 10 minutes and ERA5 weather. Target: active power (kW) 144 steps later, i.e. 24 h.</li>
+        <li><b>Model.</b> One XGBoost per turbine, time split 70 % train / 30 % test, never random. An optional validation slice serves for early stopping; the score is always on the test.</li>
+        <li><b>Baseline.</b> The naive forecast is the mean of the target on the train set. Persistence is left out on purpose: it would use the current power, which the model does not get.</li>
+        <li><b>Checks.</b> A multi-horizon benchmark and walk-forward folds at the end of the series; tests in CI and a Docker image.</li>
+      </ol>`,
+      results: `<div class="tbl-wrap"><table class="tbl"><caption>MAE on the test set, kW · lower is better</caption><thead><tr><th>Turbines</th><th>Naive mean</th><th>XGBoost</th><th>Gap</th></tr></thead><tbody><tr><td>1</td><td>434.1</td><td>530.6</td><td>−22.2 %</td></tr><tr><td>20</td><td>378.5</td><td>380.6</td><td>−0.5 %</td></tr><tr class="hl"><td>100</td><td>346.2</td><td>354.0</td><td>−2.2 %</td></tr></tbody></table></div>
+        <p>On 20 turbines, XGBoost beats the mean on 13, but its losses (down to −22 %) weigh more than its gains (at most +10 %). The forecast stays between 300 and 600 kW while production climbs past 1,000 kW: the model learns the average level, not the wind events.</p>
+        <p class="pg-aside">What I take from it: at 24 hours and 10-minute steps, reanalysis weather does not carry enough local information. The gain would come from recent power, the turbine’s measured wind, or real weather forecasts for the horizon.</p>`,
+      limits: `<ul class="pg-list"><li>One farm and one 70/30 split for these numbers; the walk-forward script checks other windows.</li><li>ERA5 is a reanalysis, not a forecast: in production it would have to be the weather forecast for the horizon.</li><li>Next: bring back the measured wind and recent power where allowed, then forecast quantiles instead of a single value.</li></ul>`
     },
     'airport-forecasting': {
       title: 'airport-forecasting', kind: 'Forecasting', target: 'tile-airport', repo: GH + 'airport-forecasting',
       kindPlain: 'Forecasting', plain: 'Predicts how many passengers 6 European airports will see each month, comparing a machine learning model with a classic statistical one.',
-      lede: 'Monthly passenger forecasting for 6 airports (Eurostat data): LightGBM against SARIMA, recursive evaluation, drift tracked with PSI.',
-      stack: ['LightGBM', 'SARIMA', 'statsmodels', 'PSI']
+      lede: 'Monthly passenger forecasting for 6 airports (Eurostat data): LightGBM against SARIMA and a naive baseline, recursive evaluation, conformal intervals, drift tracked with PSI.',
+      pageLede: 'One LightGBM model for 6 European airports, forecasting monthly passengers without reading the future. <b>Judged on a recursive evaluation, with 80 % intervals that hold on each airport.</b>',
+      stack: ['LightGBM', 'SARIMA', 'statsmodels', 'Conformal prediction', 'PSI', 'FastAPI', 'Streamlit'],
+      metrics: [['MAPE · M+1', '3.5', '%', false, 'SARIMA 5.7 % · naive 6.2 %'], ['MAPE · M+12', '3.3', '%', false, '4 airports · SARIMA 4.6 %'], ['80 % interval coverage', '88', '%', false, 'at least 80 % per airport'], ['Airports', '6', '', false, 'one model for all']],
+      problem: 'Can a single model forecast passengers for six airports of very different sizes, without using anything that would not be known at forecast time? The score that counts is the recursive one, where each month’s forecast feeds the next, not the easier one-step score.',
+      approach: `<ol class="pg-flow">
+        <li><b>Data.</b> Eurostat airport traffic (passengers and movements), plus unemployment and GDP, oil price (FRED), ECB exchange rates and public holidays.</li>
+        <li><b>Models.</b> One LightGBM for the six airports, against SARIMA and a naive baseline (same month last year). Future flights are taken as the same month a year earlier, never the real ones.</li>
+        <li><b>Recursive evaluation.</b> Trained up to 2024-12, then forecast month after month; MAPE is averaged over the first h months.</li>
+        <li><b>Intervals.</b> Split-conformal on the recursive residuals, with a relative score: calibrated on 2024, tested on 2025 onwards. The API returns the lower and upper bounds.</li>
+        <li><b>Drift.</b> A PSI check and a retraining script, run by hand.</li>
+      </ol>`,
+      results: `<div class="tbl-wrap"><table class="tbl"><caption>Mean MAPE over the first h months · trained up to 2024-12</caption><thead><tr><th>Horizon</th><th>LightGBM</th><th>SARIMA</th><th>Naive (same month N-1)</th></tr></thead><tbody><tr class="hl"><td>M+1</td><td>3.5 %</td><td>5.7 %</td><td>6.2 %</td></tr><tr><td>M+3</td><td>4.1 %</td><td>4.8 %</td><td>5.7 %</td></tr><tr><td>M+6</td><td>3.8 %</td><td>5.6 %</td><td>6.3 %</td></tr><tr><td>M+12</td><td>3.3 %</td><td>4.6 %</td><td>6.5 %</td></tr></tbody></table></div>
+        <p>At M+1 and M+3, LightGBM wins on MAPE but not on MAE against the naive baseline (MASE 1.13 and 1.22). At M+6 and M+12 it does (MASE 0.66 and 0.61).</p>
+        <p>80 % intervals: a band of ± 7.8 % around the forecast covers 88 % of the test points, and at least 80 % on each airport.</p>
+        <p class="pg-aside">With one absolute band instead (± 127k passengers for all), coverage is 90 % overall but 67 % at Lisbon, about 3M passengers a month, and 100 % at Nantes, about 0.6M. A relative score fits airports of different sizes.</p>`,
+      limits: `<ul class="pg-list"><li>M+12 covers 4 airports only: Lyon and Nantes data stop in 2025-11.</li><li>The intervals rest on 72 calibration and 73 test points, so coverage per airport is noisy.</li><li>In the 3-fold cross-validation, hyperparameters were tuned on 2024, which is also the test of fold 2. That fold is optimistic; the table above is the clean fold.</li><li>Retraining is a script, not a scheduled job.</li></ul>`,
+      links: [['Results page ↗', 'https://airohh.github.io/airport-forecasting/']]
     },
     'live-object-detector': {
       title: 'live-object-detector', kind: 'Vision', target: 'tile-detector', repo: GH + 'live-object-detector',
-      kindPlain: 'Computer vision', plain: 'Point a webcam at a scene and it recognises the objects in it, live, without sending any image to a server.',
-      lede: 'Real-time object detection that runs entirely in the browser, on the webcam.',
-      stack: ['ONNX Runtime Web', 'JavaScript']
+      kindPlain: 'Computer vision', plain: 'Point a phone or a webcam at a scene and it recognises the objects in it, live, without sending any image to a server.',
+      lede: 'Real-time object detection in the browser, on a phone or a webcam: COCO-SSD (MobileNet v2) on TensorFlow.js. No image leaves the device.',
+      pageLede: 'Point a phone or a webcam at the world and get live boxes and labels. <b>The model runs on the device: no image leaves the browser.</b>',
+      stack: ['TensorFlow.js', 'COCO-SSD', 'MobileNet v2', 'WebGL', 'JavaScript', 'GitHub Pages'],
+      metrics: [['Object classes', '80', '', false, 'COCO'], ['Images sent to a server', '0', '', false, 'inference in the browser'], ['Backend', 'None', '', false, 'one static index.html']],
+      problem: 'Object detection usually means sending camera frames to a server. I wanted it to run where the camera is: open a page, allow the camera, and see detections live, with nothing uploaded.',
+      approach: `<ol class="pg-flow">
+        <li><b>Model.</b> COCO-SSD, the lite MobileNet v2 version: 80 everyday object classes.</li>
+        <li><b>Runtime.</b> TensorFlow.js on WebGL, loaded from a CDN; every frame is processed on the device.</li>
+        <li><b>App.</b> A single static index.html, no build step and no backend. A button switches between the front and back camera.</li>
+        <li><b>Hosting.</b> GitHub Pages, because browsers only give camera access over HTTPS.</li>
+      </ol>`,
+      results: `<p>The demo is live: open it on a phone or a laptop, allow the camera, and the boxes follow the objects in real time.</p>`,
+      resultsTodo: 'Frame rate per device is not measured yet.',
+      links: [['Live demo ↗', 'https://airohh.github.io/live-object-detector/']], live: true
     },
     'opspilot': {
       title: 'opspilot', kind: 'Automation', target: 'tile-opspilot', repo: GH + 'opspilot-ai-automation',
       kindPlain: 'Office automation', plain: 'Automates routine operations tasks with an AI step, but a person approves each action before it happens. The time saved is shown as a clearly labelled simulation.',
-      lede: 'Local n8n operations workflow with an LLM and a human approval step, Notion integration, and a clearly labelled ROI simulation.',
-      stack: ['n8n', 'LLM', 'Notion']
+      lede: 'Local n8n operations workflow: one LLM call drafts a proposal held to a JSON schema, a person approves before anything is written, Notion tracks the request, FastAPI serves the data, with an audit log and a clearly labelled ROI simulation.',
+      pageLede: 'An operations assistant that reads the supplier record and the policy, drafts a recommendation, then waits. <b>Nothing is written until a person approves it.</b>',
+      stack: ['n8n', 'FastAPI', 'OpenAI (JSON schema)', 'Notion API', 'PostgreSQL', 'Docker Compose', 'GitHub Actions'],
+      metrics: [['Model calls per request', '1', '', false, 'no tools, JSON schema'], ['Writes before approval', '0', '', false, 'held by the Wait node'], ['Approval window', '24', 'h', false, 'then the request is rejected'], ['Databases tested in CI', '2', '', false, 'SQLite and PostgreSQL']],
+      problem: 'An operations team gets requests like “ACME wants 90-day payment terms instead of 60.” Someone has to find the supplier, read the policy, write a recommendation and wait for approval. The reading and the first draft can be automated; the decision stays with a person.',
+      approach: `<ol class="pg-flow">
+        <li><b>Intake.</b> A webhook checks its header token, FastAPI gives the request an id, and a Notion page opens with the status Processing.</li>
+        <li><b>Context.</b> FastAPI finds the supplier named in the request and loads its record and the payment-terms policy. An unknown supplier, or two in one request, stops the run before the model is called.</li>
+        <li><b>Draft.</b> One model call, with no tools, returns a proposal that must match a JSON schema. If it does not, a fixed rule builds the proposal from the loaded records, and that fallback is counted.</li>
+        <li><b>Approval.</b> n8n waits for a person to post approved or rejected, with a separate approver token. No answer within 24 hours means rejected.</li>
+        <li><b>Trace.</b> Approval completes the Notion page, rejection changes nothing. An audit log, measured counts and a ROI simulation close the loop.</li>
+      </ol>`,
+      results: `<p>Five scenarios are written up in the repository: a normal request, a rejection, an approval, the API going down (retries, then Failed, never Completed) and an unknown supplier (the model is not called). Automated tests run in CI on SQLite and PostgreSQL.</p>
+        <p class="pg-aside">The ROI is a simulation from configurable assumptions, and the API labels it that way. Measured counts are never mixed into the euro figures.</p>`,
+      limits: `<ul class="pg-list"><li>The approval step is an n8n Wait webhook, not a product interface.</li><li>The approved action updates Notion; it does not call an ERP.</li><li>Access uses shared header tokens, not user accounts.</li><li>Policy search is keyword overlap, not retrieval with embeddings.</li><li>Supplier records and policy text are fictional demonstration data.</li></ul>`
     }
   };
   const NEXT = {
@@ -2307,18 +2379,21 @@ void main(){
       bindToggle(stage, 'sampdv.dg.story', (v) => { stage.dataset.dg = v; });
       secs.append(st);
     } else {
-      secs.append(section('Approach & architecture', 'How it works', todo('A step-by-step view of how it works is on its way.')));
+      secs.append(section('Approach & architecture', 'How it works', P.approach || todo('A step-by-step view of how it works is on its way.')));
     }
     const results = [];
     if (P.results) results.push(P.results);
     if (P.resultsTodo || !P.results) results.push(todo(P.resultsTodo || 'Measured results are on their way.'));
     secs.append(section('Results', 'What it achieves', results));
+    if (P.limits) secs.append(section('Limits', 'What it doesn’t do', P.limits));
     const links = el('div', 'pg-links');
     const gh = el('a', 'pill glass', 'GitHub repository ↗');
     gh.href = P.repo; gh.target = '_blank'; gh.rel = 'noopener';
     const demo = el('span', 'pill glass is-off', 'Demo video (soon)');
     demo.setAttribute('aria-disabled', 'true');
-    links.append(gh, demo);
+    const more = (P.links || []).map(([label, href]) => { const a = el('a', 'pill glass', label); a.href = href; a.target = '_blank'; a.rel = 'noopener'; return a; });
+    links.append(gh, ...more);
+    if (!P.live) links.append(demo);
     secs.append(section('Links', 'Code and demo', links));
 
     const next = F('next');
@@ -2326,7 +2401,7 @@ void main(){
     $('b', next).textContent = PROJECTS[NEXT[slug]].title + ' →';
     F('note').textContent = P.story
       ? 'Work in progress. Facts and numbers come from the repository (README, config, code); the wording is still a draft. Values marked X are not measured yet.'
-      : 'Work in progress. Summary and stack come from the repository description; the full write-up is coming.';
+      : P.problem ? 'Facts and numbers come from the repository README and its reports.' : 'Work in progress. Summary and stack come from the repository description; the full write-up is coming.';
     return P.story ? storyCtl(secs, slug) : null;
   }
 
